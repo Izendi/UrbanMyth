@@ -7,6 +7,7 @@ public class BasicFpMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float gravity = -9.81f;
+    public float jumpHeight = 1.5f;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -25,6 +26,22 @@ public class BasicFpMovement : MonoBehaviour
         // Move relative to the player's orientation
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
+
+        // Gravity
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // Ensures the player stays grounded
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+
+        // Jumping
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
 
         // Gravity
         if (controller.isGrounded && velocity.y < 0)
