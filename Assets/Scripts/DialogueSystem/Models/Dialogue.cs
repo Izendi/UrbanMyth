@@ -8,4 +8,3 @@ namespace Assets.Scripts.DialogueSystem.Models
         public List<DialogueNode> DialogueNodes;
     }
 }
-
