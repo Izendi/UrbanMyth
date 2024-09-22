@@ -32,12 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(int nodeId)
     {
-
-        Debug.Log(CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId));
-
         currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
-        Debug.Log(currentDialogueNode.DialogueId);
-        Debug.Log(currentDialogueNode.Text);
         ShowDialogue();
     }
 
@@ -63,7 +58,6 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeNpcLine()
     {
         DialogueText.text = "";
-
         Debug.Log(currentDialogueNode.Text);
         foreach (char c in currentDialogueNode.Text)
         {
