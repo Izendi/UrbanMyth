@@ -5,10 +5,10 @@ namespace Assets.Scripts.DialogueSystem.Models
     [System.Serializable]
     public class DialogueNode
     {
-        public int DialogueId { get; set; }
-        public string NpcName{ get; set; }
-        public string Text { get; set; }
-        public List<Response> Responses { get; set; }
+        public int DialogueId;
+        public string NpcName;
+        public string Text;
+        public List<Response> Responses;
 
     }
 }
