@@ -2283,6 +2283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueObject: {fileID: 2078911494}
+  DialogueText: {fileID: 744622157}
+  DialogueFile: {fileID: 4900000, guid: c1ae93ed2b9bfcd42b4138994cb68256, type: 3}
+  PrintSpeed: 0.3
+  CurrentDialogue:
+    DialogueNodes: []
 --- !u!1 &1934035017
 GameObject:
   m_ObjectHideFlags: 0
