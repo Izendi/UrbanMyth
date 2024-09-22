@@ -1,45 +1,45 @@
 {
-  "dialogues": [
+  "DialogueNodes": [
     {
-      "id": 1,
-      "character": "NPC_1",
-      "text": "Hello, adventurer! How can I help you?",
-      "responses": [
+      "DialogueId": 1,
+      "NpcName": "NPC_1",
+      "Text": "Hello, adventurer! How can I help you?",
+      "Responses": [
         {
-          "text": "Who are you?",
-          "nextDialogueId": 2
+          "Text": "Who are you?",
+          "NextDialogueId": 2
         },
         {
-          "text": "I don't need help.",
-          "nextDialogueId": 3
+          "Text": "I don't need help.",
+          "NextDialogueId": 3
         }
       ]
     },
     {
-      "id": 2,
-      "character": "NPC_1",
-      "text": "I'm the village blacksmith. Do you need any tools?",
-      "responses": [
+      "DialogueId": 2,
+      "NpcName": "NPC_1",
+      "Text": "I'm the village blacksmith. Do you need any tools?",
+      "Responses": [
         {
-          "text": "Yes, show me what you have.",
-          "nextDialogueId": 4
+          "Text": "Yes, show me what you have.",
+          "NextDialogueId": 4
         },
         {
-          "text": "No, thank you.",
-          "nextDialogueId": 3
+          "Text": "No, thank you.",
+          "NextDialogueId": 3
         }
       ]
     },
     {
-      "id": 3,
-      "character": "NPC_1",
-      "text": "Very well, come back if you need anything."
+      "DialogueId": 3,
+      "NpcName": "NPC_1",
+      "Text": "Very well, come back if you need anything."
     },
     {
-      "id": 4,
-      "character": "NPC_1",
-      "text": "Here are my tools.",
-      "responses": []
+      "DialogueId": 4,
+      "NpcName": "NPC_1",
+      "Text": "Here are my tools.",
+      "Responses": []
     }
   ]
 }
