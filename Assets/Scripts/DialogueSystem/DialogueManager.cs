@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     private bool isDialogueActive = false;
     public GameObject DialogueObject;
     public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI CurrentNpcName;
+    public GameObject PressEnterToClosePrefab;
     public GameObject ResponsePrefab;
     public Transform ResponseContainer;
     public TextAsset DialogueFile;
@@ -41,6 +43,11 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseDialogue();
+
+        if (Input.GetKeyDown(KeyCode.Return) && !currentDialogueNode.Responses.Any())
+        {
+           CloseDialogue();
+        }
     }
 
     public void StartDialogue(int nodeId)
@@ -59,6 +66,7 @@ public class DialogueManager : MonoBehaviour
     public void PrintDialogueText(int nodeId)
     {
         currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
+        CurrentNpcName.text = currentDialogueNode.NpcName;
         StartCoroutine(TypeNpcLine());
         DisplayResponses();
     }
@@ -84,6 +92,15 @@ public class DialogueManager : MonoBehaviour
         foreach (Transform child in ResponseContainer)
         {
             Destroy(child.gameObject);
+        }
+
+        if (!currentDialogueNode.Responses?.Any() ?? true)
+        {
+            GameObject textObject = Instantiate(PressEnterToClosePrefab, ResponseContainer);
+            var text = textObject.GetComponent<TextMeshProUGUI>();
+
+            var stringToPrint = "Press Enter to close...";
+            text.text = stringToPrint;
         }
 
         foreach (var response in currentDialogueNode.Responses)
