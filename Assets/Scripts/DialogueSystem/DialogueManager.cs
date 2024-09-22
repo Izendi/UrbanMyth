@@ -4,13 +4,17 @@ using System.Linq;
 using Assets.Scripts.DialogueSystem.Models;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject DialogueObject;
     public TextMeshProUGUI DialogueText;
+    public GameObject ResponsePrefab;
+    public Transform ResponseContainer;
     public TextAsset DialogueFile;
-    public float PrintSpeed;
+    public float PrintSpeed = 0.05f;
     public Dialogue CurrentDialogue;
     private DialogueNode currentDialogueNode;
     private Queue<string> lines;
@@ -46,23 +50,43 @@ public class DialogueManager : MonoBehaviour
         DialogueObject.SetActive(true);
 
         StartCoroutine(TypeNpcLine());
-        //if (currentDialogueNode.Responses.Count > 0)
-        //{
-        //    for (int i = 0; i < currentDialogueNode.Responses.Count; i++)
-        //    {
-        //        Debug.Log((i + 1) + ": " + currentDialogueNode.Responses[i].Text);
-        //    }
-        //}
+        DisplayResponses();
+
+
     }
 
     private IEnumerator TypeNpcLine()
     {
         DialogueText.text = "";
-        Debug.Log(currentDialogueNode.Text);
         foreach (char c in currentDialogueNode.Text)
         {
             DialogueText.text += c;
             yield return new WaitForSeconds(PrintSpeed);
         }
+
+    }
+
+    private void DisplayResponses()
+    {
+        foreach (Transform child in ResponseContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var response in currentDialogueNode.Responses)
+        {
+            GameObject option = Instantiate(ResponsePrefab, ResponseContainer);
+            Button button = option.GetComponent<Button>();
+            TextMeshProUGUI buttonText = option.GetComponentInChildren<TextMeshProUGUI>();
+
+            buttonText.text = response.Text; // Set button text
+            // button.onClick.AddListener(() => OnOptionSelected(response.NextDialogueId)); // Assign action
+        }
+    }
+
+    private void OnOptionSelected(int nextDialogueId)
+    {
+        // Handle what happens when the option is selected, e.g., load next dialogue
+        Debug.Log("Selected option for dialogue ID: " + nextDialogueId);
     }
 }
