@@ -38,13 +38,17 @@ public class DialogueManager : MonoBehaviour
         {
             StartDialogue(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            CloseDialogue();
     }
 
     public void StartDialogue(int nodeId)
     {
         isDialogueActive = true;
-        currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
-        ShowDialogue();
+        DialogueObject.SetActive(true);
+
+        PrintDialogueText(nodeId);
     }
 
     public void HideDialogue()
@@ -52,14 +56,11 @@ public class DialogueManager : MonoBehaviour
         DialogueObject.SetActive(false);
     }
 
-    public void ShowDialogue()
+    public void PrintDialogueText(int nodeId)
     {
-        DialogueObject.SetActive(true);
-
+        currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
         StartCoroutine(TypeNpcLine());
         DisplayResponses();
-
-
     }
 
     private void Awake()
@@ -100,5 +101,13 @@ public class DialogueManager : MonoBehaviour
     {
         // Handle what happens when the option is selected, e.g., load next dialogue
         Debug.Log("Selected option for dialogue ID: " + nextDialogueId);
+        PrintDialogueText(nextDialogueId);
+    }
+
+    public void CloseDialogue()
+    {
+        isDialogueActive = false; // Set inactive state
+        HideDialogue();
+        // Logic to close the dialogue
     }
 }
