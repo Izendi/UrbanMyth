@@ -75,9 +75,9 @@ public class DialogueManager : MonoBehaviour
 
         foreach (var response in currentDialogueNode.Responses)
         {
-            GameObject option = Instantiate(ResponsePrefab, ResponseContainer);
-            Button button = option.GetComponent<Button>();
-            TextMeshProUGUI buttonText = option.GetComponentInChildren<TextMeshProUGUI>();
+            GameObject responseObject = Instantiate(ResponsePrefab, ResponseContainer);
+            var button = responseObject.GetComponent<Button>();
+            var buttonText = responseObject.GetComponentInChildren<TextMeshProUGUI>();
 
             buttonText.text = response.Text; // Set button text
             // button.onClick.AddListener(() => OnOptionSelected(response.NextDialogueId)); // Assign action
