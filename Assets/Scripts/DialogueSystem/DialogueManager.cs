@@ -9,6 +9,9 @@ using UnityEngine.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager instance;
+    public bool IsDialogueActive => isDialogueActive;
+    private bool isDialogueActive = false;
     public GameObject DialogueObject;
     public TextMeshProUGUI DialogueText;
     public GameObject ResponsePrefab;
@@ -18,6 +21,9 @@ public class DialogueManager : MonoBehaviour
     public Dialogue CurrentDialogue;
     private DialogueNode currentDialogueNode;
     private Queue<string> lines;
+    private List<Button> responseButtons;
+
+    private int selectedIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(int nodeId)
     {
+        isDialogueActive = true;
         currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
         ShowDialogue();
     }
@@ -53,6 +60,11 @@ public class DialogueManager : MonoBehaviour
         DisplayResponses();
 
 
+    }
+
+    private void Awake()
+    {
+        instance = this; // Set the singleton instance
     }
 
     private IEnumerator TypeNpcLine()
@@ -80,7 +92,7 @@ public class DialogueManager : MonoBehaviour
             var buttonText = responseObject.GetComponentInChildren<TextMeshProUGUI>();
 
             buttonText.text = response.Text; // Set button text
-            // button.onClick.AddListener(() => OnOptionSelected(response.NextDialogueId)); // Assign action
+            button.onClick.AddListener(() => OnOptionSelected(response.NextDialogueId)); // Assign action
         }
     }
 
