@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class InteractableNpc : InteractableObject
 {
-
-    public TextAsset DialogueFile;
+    [SerializeField]
+    private TextAsset DialogueFile; // The dialogue file to be used for this NPC
 
     private bool isPlayerInRange = true;
+
+    public override void Interact()
+    {
+        TriggerDialogue();
+    }
 
     private void Start()
     {
@@ -16,7 +21,7 @@ public class InteractableNpc : InteractableObject
             InteractPrompt = "Press E to talk.";
     }
 
-    public void Update()
+    private void Update()
     {
         if ( isPlayerInRange && Input.GetKeyDown(KeyCode.T))
         {
@@ -24,12 +29,7 @@ public class InteractableNpc : InteractableObject
         }
     }
 
-    public override void Interact()
-    {
-        TriggerDialogue();
-    }
-
-    public void TriggerDialogue()
+    private void TriggerDialogue()
     {
         DialogueManager.Instance.StartDialogue(DialogueFile);
     }

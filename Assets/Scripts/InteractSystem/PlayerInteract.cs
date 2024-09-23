@@ -15,7 +15,7 @@ public class PlayerInteract : MonoBehaviour
             foreach (var hitCollider in hitColliders)
             {
                 if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger))
-                    dialogueTrigger.TriggerDialogue();
+                    dialogueTrigger.Interact();
             }
         }
     }
