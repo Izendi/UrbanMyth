@@ -24,7 +24,7 @@ public class InteractableNpc : InteractableObject
         }
     }
 
-    public void Interact()
+    public override void Interact()
     {
         TriggerDialogue();
     }
