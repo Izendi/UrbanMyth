@@ -9,37 +9,32 @@ using UnityEngine.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance;
-    public bool IsDialogueActive => isDialogueActive;
-    private bool isDialogueActive = false;
-    public GameObject DialogueObject;
-    public TextMeshProUGUI DialogueText;
-    public TextMeshProUGUI CurrentNpcName;
-    public GameObject PressEnterToClosePrefab;
-    public GameObject ResponsePrefab;
-    public Transform ResponseContainer;
-    public TextAsset DialogueFile;
-    public float PrintSpeed = 0.05f;
-    public Dialogue CurrentDialogue;
-    private DialogueNode currentDialogueNode;
-    private Queue<string> lines;
-    private List<Button> responseButtons;
+    private const float PRINT_SPEED = 0.01f;
 
-    private int selectedIndex = 0;
-    // Start is called before the first frame update
+    public static DialogueManager Instance;
+
+    public bool IsDialogueActive => isDialogueActive;
+
+    private bool isDialogueActive = false;
+   
+    [SerializeField] private GameObject DialogueObject;
+    [SerializeField] private TextMeshProUGUI DialogueText;
+    [SerializeField] private TextMeshProUGUI CurrentNpcName;
+    [SerializeField] private GameObject PressEnterToClosePrefab;
+    [SerializeField] private GameObject ResponsePrefab;
+    [SerializeField] private Transform ResponseContainer; 
+    private Dialogue CurrentDialogue;
+    private DialogueNode currentDialogueNode;
+
     void Start()
     {
-        lines = new Queue<string>();
-        CurrentDialogue = JsonUtility.FromJson<Dialogue>(DialogueFile.text);
         HideDialogue();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartDialogue(1);
-        }
+        if (!isDialogueActive)
+            return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseDialogue();
@@ -50,20 +45,30 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(int nodeId)
+    public void StartDialogue(TextAsset dialogueFile, int startNode = 1)
     {
+        CurrentDialogue = JsonUtility.FromJson<Dialogue>(dialogueFile.text);
+        isDialogueActive = true;
+        StartDialogue(startNode);
+    }
+
+    private void StartDialogue(int nodeId)
+    {
+        if( CurrentDialogue is null)
+            return;
+
         isDialogueActive = true;
         DialogueObject.SetActive(true);
 
         PrintDialogueText(nodeId);
     }
 
-    public void HideDialogue()
+    private void HideDialogue()
     {
         DialogueObject.SetActive(false);
     }
 
-    public void PrintDialogueText(int nodeId)
+    private void PrintDialogueText(int nodeId)
     {
         currentDialogueNode = CurrentDialogue.DialogueNodes.Find(x => x.DialogueId == nodeId);
         CurrentNpcName.text = currentDialogueNode.NpcName;
@@ -73,7 +78,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; // Set the singleton instance
+        Instance = this; // Set the singleton instance
     }
 
     private IEnumerator TypeNpcLine()
@@ -82,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in currentDialogueNode.Text)
         {
             DialogueText.text += c;
-            yield return new WaitForSeconds(PrintSpeed);
+            yield return new WaitForSeconds(PRINT_SPEED);
         }
 
     }
@@ -121,10 +126,9 @@ public class DialogueManager : MonoBehaviour
         PrintDialogueText(nextDialogueId);
     }
 
-    public void CloseDialogue()
+    private void CloseDialogue()
     {
-        isDialogueActive = false; // Set inactive state
+        isDialogueActive = false;
         HideDialogue();
-        // Logic to close the dialogue
     }
 }
