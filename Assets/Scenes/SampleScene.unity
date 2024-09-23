@@ -2481,7 +2481,8 @@ MonoBehaviour:
   DialogueObject: {fileID: 2078911494}
   DialogueText: {fileID: 744622157}
   CurrentNpcName: {fileID: 550538917}
-  PressEnterToClosePrefab: {fileID: 0}
+  PressEnterToClosePrefab: {fileID: 6377797431104580523, guid: 9dc70aa6738df9b45a669cfed56a283d,
+    type: 3}
   ResponsePrefab: {fileID: 4207772812523923153, guid: 30ba5bfeb58e6854ab1568d1da41130b,
     type: 3}
   ResponseContainer: {fileID: 675442320}
