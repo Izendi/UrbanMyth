@@ -115,11 +115,11 @@ public class DialogueManager : MonoBehaviour
             var buttonText = responseObject.GetComponentInChildren<TextMeshProUGUI>();
 
             buttonText.text = response.Text; // Set button text
-            button.onClick.AddListener(() => OnOptionSelected(response.NextDialogueId)); // Assign action
+            button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId)); // Assign action
         }
     }
 
-    private void OnOptionSelected(int nextDialogueId)
+    private void OnResponseSelected(int nextDialogueId)
     {
         PrintDialogueText(nextDialogueId);
     }
