@@ -121,8 +121,6 @@ public class DialogueManager : MonoBehaviour
 
     private void OnOptionSelected(int nextDialogueId)
     {
-        // Handle what happens when the option is selected, e.g., load next dialogue
-        Debug.Log("Selected option for dialogue ID: " + nextDialogueId);
         PrintDialogueText(nextDialogueId);
     }
 
