@@ -19,9 +19,22 @@ public class PlayerInteract : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactDistance);
             foreach (var hitCollider in hitColliders)
             {
-                hitCollider.TryGetComponent(out DialogueTrigger dialogueTrigger);
-                dialogueTrigger?.TriggerDialogue();
+                if (hitCollider.TryGetComponent(out DialogueTrigger dialogueTrigger))
+                    dialogueTrigger.TriggerDialogue();
             }
         }
+    }
+
+    public DialogueTrigger GetDialogueTrigger()
+    {
+        float interactDistance = 3.0f;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactDistance);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent(out DialogueTrigger dialogueTrigger))
+                return dialogueTrigger;
+        }
+
+        return null;
     }
 }
