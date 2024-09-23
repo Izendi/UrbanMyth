@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using Assets.Scripts.DialogueSystem.Models;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+public class InteractableNpc : InteractableObject
 {
 
     public TextAsset DialogueFile;
 
     private bool isPlayerInRange = true;
+
+    private void Start()
+    {
+        if (string.IsNullOrEmpty(InteractPrompt))
+            InteractPrompt = "Press E to talk.";
+    }
 
     public void Update()
     {
@@ -18,9 +24,13 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    public void Interact()
+    {
+        TriggerDialogue();
+    }
+
     public void TriggerDialogue()
     {
-        //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        Debug.Log("interaction started");
+        DialogueManager.Instance.StartDialogue(DialogueFile);
     }
 }
