@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private const float INTERACT_DISTANCE = .0f;
+    private const float INTERACT_DISTANCE = 2.0f;
 
     // Update is called once per frame
     void Update()
