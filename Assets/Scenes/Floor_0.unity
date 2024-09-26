@@ -3259,9 +3259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrouchKey: 99
-  CrouchHeight: 0.3
-  StandingHeight: 0.7
-  CrouchSpeed: 1
+  CrouchHeight: 0.5
+  StandingHeight: 1
+  CrouchSpeed: 0.5
   speed: 4
   gravity: -9.81
   jumpHeight: 1.5
