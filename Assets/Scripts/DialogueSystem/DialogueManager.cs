@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -116,11 +117,13 @@ public class DialogueManager : MonoBehaviour
 
             buttonText.text = response.Text; // Set button text
             button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId)); // Assign action
+            Debug.Log("AddListener");
         }
     }
 
     private void OnResponseSelected(int nextDialogueId)
     {
+        Debug.Log("Response Clicked");
         PrintDialogueText(nextDialogueId);
     }
 
