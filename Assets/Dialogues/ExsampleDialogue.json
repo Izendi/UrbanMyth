@@ -1,0 +1,49 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "NPC_1",
+      "Text": "Hello, adventurer! How can I help you?",
+      "Responses": [
+        {
+          "Text": "Who are you?",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "I don't need help.",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "NPC_1",
+      "Text": "I'm the village blacksmith. Do you need any tools?",
+      "Responses": [
+        {
+          "Text": "Yes, show me what you have.",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "No, thank you.",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "NPC_1",
+      "Text": "Very well, come back if you need anything."
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "NPC_1",
+      "Text": "Here are my tools.",
+      "Responses": []
+    }
+  ]
+}
