@@ -21,14 +21,6 @@ public class InteractableNpc : InteractableObject
             InteractPrompt = "Press E to talk.";
     }
 
-    private void Update()
-    {
-        if ( isPlayerInRange && Input.GetKeyDown(KeyCode.T))
-        {
-            TriggerDialogue();
-        }
-    }
-
     private void TriggerDialogue()
     {
         DialogueManager.Instance.StartDialogue(DialogueFile);
