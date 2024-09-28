@@ -618,7 +618,6 @@ GameObject:
   - component: {fileID: 98961546}
   - component: {fileID: 98961545}
   - component: {fileID: 98961544}
-  - component: {fileID: 98961543}
   m_Layer: 0
   m_Name: Cube
   m_TagString: PickUpAble
@@ -626,18 +625,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &98961543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98961542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &98961544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1102,7 +1089,6 @@ GameObject:
   - component: {fileID: 245424960}
   - component: {fileID: 245424959}
   - component: {fileID: 245424958}
-  - component: {fileID: 245424957}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: PickUpAble
@@ -1110,18 +1096,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &245424957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 245424956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &245424958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5654,7 +5628,6 @@ GameObject:
   - component: {fileID: 1576553800}
   - component: {fileID: 1576553799}
   - component: {fileID: 1576553798}
-  - component: {fileID: 1576553797}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: PickUpAble
@@ -5662,18 +5635,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1576553797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576553796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1576553798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6197,7 +6158,6 @@ GameObject:
   - component: {fileID: 1757974437}
   - component: {fileID: 1757974436}
   - component: {fileID: 1757974435}
-  - component: {fileID: 1757974434}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: PickUpAble
@@ -6205,18 +6165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1757974434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757974433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1757974435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6414,7 +6362,6 @@ GameObject:
   - component: {fileID: 1822341287}
   - component: {fileID: 1822341286}
   - component: {fileID: 1822341285}
-  - component: {fileID: 1822341284}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: PickUpAble
@@ -6422,18 +6369,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1822341284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822341283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1822341285
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7669,7 +7604,6 @@ GameObject:
   - component: {fileID: 2064888750}
   - component: {fileID: 2064888749}
   - component: {fileID: 2064888748}
-  - component: {fileID: 2064888747}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: PickUpAble
@@ -7677,18 +7611,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2064888747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064888746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55102f51658906441aa7aa3df4fc3431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2064888748
 Rigidbody:
   m_ObjectHideFlags: 0
