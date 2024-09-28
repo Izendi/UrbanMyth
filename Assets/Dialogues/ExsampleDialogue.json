@@ -3,32 +3,27 @@
     {
       "DialogueId": 1,
       "NpcName": "NPC_1",
-      "Text": "Hello, adventurer! How can I help you?",
+      "Text": "Hello, little girl! Lost are we?",
       "Responses": [
         {
-          "Text": "Who are you?",
+          "Text": "(Continue)",
           "NextDialogueId": 2,
           "ResponseNiceness": 1
-        },
-        {
-          "Text": "I don't need help.",
-          "NextDialogueId": 3,
-          "ResponseNiceness": 0
         }
       ]
     },
     {
       "DialogueId": 2,
       "NpcName": "NPC_1",
-      "Text": "I'm the village blacksmith. Do you need any tools?",
+      "Text": "Don't see your type around here that often.",
       "Responses": [
         {
-          "Text": "Yes, show me what you have.",
+          "Text": "What do you mean by that?",
           "NextDialogueId": 4,
           "ResponseNiceness": 1
         },
         {
-          "Text": "No, thank you.",
+          "Text": "Goodbye.",
           "NextDialogueId": 3,
           "ResponseNiceness": 1
         }
@@ -37,13 +32,19 @@
     {
       "DialogueId": 3,
       "NpcName": "NPC_1",
-      "Text": "Very well, come back if you need anything."
+      "Text": "hahahaha!"
     },
     {
       "DialogueId": 4,
       "NpcName": "NPC_1",
-      "Text": "Here are my tools.",
-      "Responses": []
+      "Text": "The one upstairs does not take kindly to your type roaming these halls",
+      "Responses": [
+        {
+          "Text": "Goodbye",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 1
+        }
+      ]
     }
   ]
 }
