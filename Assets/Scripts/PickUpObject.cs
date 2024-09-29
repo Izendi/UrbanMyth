@@ -10,6 +10,8 @@ public class PickUpObject : MonoBehaviour
     public float distance = 2f;
     public float height = 1f;
 
+    public Camera playerCamera;
+
     private void Update()
     {
         var t = transform;
@@ -29,7 +31,11 @@ public class PickUpObject : MonoBehaviour
         {
             if (pressedE)
             {
-                var hits = Physics.SphereCastAll(t.position + t.forward, radius, t.forward, radius);
+                Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+                //var hits = Physics.SphereCastAll(t.position + t.forward, radius, t.forward, radius);
+                RaycastHit[] hits = Physics.RaycastAll(ray, radius);
+
                 var hitIndex = Array.FindIndex(hits, hit => hit.transform.tag == "PickUpAble");
 
                 if (hitIndex != -1)

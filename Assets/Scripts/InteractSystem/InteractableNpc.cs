@@ -8,7 +8,7 @@ public class InteractableNpc : InteractableObject
     [SerializeField]
     private TextAsset DialogueFile; // The dialogue file to be used for this NPC
 
-    private bool isPlayerInRange = true;
+    //private bool isPlayerInRange = true;
 
     public override void Interact()
     {
