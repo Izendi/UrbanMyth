@@ -2810,6 +2810,10 @@ MonoBehaviour:
   speed: 4
   gravity: -9.81
   jumpHeight: 1.5
+  lowCeilingRange: 2
+  ceilingLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!143 &1614968113
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3055,7 +3059,7 @@ GameObject:
   - component: {fileID: 1828546564}
   - component: {fileID: 1828546563}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasDoorInteract
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
