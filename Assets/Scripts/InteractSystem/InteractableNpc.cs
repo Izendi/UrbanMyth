@@ -8,7 +8,7 @@ public class InteractableNpc : InteractableObject
     [SerializeField]
     private TextAsset DialogueFile; // The dialogue file to be used for this NPC
 
-    private bool isPlayerInRange = true;
+    //private bool isPlayerInRange = true;
 
     public override void Interact()
     {
@@ -19,14 +19,6 @@ public class InteractableNpc : InteractableObject
     {
         if (string.IsNullOrEmpty(InteractPrompt))
             InteractPrompt = "Press E to talk.";
-    }
-
-    private void Update()
-    {
-        if ( isPlayerInRange && Input.GetKeyDown(KeyCode.T))
-        {
-            TriggerDialogue();
-        }
     }
 
     private void TriggerDialogue()

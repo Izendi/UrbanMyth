@@ -117,13 +117,11 @@ public class DialogueManager : MonoBehaviour
 
             buttonText.text = response.Text; // Set button text
             button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId)); // Assign action
-            Debug.Log("AddListener");
         }
     }
 
     private void OnResponseSelected(int nextDialogueId)
     {
-        Debug.Log("Response Clicked");
         PrintDialogueText(nextDialogueId);
     }
 
