@@ -755,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 412856049}
-  interactKey: 101
+  interactKey: 102
   openDoorText: {fileID: 1350194281}
 --- !u!65 &412856051
 BoxCollider:
@@ -787,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 412856048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.57, y: 0.76, z: -0.84}
+  m_LocalPosition: {x: -4.57, y: 0.76, z: -3.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -961,7 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawerAnimator: {fileID: 526460082}
   openDrawerText: {fileID: 1350194281}
-  interactKey: 101
+  interactKey: 102
 --- !u!65 &526460084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawerAnimator: {fileID: 819872710}
   openDrawerText: {fileID: 1350194281}
-  interactKey: 101
+  interactKey: 102
 --- !u!95 &819872710
 Animator:
   serializedVersion: 5
@@ -2417,7 +2417,7 @@ GameObject:
   - component: {fileID: 1350194282}
   - component: {fileID: 1350194281}
   m_Layer: 5
-  m_Name: Text (E)
+  m_Name: Text (F)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [E] to Interact
+  m_text: Press [F] to Interact
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 1581035405}
   doorPivot: {fileID: 1581035408}
-  interactKey: 101
+  interactKey: 102
   openDoorText: {fileID: 1350194281}
 --- !u!65 &1581035407
 BoxCollider:
@@ -2803,6 +2803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f66912f751e5c44fa58edd801ba0fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CrouchKey: 99
+  CrouchHeight: 0.5
+  StandingHeight: 1
+  CrouchSpeed: 0.5
   speed: 4
   gravity: -9.81
   jumpHeight: 1.5

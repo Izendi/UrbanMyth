@@ -5,45 +5,48 @@ using UnityEngine;
 
 public class Cam_AntiWallClip : MonoBehaviour
 {
-    public Transform cameraTransform;
-
+    public Transform targetTransform; // The target the camera is following
     public float minDistanceFromWall = 0.5f;
-
     public float offsetSpeed = 10f;
-
     public LayerMask offsetObjectsLayer;
 
-    private Vector3 originalCameraPosition;
+    private Vector3 originalCameraLocalPosition;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        originalCameraPosition = transform.localPosition;
+        // Store the original local position of the camera relative to its parent (the target)
+        originalCameraLocalPosition = transform.localPosition;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
+        // Desired camera position in world space
+        Vector3 desiredCameraWorldPosition = transform.parent.TransformPoint(originalCameraLocalPosition);
+
+        // Direction from the target to the desired camera position
+        Vector3 direction = desiredCameraWorldPosition - targetTransform.position;
+        float distance = direction.magnitude;
+        direction.Normalize();
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, minDistanceFromWall, offsetObjectsLayer))
+        // Cast a ray from the target towards the desired camera position
+        if (Physics.Raycast(targetTransform.position, direction, out hit, distance + minDistanceFromWall, offsetObjectsLayer))
         {
-            // If we hit a wall, move the camera backward to prevent clipping
-            Vector3 hitPoint = hit.point;
-            Vector3 cameraDirection = (transform.position - hitPoint).normalized;
-            float distanceToMoveBack = minDistanceFromWall - hit.distance;
+            // Position the camera at the hit point minus minDistanceFromWall
+            float hitDistance = Mathf.Max(hit.distance - minDistanceFromWall, 0f);
 
-            // Shift the camera back away from the wall smoothly
-            transform.position -= cameraDirection * distanceToMoveBack;
+            // Calculate the new position for the camera
+            Vector3 newCameraWorldPosition = targetTransform.position + direction * hitDistance;
+
+            // Smoothly move the camera to the new position
+            transform.position = Vector3.Lerp(transform.position, newCameraWorldPosition, offsetSpeed * Time.deltaTime);
         }
         else
         {
-            // If no walls are detected, smoothly return to the original position
-            transform.localPosition = Vector3.Lerp(transform.localPosition, originalCameraPosition, offsetSpeed * Time.deltaTime);
+            // No obstruction, smoothly move the camera to its original position
+            Vector3 desiredLocalPosition = Vector3.Lerp(transform.localPosition, originalCameraLocalPosition, offsetSpeed * Time.deltaTime);
+            transform.localPosition = desiredLocalPosition;
         }
-
     }
 }
