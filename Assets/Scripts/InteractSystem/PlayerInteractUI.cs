@@ -18,7 +18,7 @@ public class PlayerInteractUI : MonoBehaviour
     {
         var interactableObject = playerInteract.GetInteractableObject();
 
-        if (interactableObject is null)
+        if (interactableObject is null || (DialogueManager.Instance?.IsDialogueActive ?? true))
         {
             Hide();
         }
