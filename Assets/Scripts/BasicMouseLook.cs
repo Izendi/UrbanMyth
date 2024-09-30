@@ -16,6 +16,17 @@ public class BasicMouseLook : MonoBehaviour
 
     void Update()
     {
+        // Check if dialogue is active
+        if (DialogueManager.Instance?.IsDialogueActive ?? false)
+        {
+            LockCursor(false); // Unlock the cursor if dialogue is active
+            return; // Skip the mouse look logic
+        }
+        else
+        {
+            LockCursor(true); // Lock the cursor when not in dialogue
+        }
+
         // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -27,5 +38,19 @@ public class BasicMouseLook : MonoBehaviour
 
         // Rotate the player left and right
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    private void LockCursor(bool isLocked)
+    {
+        if (isLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked; // Locks the cursor
+            Cursor.visible = false; // Hide the cursor
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None; // Unlocks the cursor
+            Cursor.visible = true; // Show the cursor
+        }
     }
 }
