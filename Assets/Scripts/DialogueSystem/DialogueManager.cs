@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     public static DialogueManager Instance;
 
-    public bool IsDialogueActive => isDialogueActive;
+    public static bool IsDialogueActive => Instance?.isDialogueActive ?? false;
 
     private bool isDialogueActive = false;
    

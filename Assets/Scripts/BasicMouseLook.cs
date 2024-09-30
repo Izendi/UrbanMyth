@@ -17,7 +17,7 @@ public class BasicMouseLook : MonoBehaviour
     void Update()
     {
         // Check if dialogue is active
-        if (DialogueManager.Instance?.IsDialogueActive ?? false)
+        if (DialogueManager.IsDialogueActive)
         {
             LockCursor(false); // Unlock the cursor if dialogue is active
             return; // Skip the mouse look logic
