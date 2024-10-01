@@ -3,7 +3,7 @@
     {
       "DialogueId": 1,
       "NpcName": "NPC_1",
-      "Text": "Hello, little girl! Lost are we?",
+      "Text": "Hello little girl! Lost are we?",
       "Responses": [
         {
           "Text": "(Continue)",
@@ -32,15 +32,27 @@
     {
       "DialogueId": 3,
       "NpcName": "NPC_1",
-      "Text": "hahahaha!"
+      "Text": "HAHAHAHAHA!"
     },
     {
       "DialogueId": 4,
       "NpcName": "NPC_1",
-      "Text": "The one upstairs does not take kindly to your type roaming these halls",
+      "Text": "The one upstairs, prefers others.",
       "Responses": [
         {
-          "Text": "Goodbye",
+          "Text": "What does that mean?",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+    "DialogueId": 5,
+      "NpcName": "NPC_1",
+      "Text": "WOULDN'T YOU LIKE TO KNOW!!!",
+      "Responses": [
+        {
+          "Text": "(Continue)",
           "NextDialogueId": 3,
           "ResponseNiceness": 1
         }

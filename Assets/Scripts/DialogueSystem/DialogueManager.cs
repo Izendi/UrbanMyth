@@ -27,6 +27,9 @@ public class DialogueManager : MonoBehaviour
     private Dialogue CurrentDialogue;
     private DialogueNode currentDialogueNode;
 
+    public disableReticle dr;
+    public Canvas reticleCanvas;
+
     void Start()
     {
         HideDialogue();
@@ -107,6 +110,8 @@ public class DialogueManager : MonoBehaviour
 
             var stringToPrint = "Press Enter to close...";
             text.text = stringToPrint;
+
+            dr.enable(ref reticleCanvas);
         }
 
         foreach (var response in currentDialogueNode.Responses)
@@ -117,13 +122,11 @@ public class DialogueManager : MonoBehaviour
 
             buttonText.text = response.Text; // Set button text
             button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId)); // Assign action
-            Debug.Log("AddListener");
         }
     }
 
     private void OnResponseSelected(int nextDialogueId)
     {
-        Debug.Log("Response Clicked");
         PrintDialogueText(nextDialogueId);
     }
 
