@@ -1,0 +1,62 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "NPC_1",
+      "Text": "Another one of you huh?",
+      "Responses": [
+        {
+          "Text": "Who are you?",
+          "NextDialogueId": 2
+        },
+        {
+          "Text": "What do you mean 'another one?'",
+          "NextDialogueId": 3
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "NPC_1",
+      "Text": "Me? I'm no one.",
+      "Responses": [
+        {
+          "Text": "If you say so...",
+          "NextDialogueId": 5
+        },
+        {
+          "Text": "Nice to meet you 'no one'",
+          "NextDialogueId": 4
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "NPC_1",
+      "Text": "That's for you to find out little missy! hahahahaha"
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "NPC_1",
+      "Text": "Little smarty pants are we? Mind your own buisness.",
+      "Responses": []
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "NPC_1",
+      "Text": "I do say so! hahahahaha.",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 6
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "NPC_1",
+      "Text": "Now, get out of my sight!",
+      "Responses": []
+    }
+  ]
+}
