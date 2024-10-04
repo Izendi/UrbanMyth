@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class BasicMouseLook : MonoBehaviour
@@ -8,6 +9,8 @@ public class BasicMouseLook : MonoBehaviour
     public Transform playerBody;
 
     float xRotation = 0f;
+
+    private bool registerMouse = true;
 
     void Start()
     {
@@ -27,17 +30,33 @@ public class BasicMouseLook : MonoBehaviour
             LockCursor(true); // Lock the cursor when not in dialogue
         }
 
-        // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            registerMouse = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            registerMouse = true;
+        }
 
-        // Rotate the camera up and down
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Prevents flipping over
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        if (registerMouse == false)
+        {
 
-        // Rotate the player left and right
-        playerBody.Rotate(Vector3.up * mouseX);
+        }
+        else
+        {
+            // Get mouse input
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+            // Rotate the camera up and down
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Prevents flipping over
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+            // Rotate the player left and right
+            playerBody.Rotate(Vector3.up * mouseX);
+        }
     }
 
     private void LockCursor(bool isLocked)
