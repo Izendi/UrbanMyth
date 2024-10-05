@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUpAble
+  - Button
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnoreLighting
   - Water
   - UI
   - OffsetCamObjs

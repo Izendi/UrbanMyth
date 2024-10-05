@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class SlidingDoorController : MonoBehaviour
+public class SlidingGrateController : MonoBehaviour
 {
     public Transform door; // Reference to the door object
     public Vector3 openPosition; // The target position when the door is open
@@ -24,12 +24,6 @@ public class SlidingDoorController : MonoBehaviour
         // Set the open position (you can adjust this based on how far you want the door to slide)
         openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
         openDoorText.enabled = false;
-    }
-
-    public void activateDoor()
-    {
-
-        activated = true;
     }
 
     // Update is called once per frame
@@ -72,3 +66,5 @@ public class SlidingDoorController : MonoBehaviour
         }
     }
 }
+
+
