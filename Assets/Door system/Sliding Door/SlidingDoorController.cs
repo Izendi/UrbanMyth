@@ -28,13 +28,13 @@ public class SlidingDoorController : MonoBehaviour
 
     public void activateDoor()
     {
-
         activated = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (activated)
         {
             isOpen = !isOpen; // Toggle door state
@@ -52,23 +52,5 @@ public class SlidingDoorController : MonoBehaviour
         }
 
     }
-    // Detect when the player enters the trigger zone
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = true;
-            openDoorText.enabled = true; // Show the "Press F to open door" text
-        }
-    }
 
-    // Detect when the player exits the trigger zone
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = false;
-            openDoorText.enabled = false; // Hide the text when player leaves
-        }
-    }
 }

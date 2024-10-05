@@ -29,10 +29,10 @@ public class SlidingGrateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activated)
+
+        if (isPlayerNear && Input.GetKeyDown(interactKey))
         {
             isOpen = !isOpen; // Toggle door state
-            activated = false;
         }
 
         // Smoothly move the door between open and closed positions
