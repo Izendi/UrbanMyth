@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class DoorButton : MonoBehaviour
 {
-    public Material red;
-    public Material green;
     public Camera playerCamera;
 
     public KeyCode keyToPress;
@@ -22,11 +20,22 @@ public class DoorButton : MonoBehaviour
     [SerializeField]
     private float radius = 1.0f;
 
+    private Material redBut;
+    private Material greenBut;
+
     // Start is called before the first frame update
     void Start()
     {
         sdc = linkedDoor.GetComponent<SlidingDoorController>();
         objectRenderer = GetComponent<Renderer>();
+
+        redBut = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        redBut.color = Color.red;
+
+        greenBut = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        greenBut.color = Color.green;
+
+        objectRenderer.material = redBut;
     }
 
     // Update is called once per frame
@@ -40,24 +49,37 @@ public class DoorButton : MonoBehaviour
             //var hits = Physics.SphereCastAll(t.position + t.forward, radius, t.forward, radius);
             RaycastHit[] hits = Physics.RaycastAll(ray, radius);
 
+            if(hits.Length == 0)
+            {
+                return;
+            }
+
             var hitIndex = Array.FindIndex(hits, hit => hit.transform.tag == "Button");
+
 
             if (hitIndex != -1)
             {
-                if (greenColor)
-                {
-                    objectRenderer.material = red;
-                    greenColor = false;
+                GameObject hitObject = hits[hitIndex].transform.gameObject;
 
-                    sdc.activateDoor();
-                }
-                else
+                if (hitObject == this.gameObject)
                 {
-                    objectRenderer.material = green;
-                    greenColor = true;
-                    sdc.activateDoor();
+                    if (greenColor)
+                    {
+                        objectRenderer.material = redBut;
+                        greenColor = false;
+
+                        sdc.activateDoor();
+                    }
+                    else
+                    {
+                        objectRenderer.material = greenBut;
+                        greenColor = true;
+                        sdc.activateDoor();
+                    }
                 }
             }
+
+            
     
         }
     }

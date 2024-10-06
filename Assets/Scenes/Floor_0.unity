@@ -677,8 +677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8836b0a8a12c84147a761e12f130bb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: d2ffa6dfc79ccba4ba79921d436ed24a, type: 2}
-  green: {fileID: 2100000, guid: 513d534a5006b0a46b2e752680f38eb0, type: 2}
   playerCamera: {fileID: 1867575357}
   keyToPress: 101
   linkedDoor: {fileID: 225259755}
@@ -2698,10 +2696,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225259756}
-  - component: {fileID: 225259760}
   - component: {fileID: 225259759}
   - component: {fileID: 225259758}
-  - component: {fileID: 225259757}
+  - component: {fileID: 225259761}
   m_Layer: 0
   m_Name: Slide Door (2)
   m_TagString: Untagged
@@ -2725,25 +2722,6 @@ Transform:
   - {fileID: 1552133641}
   m_Father: {fileID: 834207401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &225259757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225259755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4bc3df43ed8c0489743727b1dbba8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 225259756}
-  openPosition: {x: 0, y: 0, z: 0}
-  closedPosition: {x: 0, y: 0, z: 0}
-  speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
-  activated: 0
 --- !u!95 &225259758
 Animator:
   serializedVersion: 5
@@ -2780,27 +2758,23 @@ MonoBehaviour:
   doorAnimator: {fileID: 225259758}
   interactKey: 102
   openDoorText: {fileID: 443819900}
---- !u!65 &225259760
-BoxCollider:
+--- !u!114 &225259761
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225259755}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.84, y: 0.92, z: 0.57}
-  m_Center: {x: 0.44, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4bc3df43ed8c0489743727b1dbba8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1552133641}
+  openPosition: {x: 0, y: 0, z: 0}
+  closedPosition: {x: 0, y: 0, z: 0}
+  speed: 2
+  activated: 0
 --- !u!1 &226811670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dfbb896fa3ea2949baedb6754443c9a,
@@ -3444,12 +3418,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1921412428651066272, guid: b4bb0b6901f632d409cfd7a347760409,
     type: 3}
   m_PrefabInstance: {fileID: 1775025215}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &342252341 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2067770938050887879, guid: 753004f9faec9734292eef0132ab6858,
-    type: 3}
-  m_PrefabInstance: {fileID: 8289262157349482854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &346813917
 PrefabInstance:
@@ -7041,8 +7009,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
   activated: 0
 --- !u!95 &777919661
 Animator:
@@ -7674,7 +7640,7 @@ Transform:
   m_GameObject: {fileID: 818770984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 16, y: 1, z: 8}
+  m_LocalPosition: {x: 16, y: 1, z: 3.12}
   m_LocalScale: {x: 0.3, y: 0.52, z: 0.42}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12690,8 +12656,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342007854}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.136279, y: -4.057897, z: -0.158}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.1362786, y: -4.057897, z: -0.704}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12709,8 +12675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8836b0a8a12c84147a761e12f130bb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: d2ffa6dfc79ccba4ba79921d436ed24a, type: 2}
-  green: {fileID: 2100000, guid: 513d534a5006b0a46b2e752680f38eb0, type: 2}
   playerCamera: {fileID: 1867575357}
   keyToPress: 101
   linkedDoor: {fileID: 777919658}
@@ -16541,24 +16505,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8289262157349482854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1828439133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342252341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8836b0a8a12c84147a761e12f130bb97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  red: {fileID: 0}
-  green: {fileID: 0}
-  playerCamera: {fileID: 0}
-  keyToPress: 0
-  linkedDoor: {fileID: 0}
-  radius: 1
 --- !u!1 &1837230195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dfbb896fa3ea2949baedb6754443c9a,
@@ -19578,11 +19524,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2067770938050887879, guid: 753004f9faec9734292eef0132ab6858,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1828439133}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 753004f9faec9734292eef0132ab6858, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
