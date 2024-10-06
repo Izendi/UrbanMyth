@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class DoorButton : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip greenButtonSound;
+
+    [SerializeField]
+    private AudioClip redButtonSound;
+
     public Camera playerCamera;
 
     public KeyCode keyToPress;
@@ -68,12 +74,17 @@ public class DoorButton : MonoBehaviour
                         objectRenderer.material = redBut;
                         greenColor = false;
 
+                        SoundManager.instance.PlaySoundEffect(redButtonSound, transform, 1.0f);
+
                         sdc.activateDoor();
                     }
                     else
                     {
                         objectRenderer.material = greenBut;
                         greenColor = true;
+
+                        SoundManager.instance.PlaySoundEffect(greenButtonSound, transform, 1.0f);
+
                         sdc.activateDoor();
                     }
                 }
