@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.Contracts;
+using Assets.Scripts.Events;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour
+public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
 {
     private const float INTERACT_DISTANCE = 2.0f;
     private const float OFFSET_DISTANCE = 1.5f;
@@ -13,6 +16,13 @@ public class PlayerInteract : MonoBehaviour
     private bool isTransitioning = false;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
+    private Quaternion resetRotation;
+    private Vector3 resetPosition;
+
+    void Start()
+    {
+        EventAggregator.Instance.Subscribe(this);
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,11 +37,9 @@ public class PlayerInteract : MonoBehaviour
             PlayerCamera.transform.rotation = Quaternion.Lerp(PlayerCamera.transform.rotation, targetRotation, Time.deltaTime * TRANSITION_SPEED);
 
             // Check if the camera has reached the target
-            if (Vector3.Distance(PlayerCamera.transform.position, targetPosition) < 0.01f &&
-                Quaternion.Angle(PlayerCamera.transform.rotation, targetRotation) < 0.01f)
-            {
+            if (Vector3.Distance(PlayerCamera.transform.position, targetPosition) < 0.02f &&
+                Quaternion.Angle(PlayerCamera.transform.rotation, targetRotation) < 0.02f)
                 isTransitioning = false; // Stop transitioning
-            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
@@ -43,6 +51,17 @@ public class PlayerInteract : MonoBehaviour
                     FocusCamera(dialogueTrigger.transform);
                     dialogueTrigger.Interact();
                 }
+            }
+        }
+        else if (!DialogueManager.IsDialogueActive)
+        {
+            if (PlayerCamera.transform.position.x != transform.position.x ||
+                PlayerCamera.transform.position.z != transform.position.z)
+            {
+                var cameraHeight = PlayerCamera.transform.position.y;
+                var transitionTarget = new Vector3(transform.position.x, cameraHeight, transform.position.z);
+
+                PlayerCamera.transform.position = transitionTarget;
             }
         }
     }
@@ -68,7 +87,17 @@ public class PlayerInteract : MonoBehaviour
         // Calculate the target rotation to look at the NPC
         targetRotation = Quaternion.LookRotation(target.position - targetPosition);
 
+        //Save the current camera position and rotation
+        resetPosition = PlayerCamera.transform.position;
+        resetRotation = PlayerCamera.transform.rotation;
+
         // Start transitioning the camera
         isTransitioning = true;
+    }
+
+    public void Handle(DialogueEndedEvent eventArgs)
+    {
+        PlayerCamera.transform.position = resetPosition;
+        PlayerCamera.transform.rotation = resetRotation;
     }
 }

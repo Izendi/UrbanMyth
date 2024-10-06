@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
 using Assets.Scripts.DialogueSystem.Models;
+using Assets.Scripts.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -128,6 +130,7 @@ public class DialogueManager : MonoBehaviour
     private void CloseDialogue()
     {
         isDialogueActive = false;
+        EventAggregator.Instance.Publish(new DialogueEndedEvent());
         HideDialogue();
     }
 }
