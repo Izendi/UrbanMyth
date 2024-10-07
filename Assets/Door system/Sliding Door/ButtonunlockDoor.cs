@@ -15,14 +15,16 @@ public class ButtonunlockDoor : MonoBehaviour
 
     private bool isOpen = false; // Check if the door is open
     private bool isPlayerNear = false; // Check if the player is near the door
-    public TMP_Text interactionText; // Text to show when player is near
+    public TMP_Text openDoorText; // Text to show when player is near
+    public TMP_Text DoorLockText;
     public bool isDoorUnlocked = false; // Check if player has the key
     // Start is called before the first frame update
     void Start()
     {
         closedPosition = door.localPosition;
         openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 1 unit to the right
-        interactionText.enabled = false;
+        openDoorText.enabled = false;
+        DoorLockText.enabled = false;
     }
 
     // Update is called once per frame
@@ -53,14 +55,15 @@ public class ButtonunlockDoor : MonoBehaviour
 
             if (isDoorUnlocked)
             {
-                interactionText.text = "Press F to open the door"; // Show the interaction text if the player has the key
+                openDoorText.enabled=true;
+                DoorLockText.enabled = false;
             }
             else
             {
-                interactionText.text = "You need a key to open the door"; // Show the "need key" text if the player doesn't have the key
+                DoorLockText.enabled=true; 
             }
 
-            interactionText.enabled = true; // Enable the text
+             
         }
     }
 
@@ -70,7 +73,8 @@ public class ButtonunlockDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            interactionText.enabled = false; // Hide the text when player leaves
+            openDoorText.enabled = false; // Hide the text when player leaves
+            DoorLockText.enabled=false;
         }
     }
 }

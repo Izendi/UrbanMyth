@@ -14,7 +14,7 @@ public class NeedkeyDoor : MonoBehaviour
     private bool isOpen = false; // Check if the door is open
     private bool isPlayerNear = false; // Check if the player is near the door
     public TMP_Text openDoorText; // Text to show when player is near
-    public TMP_Text needKeyText; // "You need a key" text
+    public TMP_Text DoorLockText; // "You need a key" text
     public bool hasKey = false; // Add a bool to check if player has a key
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class NeedkeyDoor : MonoBehaviour
         closedPosition = door.localPosition;
         openPosition = closedPosition - new Vector3(1f, 0, 0);
         openDoorText.enabled = false;
-        needKeyText.enabled = false;
+        DoorLockText.enabled = false;
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class NeedkeyDoor : MonoBehaviour
             }
             else
             {
-                needKeyText.enabled=true; // Show the "need key" text if the player doesn't have the key
+                DoorLockText.enabled=true; // Show the "need key" text if the player doesn't have the key
             }
             
 
