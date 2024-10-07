@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BasicMouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
     public Transform playerBody;
+
+    //[SerializeField]
+    //private InputActionAsset pointerPosition;
 
     float xRotation = 0f;
 
@@ -15,6 +19,8 @@ public class BasicMouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // Locks the cursor
+
+        
     }
 
     void Update()
@@ -30,7 +36,7 @@ public class BasicMouseLook : MonoBehaviour
             LockCursor(true); // Lock the cursor when not in dialogue
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || GlobalStateManager.Instance.isPlayerDead)
         {
             registerMouse = false;
         }

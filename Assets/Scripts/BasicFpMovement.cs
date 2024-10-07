@@ -1,28 +1,64 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 [RequireComponent(typeof(CharacterController))]
 public class BasicFpMovement : MonoBehaviour
 {
-    public KeyCode CrouchKey = KeyCode.C;
-    public float CrouchHeight = 0.5f;
-    public float StandingHeight = 1.0f;
-    public float CrouchSpeed = 0.5f;
+    // Public variables for crouching
+    public float crouchHeight = 0.5f;
+    public float standingHeight = 1.0f;
+    public float crouchSpeed = 0.5f;
 
+    // Movement variables
     public float speed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
 
+    // Ceiling and crouch settings
     public float lowCeilingRange = 2.0f;
     public LayerMask ceilingLayer;
 
+    // Private variables
     private CharacterController controller;
     private Vector3 velocity;
 
+    // Input action asset reference
+    private PlayerInputAsset inputActions; // Input Action Asset class
+
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction crouchAction;
+
+    void Awake()
+    {
+        // Initialize Input Action Asset
+        inputActions = new PlayerInputAsset();
+    }
+
+    void OnEnable()
+    {
+        // Enable the input actions
+        moveAction = inputActions.PlayerInput.Movement;
+        jumpAction = inputActions.PlayerInput.Jump;
+        crouchAction = inputActions.PlayerInput.Crouch;
+
+        moveAction.Enable();
+        jumpAction.Enable();
+        crouchAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        // Disable the input actions
+        moveAction.Disable();
+        jumpAction.Disable();
+        crouchAction.Disable();
+    }
+
     void Start()
     {
+        // Initialize CharacterController
         controller = GetComponent<CharacterController>();
     }
 
@@ -30,40 +66,32 @@ public class BasicFpMovement : MonoBehaviour
     {
         Vector3 currentScale = transform.localScale;
 
-        if (Input.GetKey(CrouchKey))
+        // Crouch logic
+        if (crouchAction.IsPressed())
         {
- 
-            currentScale.y = Mathf.Max(currentScale.y - (Time.deltaTime * CrouchSpeed), CrouchHeight);
-
+            currentScale.y = Mathf.Max(currentScale.y - (Time.deltaTime * crouchSpeed), crouchHeight);
         }
         else
         {
-
             RaycastHit hitCeiling;
-
-            if (Physics.Raycast(transform.position, Vector3.up, out hitCeiling, lowCeilingRange, ceilingLayer))
+            if (!Physics.Raycast(transform.position, Vector3.up, out hitCeiling, lowCeilingRange, ceilingLayer))
             {
-
+                currentScale.y = Mathf.Min(currentScale.y + (Time.deltaTime * crouchSpeed), standingHeight);
             }
-            else
-            {
-                currentScale.y = Mathf.Min(currentScale.y + (Time.deltaTime * CrouchSpeed), StandingHeight);
-            }
-
-            
         }
 
         transform.localScale = currentScale;
 
-        // Get input
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        // Movement input (using Vector2 from Input System)
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        float x = input.x;
+        float z = input.y;
 
         // Move relative to the player's orientation
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
-        // Gravity
+        // Apply gravity
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f; // Ensures the player stays grounded
@@ -72,20 +100,10 @@ public class BasicFpMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-
-        // Jumping
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        // Jump logic
+        if (jumpAction.triggered && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
-        // Gravity
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f; // Ensures the player stays grounded
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }
