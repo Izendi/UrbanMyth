@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -13,6 +14,9 @@ public class BasicFpMovement : MonoBehaviour
     public float speed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
+
+    public float lowCeilingRange = 2.0f;
+    public LayerMask ceilingLayer;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -28,12 +32,25 @@ public class BasicFpMovement : MonoBehaviour
 
         if (Input.GetKey(CrouchKey))
         {
-
+ 
             currentScale.y = Mathf.Max(currentScale.y - (Time.deltaTime * CrouchSpeed), CrouchHeight);
+
         }
         else
         {
-            currentScale.y = Mathf.Min(currentScale.y + (Time.deltaTime * CrouchSpeed), StandingHeight);
+
+            RaycastHit hitCeiling;
+
+            if (Physics.Raycast(transform.position, Vector3.up, out hitCeiling, lowCeilingRange, ceilingLayer))
+            {
+
+            }
+            else
+            {
+                currentScale.y = Mathf.Min(currentScale.y + (Time.deltaTime * CrouchSpeed), StandingHeight);
+            }
+
+            
         }
 
         transform.localScale = currentScale;

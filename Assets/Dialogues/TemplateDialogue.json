@@ -1,0 +1,50 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,    // Unique identifier for this piece of dialogue
+      "NpcName": "NPC_1", // Name of the NPC speaking this dialogue (replace with actual NPC name)
+      "Text": "Hello, adventurer! How can I help you?", // The text that the NPC will say
+      "Responses": [      // List of possible responses the player can choose from
+        {
+          "Text": "Who are you?",   // Text for the player's response
+          "NextDialogueId": 2,      // The DialogueId of the next dialogue this response leads to
+          "ResponseNiceness": 1     // A "niceness" score for the response (higher is nicer)
+        },
+        {
+          "Text": "I don't need help.",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0     // Lower score could represent ruder responses
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,    // Another unique dialogue ID for the next part of the conversation
+      "NpcName": "NPC_1", // Same NPC continuing the dialogue
+      "Text": "I'm the village blacksmith. Do you need any tools?", // The NPC's next line
+      "Responses": [      // New set of player responses for this dialogue
+        {
+          "Text": "Yes, show me what you have.", // A more positive response
+          "NextDialogueId": 4,      // Leads to DialogueId 4
+          "ResponseNiceness": 1     // A nicer response, score of 1
+        },
+        {
+          "Text": "No, thank you.",  // Polite rejection
+          "NextDialogueId": 3,       // Leads back to DialogueId 3 (closing the conversation)
+          "ResponseNiceness": 1      // Still a polite response, so a score of 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,    // The dialogue node where the conversation might end
+      "NpcName": "NPC_1", // NPC continues to speak
+      "Text": "Very well, come back if you need anything.", // Closing statement by the NPC
+      "Responses": []     // No responses available, so the dialogue ends here
+    },
+    {
+      "DialogueId": 4,    // The dialogue ID for another branch
+      "NpcName": "NPC_1",
+      "Text": "Here are my tools.",  // NPC showing their wares (conversation could continue or end)
+      "Responses": []     // No player responses available here, so this is another end point
+    }
+  ]
+}
