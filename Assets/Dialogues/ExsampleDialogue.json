@@ -1,0 +1,62 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "NPC_1",
+      "Text": "Hello little girl! Lost are we?",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "NPC_1",
+      "Text": "Don't see your type around here that often.",
+      "Responses": [
+        {
+          "Text": "What do you mean by that?",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "Goodbye.",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "NPC_1",
+      "Text": "HAHAHAHAHA!"
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "NPC_1",
+      "Text": "The one upstairs, prefers others.",
+      "Responses": [
+        {
+          "Text": "What does that mean?",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+    "DialogueId": 5,
+      "NpcName": "NPC_1",
+      "Text": "WOULDN'T YOU LIKE TO KNOW!!!",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 1
+        }
+      ]
+    }
+  ]
+}

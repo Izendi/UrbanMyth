@@ -3,17 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PickUpAble
+  - Button
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnoreLighting
   - Water
   - UI
-  - 
-  - 
-  - 
+  - OffsetCamObjs
+  - Ceiling
+  - reticle
   - 
   - 
   - 
