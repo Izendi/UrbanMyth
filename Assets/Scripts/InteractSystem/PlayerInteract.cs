@@ -95,6 +95,7 @@ public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
 
     public void Handle(DialogueEndedEvent eventArgs)
     {
+        isTransitioning = false;
         PlayerCamera.transform.position = resetPosition;
         PlayerCamera.transform.rotation = resetRotation;
     }
