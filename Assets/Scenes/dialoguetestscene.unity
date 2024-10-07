@@ -1257,6 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962f845a7c962524495454a53bc975a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 1514558332}
 --- !u!114 &1113880712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,6 +1277,10 @@ MonoBehaviour:
   speed: 4
   gravity: -9.81
   jumpHeight: 1.5
+  lowCeilingRange: 2
+  ceilingLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!143 &1113880713
 CharacterController:
   m_ObjectHideFlags: 0

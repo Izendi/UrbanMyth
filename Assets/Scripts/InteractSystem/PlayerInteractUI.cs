@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +16,7 @@ public class PlayerInteractUI : MonoBehaviour
     {
         var interactableObject = playerInteract.GetInteractableObject();
 
-        if (interactableObject is null)
+        if (interactableObject is null || DialogueManager.IsDialogueActive)
         {
             Hide();
         }
