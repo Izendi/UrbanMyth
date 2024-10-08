@@ -46,6 +46,7 @@ public class BasicFpMovement : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         crouchAction.Enable();
+
     }
 
     void OnDisable()
