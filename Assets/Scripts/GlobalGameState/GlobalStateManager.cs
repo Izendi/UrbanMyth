@@ -41,16 +41,20 @@ public class GlobalStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGamePaused = menuOpenAction.WasPressedThisFrame();
+        Debug.Log(menuOpenAction.ReadValue<float>());
+        if (menuOpenAction.WasPressedThisFrame())
+        {
+            if (isGamePaused == false)
+            {
+                Pause();
+            }
+            else
+            {
+                Unpause();
+            }
+        }
 
-        if(isGamePaused)
-        {
-            Pause();
-        }
-        else
-        {
-            Unpause();
-        }
+        
     }
 
     private void Pause()

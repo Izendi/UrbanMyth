@@ -5,6 +5,9 @@ using TMPro;
 
 public class SlidingDoorController : MonoBehaviour
 {
+    //[SerializeField]
+    //private AudioClip doorSound;
+
     public Transform door; // Reference to the door object
     public Vector3 openPosition; // The target position when the door is open
     public Vector3 closedPosition; // The initial closed position of the door
@@ -34,6 +37,7 @@ public class SlidingDoorController : MonoBehaviour
 
         if (activated)
         {
+            //SoundManager.instance.PlaySoundEffect(doorSound, transform, 1.0f);
             isOpen = !isOpen; // Toggle door state
             activated = false;
         }

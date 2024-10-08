@@ -67,7 +67,7 @@
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Default",
                     "action": "MenuOpen",
                     "isComposite": false,
                     "isPartOfComposite": false

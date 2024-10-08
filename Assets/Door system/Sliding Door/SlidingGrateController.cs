@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SlidingGrateController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip movementSound;
+
     public Transform door; // Reference to the door object
     public Vector3 openPosition; // The target position when the door is open
     public Vector3 closedPosition; // The initial closed position of the door
@@ -32,6 +35,7 @@ public class SlidingGrateController : MonoBehaviour
 
         if (isPlayerNear && Input.GetKeyDown(interactKey))
         {
+            SoundManager.instance.PlaySoundEffect(movementSound, transform, 1.0f);
             isOpen = !isOpen; // Toggle door state
         }
 

@@ -89,7 +89,7 @@ public partial class @PlayerInputAsset: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Default"",
                     ""action"": ""MenuOpen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
