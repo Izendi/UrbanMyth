@@ -8422,6 +8422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInteractCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6591893891372679255, guid: 37abcc51133d68e4f940a4af14a20fd2,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9158257040097494455, guid: 37abcc51133d68e4f940a4af14a20fd2,
         type: 3}
       propertyPath: m_Pivot.x
