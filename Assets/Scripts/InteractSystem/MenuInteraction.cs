@@ -14,10 +14,28 @@ public class MenuInteraction : MonoBehaviour
     private GameObject _settingsMenuCanvas;
 
     [SerializeField]
+    private GameObject _inventoryMenuCanvas;
+
+    [SerializeField]
+    private GameObject _inventoryNoteCanvas;
+
+    [SerializeField]
+    private GameObject _inventoryItemsCanvas;
+
+    [SerializeField]
     private GameObject _mainMenuFirstSelected;
 
     [SerializeField]
     private GameObject _settingsMenuFirstSelected;
+
+    [SerializeField]
+    private GameObject _inventoryMenuFirstSelected;
+
+    [SerializeField]
+    private GameObject _inventoryNotesFirstSelected;
+
+    [SerializeField]
+    private GameObject _inventoryItemsFirstSelected;
 
     [SerializeField]
     private KeyCode menuKey = KeyCode.Z;
@@ -56,6 +74,9 @@ public class MenuInteraction : MonoBehaviour
     {
         _mainMenuCanvas.SetActive(true);
         _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_mainMenuFirstSelected);
     }
@@ -64,14 +85,53 @@ public class MenuInteraction : MonoBehaviour
     {
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(true);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_settingsMenuFirstSelected);
+    }
+
+    private void openInventoryMenu()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(true);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(_inventoryMenuFirstSelected);
+    }
+
+    private void openInventoryNoteMenu()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(true);
+        _inventoryItemsCanvas.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(_inventoryNotesFirstSelected);
+    }
+
+    private void openInventoryItemsMenu()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_inventoryItemsFirstSelected);
     }
 
     private void closeAllMenus()
     {
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -112,6 +172,12 @@ public class MenuInteraction : MonoBehaviour
     {
         PlayButtonPressSound();
         openMainMenu();
+    }
+
+    public void OnInventoryButtonPressed()
+    {
+        PlayButtonPressSound();
+        
     }
 
     public void OnAudioButtonPress()
