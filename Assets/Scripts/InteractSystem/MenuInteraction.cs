@@ -52,4 +52,13 @@ public class MenuInteraction : MonoBehaviour
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
     }
+
+    #region
+
+    public void OnResumeButtonPress()
+    {
+        Unpause();
+    }
+
+    #endregion
 }
