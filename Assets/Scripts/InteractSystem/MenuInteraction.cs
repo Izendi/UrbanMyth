@@ -177,8 +177,21 @@ public class MenuInteraction : MonoBehaviour
     public void OnInventoryButtonPressed()
     {
         PlayButtonPressSound();
-        
+        openInventoryMenu();
     }
+
+    public void OnInventoryNoteButtonPressed()
+    {
+        PlayButtonPressSound();
+        openInventoryNoteMenu();
+    }
+
+    public void OnInventoryItemButtonPressed()
+    {
+        PlayButtonPressSound();
+        openInventoryItemsMenu();
+    }
+
 
     public void OnAudioButtonPress()
     {
