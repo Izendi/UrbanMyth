@@ -1627,8 +1627,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuCanvas: {fileID: 934109750}
   _settingsMenuCanvas: {fileID: 501395294}
-  _mainMenuFirstSelected: {fileID: 1217820967}
+  _inventoryMenuCanvas: {fileID: 663525654}
+  _inventoryNoteCanvas: {fileID: 1446776758}
+  _inventoryItemsCanvas: {fileID: 1854184213}
+  _mainMenuFirstSelected: {fileID: 426277987}
   _settingsMenuFirstSelected: {fileID: 79199065}
+  _inventoryMenuFirstSelected: {fileID: 2065486261}
+  _inventoryNotesFirstSelected: {fileID: 625413657}
+  _inventoryItemsFirstSelected: {fileID: 765703991}
   menuKey: 122
   reloadSound: {fileID: 8300000, guid: 4a47d9d0c0083cb458abddb75adae59f, type: 3}
   buttonPressSound: {fileID: 8300000, guid: 584457b64c4808a49a972e85c88475a7, type: 3}
@@ -7204,7 +7210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &663525655
 RectTransform:
   m_ObjectHideFlags: 0
