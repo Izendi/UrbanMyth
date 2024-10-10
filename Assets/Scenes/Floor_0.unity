@@ -947,7 +947,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1552,7 +1552,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuCanvas: {fileID: 934109750}
   _settingsMenuCanvas: {fileID: 501395294}
+  _mainMenuFirstSelected: {fileID: 1217820967}
+  _settingsMenuFirstSelected: {fileID: 79199065}
   menuKey: 122
+  reloadSound: {fileID: 0}
 --- !u!1 &114529077 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d769aeccf3373a4a84f5ed0997be9a4,
@@ -2840,7 +2843,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4395,7 +4398,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7735849, g: 0.348843, b: 0.348843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8767,7 +8770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &934109751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8845,7 +8848,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -9275,7 +9278,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -9294,7 +9297,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 977926498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106677047}
+        m_TargetAssemblyTypeName: MenuInteraction, Assembly-CSharp
+        m_MethodName: OnSettingsBackButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &977926498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11475,7 +11490,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -13096,7 +13111,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -13115,7 +13130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1402824243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106677047}
+        m_TargetAssemblyTypeName: MenuInteraction, Assembly-CSharp
+        m_MethodName: OnSettingsButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1402824243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16370,7 +16397,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     m_HighlightedColor: {r: 0.79622644, g: 0.26891416, b: 0.26891416, a: 1}
     m_PressedColor: {r: 0.4113207, g: 0.0147454, b: 0.0147454, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7725491, g: 0.34901962, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -16389,7 +16416,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1791171590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106677047}
+        m_TargetAssemblyTypeName: MenuInteraction, Assembly-CSharp
+        m_MethodName: OnAudioButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1791171590
 MonoBehaviour:
   m_ObjectHideFlags: 0

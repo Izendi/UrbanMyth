@@ -17,6 +17,9 @@ public class SlidingGrateController : MonoBehaviour
 
     public bool activated = false;
 
+    [SerializeField]
+    private AudioClip slideSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +42,12 @@ public class SlidingGrateController : MonoBehaviour
         if (isOpen)
         {
             door.localPosition = Vector3.MoveTowards(door.localPosition, openPosition, Time.deltaTime * speed);
+            SoundManager.instance.PlaySoundEffect(slideSound, transform, 1.0f);
         }
         else
         {
             door.localPosition = Vector3.MoveTowards(door.localPosition, closedPosition, Time.deltaTime * speed);
+            SoundManager.instance.PlaySoundEffect(slideSound, transform, 1.0f);
         }
 
     }
