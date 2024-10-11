@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class InventoryPickUp : MonoBehaviour
 {
+    public static InventoryPickUp Instance { get; private set; }
+
     private GameObject collectedObject;
     public float radius = 2f;
     public float distance = 2f;
@@ -18,6 +20,18 @@ public class InventoryPickUp : MonoBehaviour
     [SerializeField]
     private AudioClip foundCollectibleSound;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);  // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject);  // Destroy duplicate
+        }
+    }
     private void Start()
     {
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
@@ -25,6 +39,20 @@ public class InventoryPickUp : MonoBehaviour
 
     private void Update()
     {
+
+        if (GlobalStateManagerObj == null)
+        {
+
+            GlobalStateManagerObj = GameObject.FindWithTag("GSO"); // Reassign the reference
+            if (GlobalStateManagerObj == null)
+            {
+                Debug.LogWarning("PlayerInteract object not found in the scene.");
+                return; // Exit early if playerInteract is still null
+            }
+
+            GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+        }
+
         var t = transform;
         var pressedE = Input.GetKeyDown(KeyCode.E);
         

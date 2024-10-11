@@ -7,6 +7,11 @@ using UnityEngine.InputSystem;
 
 public class GlobalStateManager : MonoBehaviour
 {
+    public Vector3 level_0_startPos = new Vector3(16f,1f,8f);
+    public Quaternion level_0_startRot = Quaternion.Euler(0, 0, 0);
+    public Vector3 level_1_startPos = new Vector3(0f, 1f, 0f);
+    public Quaternion level_1_startRot = Quaternion.Euler(0, 0, 0);
+
     public static GlobalStateManager Instance { get; private set; }
     public GameObject MenuSystemObj;
     private MenuInteraction MI_script;
@@ -89,4 +94,5 @@ public class GlobalStateManager : MonoBehaviour
     {
 
     }
+
 }

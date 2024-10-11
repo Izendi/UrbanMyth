@@ -47,6 +47,16 @@ public class DoorButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerCamera == null)
+        {
+            playerCamera = FindObjectOfType<Camera>(); // Reassign the reference
+            if (playerCamera == null)
+            {
+                Debug.LogWarning("PlayerInteract object not found in the scene.");
+                return; // Exit early if playerInteract is still null
+            }
+        }
+
         if (Input.GetKeyDown(keyToPress))
         {
 

@@ -25,6 +25,8 @@ public class BasicMouseLook : MonoBehaviour
 
     void Update()
     {
+         
+
         // Check if dialogue is active
         if (DialogueManager.IsDialogueActive)
         {

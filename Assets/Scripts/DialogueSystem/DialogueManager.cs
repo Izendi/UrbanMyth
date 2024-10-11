@@ -32,6 +32,19 @@ public class DialogueManager : MonoBehaviour
     public disableReticle dr;
     public Canvas reticleCanvas;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject); // Destroy duplicates when reloading
+        }
+    }
+
     void Start()
     {
         HideDialogue();
@@ -82,10 +95,6 @@ public class DialogueManager : MonoBehaviour
         DisplayResponses();
     }
 
-    private void Awake()
-    {
-        Instance = this; // Set the singleton instance
-    }
 
     private IEnumerator TypeNpcLine()
     {

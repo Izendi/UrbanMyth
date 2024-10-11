@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class BasicFpMovement : MonoBehaviour
 {
+    private static BasicFpMovement Instance;
+
     // Public variables for crouching
     public float crouchHeight = 0.5f;
     public float standingHeight = 1.0f;
@@ -32,12 +34,33 @@ public class BasicFpMovement : MonoBehaviour
 
     void Awake()
     {
-        // Initialize Input Action Asset
-        inputActions = new PlayerInputAsset();
+        // Ensure only one instance exists (singleton)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject); // Destroy duplicate instances
+            return;
+        }
+
+        // Initialize Input Action Asset if it's null
+        if (inputActions == null)
+        {
+            inputActions = new PlayerInputAsset();
+        }
     }
 
     void OnEnable()
     {
+        // Ensure the input actions are correctly initialized
+        if (inputActions == null)
+        {
+            inputActions = new PlayerInputAsset(); // Reinitialize if null
+        }
+
         // Enable the input actions
         moveAction = inputActions.PlayerInput.Movement;
         jumpAction = inputActions.PlayerInput.Jump;
@@ -50,10 +73,10 @@ public class BasicFpMovement : MonoBehaviour
 
     void OnDisable()
     {
-        // Disable the input actions
-        moveAction.Disable();
-        jumpAction.Disable();
-        crouchAction.Disable();
+        // Disable the input actions to prevent conflicts
+        if (moveAction != null) moveAction.Disable();
+        if (jumpAction != null) jumpAction.Disable();
+        if (crouchAction != null) crouchAction.Disable();
     }
 
     void Start()
@@ -64,6 +87,12 @@ public class BasicFpMovement : MonoBehaviour
 
     void Update()
     {
+
+        if(inputActions == null)
+        {
+            inputActions = new PlayerInputAsset();
+        }
+
         Vector3 currentScale = transform.localScale;
 
         // Crouch logic

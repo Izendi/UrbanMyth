@@ -4,11 +4,13 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
     public GameObject GlobalStateManagerObj;
+    private GameObject PlayerObj;
     private GlobalStateManager GSM_script;
     public bool MenuOpenCloseInput { get; private set; }
 
@@ -65,12 +67,17 @@ public class MenuInteraction : MonoBehaviour
 
     private bool isPaused = false;
 
-    
+    private void Awake()
+    {
+        PlayerObj = GameObject.FindWithTag("Player");
+    }
 
     private void Start()
     {
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
+
+        
 
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
     }
@@ -78,6 +85,11 @@ public class MenuInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerObj == null)
+        {
+            PlayerObj = GameObject.FindWithTag("Player");
+        }
+
         if(Input.GetKeyUp(menuKey) && isPaused == false)
         {
             GSM_script.isGamePaused = true;
@@ -264,6 +276,38 @@ public class MenuInteraction : MonoBehaviour
         _inventoryItemsCanvas.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(_inventoryItemsFirstSelected);
+    }
+
+    public void reloadCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Get the build index (ID) of the active scene
+        int sceneID = currentScene.buildIndex;
+
+        loadScene(sceneID);
+    }
+
+    public void loadScene(int sceneNum)
+    {
+        Unpause();
+        Scene reloadScene;
+
+        if (sceneNum == 0)
+        {
+            PlayerObj.transform.position = GSM_script.level_0_startPos;
+            PlayerObj.transform.rotation = GSM_script.level_0_startRot;
+            reloadScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(sceneNum);
+        }
+        else
+        {
+            //Do nothing!
+
+            //reloadScene = SceneManager.GetActiveScene();
+            //SceneManager.LoadScene(reloadScene.name);
+        }
+        
     }
 
     private void closeAllMenus()
