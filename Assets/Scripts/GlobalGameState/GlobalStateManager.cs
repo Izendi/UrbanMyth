@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,8 @@ public class GlobalStateManager : MonoBehaviour
     // Global states
     public bool isGamePaused;
     public bool isPlayerDead;
+
+    public bool[] collectedNotes;
 
 
     private void Awake()
@@ -41,16 +44,24 @@ public class GlobalStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGamePaused = menuOpenAction.WasPressedThisFrame();
+        
+    }
 
-        if(isGamePaused)
-        {
-            Pause();
-        }
-        else
-        {
-            Unpause();
-        }
+    public void CollectedNote(String noteNumber)
+    {
+        int noteNum = int.Parse(noteNumber);
+
+        collectedNotes[noteNum] = true;
+    }
+
+    public int GetCollectedNotesSize()
+    {
+        return collectedNotes.Length;
+    }
+
+    public bool[] GetCollectedNoteArray()
+    {
+        return (bool[])collectedNotes.Clone(); //return a copy of the collectedNotes array.
     }
 
     private void Pause()

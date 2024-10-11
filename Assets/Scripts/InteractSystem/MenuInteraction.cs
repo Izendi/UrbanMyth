@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MenuInteraction : MonoBehaviour
 {
+    public GameObject GlobalStateManagerObj;
+    private GlobalStateManager GSM_script;
     public bool MenuOpenCloseInput { get; private set; }
+
+    public string[] noteNames = { "Dear Sister", "17/12/2046", "Hidden Key", "Trust Me"};
 
     [SerializeField]
     private GameObject _mainMenuCanvas;
@@ -51,10 +58,14 @@ public class MenuInteraction : MonoBehaviour
 
     private bool isPaused = false;
 
+    
+
     private void Start()
     {
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
+
+        GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
     }
 
     // Update is called once per frame
@@ -62,13 +73,36 @@ public class MenuInteraction : MonoBehaviour
     {
         if(Input.GetKeyUp(menuKey) && isPaused == false)
         {
+            GSM_script.isGamePaused = true;
             Pause();
         }
         else if (Input.GetKeyUp(menuKey) && isPaused == true)
         {
+            GSM_script.isGamePaused = false;
             Unpause();
         }
     }
+
+    void activateCollectedNotes()
+    {
+        bool[] collectedNotes = GSM_script.GetCollectedNoteArray();
+
+        for (int i = 0; i < collectedNotes.Length; i++)
+        {
+            if (collectedNotes[i])
+            {
+                string buttonName = i.ToString();
+                Transform buttonTransform = _inventoryNoteCanvas.transform.Find(buttonName);
+                Button b = buttonTransform.GetComponent<Button>();
+
+                TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+     
+                buttonText.text = noteNames[i];
+
+            }
+        }
+    }
+
 
     private void openMainMenu()
     {
@@ -110,6 +144,10 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(true);
         _inventoryItemsCanvas.SetActive(false);
+
+        activateCollectedNotes();
+
+        //Modify Canvas to display active notes
 
         EventSystem.current.SetSelectedGameObject(_inventoryNotesFirstSelected);
     }
