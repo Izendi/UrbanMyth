@@ -45,6 +45,9 @@ public class MenuInteraction : MonoBehaviour
     private GameObject _inventoryItemsFirstSelected;
 
     [SerializeField]
+    private GameObject[] pickupSelected;
+
+    [SerializeField]
     private KeyCode menuKey = KeyCode.Z;
 
     [SerializeField]
@@ -55,6 +58,10 @@ public class MenuInteraction : MonoBehaviour
 
     [SerializeField]
     private AudioClip resumeSound;
+
+
+    [SerializeField]
+    private GameObject[] notePanels;
 
     private bool isPaused = false;
 
@@ -152,6 +159,18 @@ public class MenuInteraction : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_inventoryNotesFirstSelected);
     }
 
+    private void openInventoryNoteMenu_NoSound()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(true);
+        _inventoryItemsCanvas.SetActive(false);
+
+        activateCollectedNotes();
+
+    }
+
     private void openInventoryItemsMenu()
     {
         _mainMenuCanvas.SetActive(false);
@@ -188,6 +207,11 @@ public class MenuInteraction : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1.0f;
 
+        for(int i = 0; i < notePanels.Length; i++)
+        {
+            notePanels[i].SetActive(false);
+        }
+        
         closeAllMenus();
     }
 
@@ -214,14 +238,26 @@ public class MenuInteraction : MonoBehaviour
 
     public void OnInventoryButtonPressed()
     {
+
+        for (int ii = 0; ii < notePanels.Length; ii++)
+        {
+            notePanels[ii].SetActive(false);
+        }
+
         PlayButtonPressSound();
         openInventoryMenu();
+
     }
 
     public void OnInventoryNoteButtonPressed()
     {
         PlayButtonPressSound();
         openInventoryNoteMenu();
+
+        for (int ii = 0; ii < notePanels.Length; ii++)
+        {
+            notePanels[ii].SetActive(false);
+        }
     }
 
     public void OnInventoryItemButtonPressed()
@@ -229,7 +265,6 @@ public class MenuInteraction : MonoBehaviour
         PlayButtonPressSound();
         openInventoryItemsMenu();
     }
-
 
     public void OnAudioButtonPress()
     {
@@ -245,6 +280,32 @@ public class MenuInteraction : MonoBehaviour
     {
         PlayButtonPressSound();
         Unpause();
+    }
+
+    public void DisplayNoteOnMenu(int i)
+    {
+        Pause();
+
+        openInventoryNoteMenu_NoSound();
+
+        EventSystem.current.SetSelectedGameObject(pickupSelected[i]);
+
+        notePanels[i].SetActive(true);
+    }
+
+    public void DisplayNote(int i)
+    {
+
+        for (int ii = 0; ii < notePanels.Length; ii++)
+        {
+            notePanels[ii].SetActive(false);
+        }
+
+        if (GSM_script.GetCollectedNoteArray()[i])
+        {
+            notePanels[i].SetActive(true);
+        }
+
     }
 
     #endregion

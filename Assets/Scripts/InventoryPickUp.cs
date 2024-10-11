@@ -49,7 +49,8 @@ public class InventoryPickUp : MonoBehaviour
                 GSM_script.CollectedNote(collectedObjectName);
 
                 Destroy(collectedObject);
-                
+
+                GSM_script.PauseAndDisplayNote(int.Parse(collectedObjectName));
             }
         }
         

@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 public class GlobalStateManager : MonoBehaviour
 {
     public static GlobalStateManager Instance { get; private set; }
+    public GameObject MenuSystemObj;
+    private MenuInteraction MI_script;
 
     private PlayerInput playerInput;
 
@@ -42,9 +44,9 @@ public class GlobalStateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
     }
 
     public void CollectedNote(String noteNumber)
@@ -64,9 +66,11 @@ public class GlobalStateManager : MonoBehaviour
         return (bool[])collectedNotes.Clone(); //return a copy of the collectedNotes array.
     }
 
-    private void Pause()
+    public void PauseAndDisplayNote(int i)
     {
-        Debug.Log("Pausing!");
+
+        MI_script.DisplayNoteOnMenu(i);
+
     }
 
     private void Unpause()
