@@ -21,6 +21,18 @@ public class GlobalStateManager : MonoBehaviour
 
     public bool[] collectedNotes;
 
+    public bool has_ChildhoodToy;
+    public bool has_oldKey;
+    public bool has_codeBreaker;
+    public bool has_torch;
+    public bool has_vipRationCard;
+
+    public bool givenAway_ChildhoodToy;
+    public bool givenAway_oldKey;
+    public bool givenAway_codeBreaker;
+    public bool givenAway_torch;
+    public bool givenAway_vipRationCard;
+
 
     private void Awake()
     {

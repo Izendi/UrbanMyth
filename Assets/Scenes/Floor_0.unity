@@ -11723,7 +11723,7 @@ GameObject:
   - component: {fileID: 983908598}
   - component: {fileID: 983908597}
   m_Layer: 0
-  m_Name: Item_2
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14580,6 +14580,16 @@ MonoBehaviour:
   isGamePaused: 0
   isPlayerDead: 0
   collectedNotes: 0000000000
+  has_ChildhoodToy: 0
+  has_oldKey: 0
+  has_codeBreaker: 0
+  has_torch: 0
+  has_vipRationCard: 0
+  givenAway_ChildhoodToy: 0
+  givenAway_oldKey: 0
+  givenAway_codeBreaker: 0
+  givenAway_torch: 0
+  givenAway_vipRationCard: 0
 --- !u!1 &1217820967
 GameObject:
   m_ObjectHideFlags: 0
@@ -16716,7 +16726,7 @@ GameObject:
   - component: {fileID: 1417330890}
   - component: {fileID: 1417330889}
   m_Layer: 0
-  m_Name: Item_4
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16935,7 +16945,7 @@ GameObject:
   - component: {fileID: 1440952074}
   - component: {fileID: 1440952073}
   m_Layer: 0
-  m_Name: Item_3
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18555,7 +18565,7 @@ GameObject:
   - component: {fileID: 1538453351}
   - component: {fileID: 1538453350}
   m_Layer: 0
-  m_Name: Item_1
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21643,7 +21653,7 @@ GameObject:
   - component: {fileID: 1854184216}
   - component: {fileID: 1854184215}
   m_Layer: 0
-  m_Name: InventoryItemsMenuCanvas (1)
+  m_Name: InventoryItemsMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

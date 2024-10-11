@@ -110,6 +110,88 @@ public class MenuInteraction : MonoBehaviour
         }
     }
 
+    void activateCollectedItems()
+    {
+        if(GSM_script.has_ChildhoodToy)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("0");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Childhood Toy";
+        }
+        if (GSM_script.has_codeBreaker)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Code Breaker";
+        }
+        if (GSM_script.has_oldKey)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Old Key";
+        }
+        if (GSM_script.has_torch)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("3");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Torch";
+        }
+
+
+
+    }
+
+    void giveAway_ChildhoodToy()
+    {
+        GSM_script.has_ChildhoodToy = false;
+        GSM_script.givenAway_ChildhoodToy = true;
+
+        Transform buttonTransform = _inventoryItemsCanvas.transform.Find("0");
+        Button b = buttonTransform.GetComponent<Button>();
+
+        TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+        buttonText.text = "(Given Away)";
+    }
+
+    void giveAway_codeBreaker()
+    {
+        GSM_script.has_codeBreaker = false;
+        GSM_script.givenAway_codeBreaker = true;
+
+        Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
+        Button b = buttonTransform.GetComponent<Button>();
+
+        TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+        buttonText.text = "(Given Away)";
+    }
+
+    void giveAway_oldKey()
+    {
+        GSM_script.has_oldKey = false;
+        GSM_script.givenAway_oldKey = true;
+
+        Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
+        Button b = buttonTransform.GetComponent<Button>();
+
+        TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+        buttonText.text = "(Given Away)";
+    }
+
 
     private void openMainMenu()
     {
@@ -173,6 +255,8 @@ public class MenuInteraction : MonoBehaviour
 
     private void openInventoryItemsMenu()
     {
+        activateCollectedItems();
+
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
         _inventoryMenuCanvas.SetActive(false);
