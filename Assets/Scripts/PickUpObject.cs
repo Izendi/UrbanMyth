@@ -12,13 +12,21 @@ public class PickUpObject : MonoBehaviour
 
     public Camera playerCamera;
 
+    private float distanceFromPlayer;
+    [SerializeField]
+    private float maxHoldDistance = 2.5f;
+
     private void Update()
     {
+        
+
         var t = transform;
         var pressedE = Input.GetKeyDown(KeyCode.E);
         if (heldObject)
         {
-            if (pressedE)
+            distanceFromPlayer = Vector3.Distance(heldObject.transform.position, playerCamera.transform.position);
+
+            if (pressedE || (distanceFromPlayer > maxHoldDistance))
             {
                 var rigidBody = heldObject.GetComponent<Rigidbody>();
                 rigidBody.drag = 1f;

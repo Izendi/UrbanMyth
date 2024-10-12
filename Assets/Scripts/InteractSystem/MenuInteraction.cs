@@ -90,6 +90,11 @@ public class MenuInteraction : MonoBehaviour
         {
             PlayerObj = GameObject.FindWithTag("Player");
         }
+        if (GlobalStateManagerObj == null)
+        {
+            GlobalStateManagerObj = GameObject.FindWithTag("GSO");
+            GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+        }
 
         if (Input.GetKeyUp(menuKey) && isPaused == false)
         {
@@ -297,13 +302,13 @@ public class MenuInteraction : MonoBehaviour
     public void loadScene(int sceneNum)
     {
         Unpause();
-        Scene reloadScene;
 
         if (sceneNum == 0)
         {
-            PlayerObj.transform.position = GSM_script.level_0_startPos;
-            PlayerObj.transform.rotation = GSM_script.level_0_startRot;
-            reloadScene = SceneManager.GetActiveScene();
+            // Subscribe to the sceneLoaded event
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            
             SceneManager.LoadScene(sceneNum);
         }
         else
@@ -314,6 +319,19 @@ public class MenuInteraction : MonoBehaviour
             //SceneManager.LoadScene(reloadScene.name);
         }
         
+    }
+
+    // This function will be called automatically when the scene is loaded
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayerObj = GameObject.FindWithTag("Player");
+        // Set the player's position and rotation after the scene reloads
+        PlayerObj.transform.position = GSM_script.level_0_startPos;
+        PlayerObj.transform.rotation = GSM_script.level_0_startRot;
+        Physics.SyncTransforms();
+
+        // Unsubscribe from the event to prevent duplicate calls in the future
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void closeAllMenus()

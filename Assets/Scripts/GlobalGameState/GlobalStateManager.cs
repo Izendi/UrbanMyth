@@ -100,4 +100,13 @@ public class GlobalStateManager : MonoBehaviour
         MI_script.DoAction(actionName);
     }
 
+    private void Update()
+    {
+        if (MenuSystemObj == null)
+        {
+            MenuSystemObj = GameObject.FindWithTag("MENU");
+            MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+        }
+    }
+
 }
