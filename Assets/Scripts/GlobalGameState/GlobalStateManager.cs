@@ -23,6 +23,7 @@ public class GlobalStateManager : MonoBehaviour
     // Global states
     public bool isGamePaused;
     public bool isPlayerDead;
+    public bool shownOnce = false;
 
     public bool[] collectedNotes;
 

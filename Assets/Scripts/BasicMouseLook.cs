@@ -14,7 +14,7 @@ public class BasicMouseLook : MonoBehaviour
 
     float xRotation = 0f;
 
-    private bool registerMouse = true;
+    public bool registerMouse = true;
 
     void Start()
     {

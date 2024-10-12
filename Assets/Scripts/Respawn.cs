@@ -7,25 +7,25 @@ public class Respawn : MonoBehaviour
     //[SerializeField] private Transform Player;
     //[SerializeField] private GameObject respawnPoint;
 
-    private GameObject MenuSystemObj;
-    private MenuInteraction MI_script;
+    private GameObject GlobalStateObj;
+    private GlobalStateManager GSO_script;
 
 
     void Start()
     {
-        if (MenuSystemObj == null)
+        if (GlobalStateObj == null)
         {
-            MenuSystemObj = GameObject.FindWithTag("MENU");
-            MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+            GlobalStateObj = GameObject.FindWithTag("GSO");
+            GSO_script = GlobalStateObj.GetComponent<GlobalStateManager>();
         }
     }
 
     void Update()
     {
-        if (MenuSystemObj == null)
+        if (GlobalStateObj == null)
         {
-            MenuSystemObj = GameObject.FindWithTag("MENU");
-            MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+            GlobalStateObj = GameObject.FindWithTag("GSO");
+            GSO_script = GlobalStateObj.GetComponent<GlobalStateManager>();
         }
     }
 
@@ -35,7 +35,9 @@ public class Respawn : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            MI_script.reloadCurrentScene();
+            
+            GSO_script.isPlayerDead = true;
+            GSO_script.shownOnce = true;
         }
 
         if(other.CompareTag("PickUpAble"))

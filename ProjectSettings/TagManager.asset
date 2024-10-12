@@ -9,6 +9,7 @@ TagManager:
   - CollectibleItem
   - GSO
   - MENU
+  - PlayCam
   layers:
   - Default
   - TransparentFX

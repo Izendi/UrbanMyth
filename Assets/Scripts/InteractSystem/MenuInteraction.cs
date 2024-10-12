@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,12 @@ public class MenuInteraction : MonoBehaviour
     public GameObject GlobalStateManagerObj;
     private GlobalStateManager GSM_script;
     private GameObject PlayerObj;
+
+    private GameObject PlayCamObj;
+    private BasicMouseLook basicMouseLook_script;
+
+    private bool deadState;
+    //private bool shownOnce = false;
 
     public bool MenuOpenCloseInput { get; private set; }
 
@@ -33,6 +40,9 @@ public class MenuInteraction : MonoBehaviour
     private GameObject _inventoryItemsCanvas;
 
     [SerializeField]
+    private GameObject _DeathMenuCanvas;
+
+    [SerializeField]
     private GameObject _mainMenuFirstSelected;
 
     [SerializeField]
@@ -46,6 +56,11 @@ public class MenuInteraction : MonoBehaviour
 
     [SerializeField]
     private GameObject _inventoryItemsFirstSelected;
+
+    [SerializeField]
+    private GameObject _deathScreenFirstSelected;
+
+
 
     [SerializeField]
     private GameObject[] pickupSelected;
@@ -71,6 +86,13 @@ public class MenuInteraction : MonoBehaviour
     private void Awake()
     {
         PlayerObj = GameObject.FindWithTag("Player");
+
+        if (PlayCamObj == null)
+        {
+            PlayCamObj = GameObject.FindWithTag("PlayCam");
+            basicMouseLook_script = PlayCamObj.GetComponent<BasicMouseLook>();
+        }
+
     }
 
     private void Start()
@@ -96,15 +118,36 @@ public class MenuInteraction : MonoBehaviour
             GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
         }
 
-        if (Input.GetKeyUp(menuKey) && isPaused == false)
+
+        if (PlayCamObj == null)
+        {
+            PlayCamObj = GameObject.FindWithTag("PlayCam");
+            basicMouseLook_script = PlayCamObj.GetComponent<BasicMouseLook>();
+        }
+
+        if (Input.GetKeyUp(menuKey) && isPaused == false && deadState == false)
         {
             GSM_script.isGamePaused = true;
             Pause();
         }
-        else if (Input.GetKeyUp(menuKey) && isPaused == true)
+        else if (Input.GetKeyUp(menuKey) && isPaused == true && deadState == false)
         {
             GSM_script.isGamePaused = false;
             Unpause();
+        }
+
+        if(Time.timeSinceLevelLoad < 1.0f)
+        {
+            GSM_script.isPlayerDead = false;
+            basicMouseLook_script.registerMouse = true;
+        }
+
+        if(GSM_script.isPlayerDead && Time.timeSinceLevelLoad > 1.0f)
+        {
+            GSM_script.isPlayerDead = false;
+
+            DeathPause();
+
         }
     }
 
@@ -223,8 +266,21 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(false);
         _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_mainMenuFirstSelected);
+    }
+
+    private void openDeathMenu()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_deathScreenFirstSelected);
     }
 
     private void openSettingsMenu()
@@ -234,6 +290,7 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(false);
         _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_settingsMenuFirstSelected);
     }
@@ -245,6 +302,7 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(true);
         _inventoryNoteCanvas.SetActive(false);
         _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_inventoryMenuFirstSelected);
     }
@@ -256,6 +314,7 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(true);
         _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
 
         activateCollectedNotes();
 
@@ -271,6 +330,7 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(true);
         _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
 
         activateCollectedNotes();
 
@@ -285,12 +345,15 @@ public class MenuInteraction : MonoBehaviour
         _inventoryMenuCanvas.SetActive(false);
         _inventoryNoteCanvas.SetActive(false);
         _inventoryItemsCanvas.SetActive(true);
+        _DeathMenuCanvas.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_inventoryItemsFirstSelected);
     }
 
     public void reloadCurrentScene()
     {
+        //deadState = false;
+        //GSM_script.isPlayerDead = false;
         Scene currentScene = SceneManager.GetActiveScene();
 
         // Get the build index (ID) of the active scene
@@ -301,6 +364,10 @@ public class MenuInteraction : MonoBehaviour
 
     public void loadScene(int sceneNum)
     {
+        //GSM_script.isPlayerDead = false;
+
+        basicMouseLook_script.registerMouse = true;
+
         Unpause();
 
         if (sceneNum == 0)
@@ -354,6 +421,23 @@ public class MenuInteraction : MonoBehaviour
 
     }
 
+    private void DeathPause()
+    {
+        //deadState = false;
+        isPaused = true;
+        //GSM_script.shownOnce = false;
+
+        for (int i = 0; i < notePanels.Length; i++)
+        {
+            notePanels[i].SetActive(false);
+        }
+
+        Time.timeScale = 0.0f;
+
+        openDeathMenu();
+
+    }
+
     private void Unpause()
     {
         isPaused = false;
@@ -372,8 +456,17 @@ public class MenuInteraction : MonoBehaviour
 
     public void OnResumeButtonPress()
     {
+        //deadState = false;
         SoundManager.instance.PlaySoundEffect(resumeSound, transform, 1.0f);
         Unpause();
+    }
+
+    public void OnRespawnButtonPress()
+    {
+        //deadState = false;
+        //SoundManager.instance.PlaySoundEffect(resumeSound, transform, 1.0f);
+        //Unpause();
+        reloadCurrentScene();
     }
 
     public void OnSettingsButtonPress()
