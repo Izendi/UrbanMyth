@@ -135,7 +135,7 @@ public class DialogueManager : MonoBehaviour
             var stringToPrint = "Press Enter to close...";
             text.text = stringToPrint;
 
-            dr.enable(ref reticleCanvas);
+            //dr.enable();
         }
 
         foreach (var response in currentDialogueNode.Responses)

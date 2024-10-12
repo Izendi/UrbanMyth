@@ -13,7 +13,7 @@ public class InteractableNpc : InteractableObject
 
     public override void Interact()
     {
-        dr.disable(ref reticleCanvas);
+        //dr.disable();
         TriggerDialogue();
         //dr.enable(ref reticleCanvas);
     }
@@ -23,6 +23,7 @@ public class InteractableNpc : InteractableObject
         if (string.IsNullOrEmpty(InteractPrompt))
             InteractPrompt = "Press E to talk.";
     }
+
 
     private void TriggerDialogue()
     {

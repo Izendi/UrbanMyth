@@ -77,6 +77,12 @@ public class MenuInteraction : MonoBehaviour
     [SerializeField]
     private AudioClip resumeSound;
 
+    [SerializeField]
+    private AudioClip deathSound;
+
+    [SerializeField]
+    private AudioClip respawnSound;
+
 
     [SerializeField]
     private GameObject[] notePanels;
@@ -273,6 +279,8 @@ public class MenuInteraction : MonoBehaviour
 
     private void openDeathMenu()
     {
+        SoundManager.instance.PlaySoundEffect(deathSound, transform, 1.0f);
+
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
         _inventoryMenuCanvas.SetActive(false);
@@ -463,6 +471,7 @@ public class MenuInteraction : MonoBehaviour
 
     public void OnRespawnButtonPress()
     {
+        SoundManager.instance.PlaySoundEffect(respawnSound, transform, 1.0f);
         //deadState = false;
         //SoundManager.instance.PlaySoundEffect(resumeSound, transform, 1.0f);
         //Unpause();

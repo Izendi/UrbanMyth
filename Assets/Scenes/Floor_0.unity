@@ -1654,6 +1654,8 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: 4a47d9d0c0083cb458abddb75adae59f, type: 3}
   buttonPressSound: {fileID: 8300000, guid: 584457b64c4808a49a972e85c88475a7, type: 3}
   resumeSound: {fileID: 8300000, guid: 2b586b39404475644a48006c42703385, type: 3}
+  deathSound: {fileID: 8300000, guid: 6023fdbf791f33d479676cec5228c3ab, type: 3}
+  respawnSound: {fileID: 8300000, guid: e9eaa3389af4b3a4880e00f092a57e91, type: 3}
   notePanels:
   - {fileID: 1691558142}
   - {fileID: 529251945}
@@ -1991,7 +1993,7 @@ GameObject:
   - component: {fileID: 127756621}
   m_Layer: 5
   m_Name: UI_Canvas
-  m_TagString: Untagged
+  m_TagString: RetCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11606,7 +11608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: c1ae93ed2b9bfcd42b4138994cb68256, type: 3}
-  dr: {fileID: 1126495556}
+  dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &927644120
 CapsuleCollider:
@@ -14701,50 +14703,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1067164686}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1126495555
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1126495557}
-  - component: {fileID: 1126495556}
-  m_Layer: 0
-  m_Name: DisableRet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1126495556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126495555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee1e37ff7167e64eb73ae4799d63146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1126495557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126495555}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.592644, y: -4.1409955, z: -6.5798364}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139576156
 GameObject:
   m_ObjectHideFlags: 0
@@ -20496,7 +20454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 7d837212e24571041bf5ba6933518dc5, type: 3}
-  dr: {fileID: 1126495556}
+  dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &1648819645
 CapsuleCollider:
@@ -25412,7 +25370,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dr
       value: 
-      objectReference: {fileID: 1126495556}
+      objectReference: {fileID: 0}
     - target: {fileID: 6230661014864841755, guid: 974e7a293d0772246a88229056082bb8,
         type: 3}
       propertyPath: reticleCanvas
@@ -27120,7 +27078,6 @@ SceneRoots:
   - {fileID: 814103675}
   - {fileID: 2041141927}
   - {fileID: 1671999607}
-  - {fileID: 1126495557}
   - {fileID: 1377846916}
   - {fileID: 834207401}
   - {fileID: 2066148568}
