@@ -10,11 +10,12 @@ using UnityEngine.UI;
 public class MenuInteraction : MonoBehaviour
 {
     public GameObject GlobalStateManagerObj;
-    private GameObject PlayerObj;
     private GlobalStateManager GSM_script;
+    private GameObject PlayerObj;
+
     public bool MenuOpenCloseInput { get; private set; }
 
-    public string[] noteNames = { "Dear Sister", "17/12/2046", "Hidden Key", "Trust Me"};
+    public string[] noteNames = { "Dear Sister", "17/12/2046", "Hidden Key", "Trust Me" };
 
     [SerializeField]
     private GameObject _mainMenuCanvas;
@@ -77,7 +78,7 @@ public class MenuInteraction : MonoBehaviour
         _mainMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
 
-        
+
 
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
     }
@@ -90,7 +91,7 @@ public class MenuInteraction : MonoBehaviour
             PlayerObj = GameObject.FindWithTag("Player");
         }
 
-        if(Input.GetKeyUp(menuKey) && isPaused == false)
+        if (Input.GetKeyUp(menuKey) && isPaused == false)
         {
             GSM_script.isGamePaused = true;
             Pause();
@@ -100,6 +101,11 @@ public class MenuInteraction : MonoBehaviour
             GSM_script.isGamePaused = false;
             Unpause();
         }
+    }
+
+    public void DoAction(string actionName)
+    {
+        Debug.Log( $"action: {actionName}");
     }
 
     void activateCollectedNotes()

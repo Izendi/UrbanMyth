@@ -11,7 +11,8 @@
         },
         {
           "Text": "What do you mean 'another one?'",
-          "NextDialogueId": 3
+          "NextDialogueId": 3,
+          "Action": "giveToy"
         }
       ]
     },

@@ -9,12 +9,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
     private const float PRINT_SPEED = 0.01f;
 
     public static DialogueManager Instance;
+
+    public GameObject GlobalStateManagerObj;
+    private GlobalStateManager GSM_script;
 
     public static bool IsDialogueActive => Instance?.isDialogueActive ?? false;
 
@@ -34,6 +38,9 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
+        GlobalStateManagerObj = GameObject.FindWithTag("GSO");
+        GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+
         if (Instance == null)
         {
             Instance = this;
@@ -52,6 +59,12 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+        if(GlobalStateManagerObj == null)
+        {
+            GlobalStateManagerObj = GameObject.FindWithTag("GSO");
+            GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+        }
+
         if (!isDialogueActive)
             return;
 
@@ -132,12 +145,18 @@ public class DialogueManager : MonoBehaviour
             var buttonText = responseObject.GetComponentInChildren<TextMeshProUGUI>();
 
             buttonText.text = response.Text; // Set button text
-            button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId)); // Assign action
+
+            button.onClick.AddListener(() => OnResponseSelected(response.NextDialogueId, response.Action)); // Assign action
         }
     }
 
-    private void OnResponseSelected(int nextDialogueId)
+    private void OnResponseSelected(int nextDialogueId, string action)
     {
+        if(!string.IsNullOrEmpty(action))
+        {
+            GSM_script.DoAction(action);
+        }
+        
         PrintDialogueText(nextDialogueId);
     }
 

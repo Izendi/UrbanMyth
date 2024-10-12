@@ -95,4 +95,9 @@ public class GlobalStateManager : MonoBehaviour
 
     }
 
+    public void DoAction(string actionName)
+    {
+        MI_script.DoAction(actionName);
+    }
+
 }
