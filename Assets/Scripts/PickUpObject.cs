@@ -49,6 +49,7 @@ public class PickUpObject : MonoBehaviour
     {
         var t = transform;
         var rigidBody = heldObject.GetComponent<Rigidbody>();
+
         var moveTo = t.position + distance * t.forward + height * t.up;
         var difference = moveTo - heldObject.transform.position;
         rigidBody.AddForce(difference * 500);
