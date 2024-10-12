@@ -8,6 +8,7 @@ TagManager:
   - Button
   - CollectibleItem
   - GSO
+  - MENU
   layers:
   - Default
   - TransparentFX

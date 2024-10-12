@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] private Transform Player;
-    [SerializeField] private GameObject respawnPoint;
+    //[SerializeField] private Transform Player;
+    //[SerializeField] private GameObject respawnPoint;
 
-    public GameObject MenuSystemObj;
+    private GameObject MenuSystemObj;
     private MenuInteraction MI_script;
 
 
@@ -20,7 +20,7 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (MenuSystemObj == null)
         {
@@ -29,6 +29,7 @@ public class Respawn : MonoBehaviour
         }
     }
 
+    
 
     private void OnTriggerEnter(Collider other)
     {
