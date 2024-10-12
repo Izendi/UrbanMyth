@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
@@ -26,17 +27,16 @@ public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
     void Update()
     {
         // If transitioning - that is, if the camera is moving to focus on the npc we are interacting with, update the camera's position and rotation smoothly
-        if (isTransitioning)
+        if (false) // (isTransitioning)
         {
             // Smoothly move the camera towards the target position
-            PlayerCamera.transform.position = Vector3.Lerp(PlayerCamera.transform.position, targetPosition, Time.deltaTime * TRANSITION_SPEED);
+            // PlayerCamera.transform.position = Vector3.Lerp(PlayerCamera.transform.position, targetPosition, Time.deltaTime * TRANSITION_SPEED);
 
             // Smoothly rotate the camera towards the target rotation
             PlayerCamera.transform.rotation = Quaternion.Lerp(PlayerCamera.transform.rotation, targetRotation, Time.deltaTime * TRANSITION_SPEED);
 
             // Check if the camera has reached the target
-            if (Vector3.Distance(PlayerCamera.transform.position, targetPosition) < 0.02f &&
-                Quaternion.Angle(PlayerCamera.transform.rotation, targetRotation) < 0.02f)
+            if (Quaternion.Angle(PlayerCamera.transform.rotation, targetRotation) < 0.02f)
                 isTransitioning = false; // Stop transitioning
         }
         else if (Input.GetKeyDown(KeyCode.E))
@@ -78,12 +78,11 @@ public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
 
     private void FocusCamera(Transform target)
     {
-        // Calculate position slightly offset from NPC
-        Vector3 offset = target.forward * -OFFSET_DISTANCE;
-        targetPosition = target.position + offset;
-
         // Calculate the target rotation to look at the NPC
-        targetRotation = Quaternion.LookRotation(target.position - targetPosition);
+        var direction = target.position - transform.position;
+        direction = new Vector3(-5.5f, PlayerCamera.transform.rotation.y, PlayerCamera.transform.rotation.z);
+
+        targetRotation = Quaternion.LookRotation(direction);
 
         //Save the current camera position and rotation
         resetPosition = PlayerCamera.transform.position;
