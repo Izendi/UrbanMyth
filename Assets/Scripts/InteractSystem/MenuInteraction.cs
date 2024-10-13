@@ -91,6 +91,8 @@ public class MenuInteraction : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         PlayerObj = GameObject.FindWithTag("Player");
 
         if (PlayCamObj == null)
@@ -380,21 +382,12 @@ public class MenuInteraction : MonoBehaviour
 
         Unpause();
 
-        if (sceneNum == 0)
-        {
-            // Subscribe to the sceneLoaded event
-            SceneManager.sceneLoaded += OnSceneLoaded;
+        
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
             
-            SceneManager.LoadScene(sceneNum);
-        }
-        else
-        {
-            //Do nothing!
-
-            //reloadScene = SceneManager.GetActiveScene();
-            //SceneManager.LoadScene(reloadScene.name);
-        }
+        SceneManager.LoadScene(sceneNum);
         
     }
 
