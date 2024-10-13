@@ -2,11 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GlobalStateManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip wayOpenSound;
+
+    [SerializeField]
+    private AudioClip wayClosedSound;
+
     public Vector3 level_0_startPos = new Vector3(16f,1f,8f);
     public Quaternion level_0_startRot = Quaternion.Euler(0, 0, 0);
     public Vector3 level_1_startPos = new Vector3(0f, 1f, 0f);
@@ -98,7 +105,38 @@ public class GlobalStateManager : MonoBehaviour
 
     public void DoAction(string actionName)
     {
-        MI_script.DoAction(actionName);
+        if (actionName == "UnlockAllDoors")
+        {
+            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+            SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
+
+            foreach (GameObject but in Buttons)
+            {
+                //Debug.Log("Found object: " + but.name);
+                DoorButton doorButton = but.GetComponent<DoorButton>();
+                doorButton.ActivateButton();
+            }
+        }
+
+        if (actionName == "LockAllDoors")
+        {
+            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+
+            foreach (GameObject but in Buttons)
+            {
+                //Debug.Log("Found object: " + but.name);
+                DoorButton doorButton = but.GetComponent<DoorButton>();
+                doorButton.DeactivateButton();
+            }
+        }
+
+        if (actionName == "placeholder")
+        {
+            MI_script.DoAction(actionName);
+        }
     }
 
     private void Update()

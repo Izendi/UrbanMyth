@@ -11,6 +11,9 @@ public class DoorButton : MonoBehaviour
     [SerializeField]
     private AudioClip redButtonSound;
 
+    [SerializeField]
+    private AudioClip inactiveSound;
+
     public Camera playerCamera;
 
     public KeyCode keyToPress;
@@ -28,6 +31,14 @@ public class DoorButton : MonoBehaviour
 
     private Material redBut;
     private Material greenBut;
+    private Material blueBut;
+
+    public float pulseDuration = 2.0f;
+    public float maxEmission = 1.5f;
+
+    public bool isActive = false;
+
+    private float pulseTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +52,20 @@ public class DoorButton : MonoBehaviour
         greenBut = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         greenBut.color = Color.green;
 
+        blueBut = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        blueBut.color = Color.blue;
+
         objectRenderer.material = redBut;
+    }
+
+    public void DeactivateButton()
+    {
+        isActive = false;
+    }
+
+    public void ActivateButton()
+    {
+        isActive = true;
     }
 
     // Update is called once per frame
@@ -54,6 +78,22 @@ public class DoorButton : MonoBehaviour
             {
                 Debug.LogWarning("PlayerInteract object not found in the scene.");
                 return; // Exit early if playerInteract is still null
+            }
+        }
+
+        if (isActive == false)
+        {
+            objectRenderer.material = blueBut;
+        }
+        else
+        {
+            if(greenColor)
+            {
+                objectRenderer.material = greenBut;
+            }
+            else
+            {
+                objectRenderer.material = redBut;
             }
         }
 
@@ -79,23 +119,48 @@ public class DoorButton : MonoBehaviour
 
                 if (hitObject == this.gameObject)
                 {
-                    if (greenColor)
+                    if (isActive)
                     {
-                        objectRenderer.material = redBut;
-                        greenColor = false;
+                        if (greenColor)
+                        {
+                            objectRenderer.material = redBut;
+                            greenColor = false;
 
-                        SoundManager.instance.PlaySoundEffect(redButtonSound, transform, 1.0f);
+                            SoundManager.instance.PlaySoundEffect(redButtonSound, transform, 1.0f);
 
-                        sdc.activateDoor();
+                            sdc.activateDoor();
+                        }
+                        else
+                        {
+                            objectRenderer.material = greenBut;
+                            greenColor = true;
+
+                            SoundManager.instance.PlaySoundEffect(greenButtonSound, transform, 1.0f);
+
+                            sdc.activateDoor();
+                        }
                     }
                     else
                     {
-                        objectRenderer.material = greenBut;
-                        greenColor = true;
 
-                        SoundManager.instance.PlaySoundEffect(greenButtonSound, transform, 1.0f);
+                        Color baseColor = blueBut.GetColor("_BaseColor");
 
-                        sdc.activateDoor();
+                        pulseTimer += Time.deltaTime;
+
+                        // Calculate a value that oscillates between 0 and 1 over time
+                        float pulse = Mathf.PingPong(pulseTimer / pulseDuration, 1);
+
+                        Color emissionColor = baseColor * Mathf.Lerp(0.1f, maxEmission, pulse);
+
+                        // Apply the new emission color to the material
+                        blueBut.SetColor("_EmissionColor", emissionColor);
+
+                        SoundManager.instance.PlaySoundEffect(inactiveSound, transform, 1.0f);
+
+                        if(pulseTimer > pulseDuration)
+                        {
+                            pulseTimer = 0.0f;
+                        }
                     }
                 }
             }

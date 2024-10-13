@@ -22,7 +22,7 @@ public class MenuInteraction : MonoBehaviour
 
     public bool MenuOpenCloseInput { get; private set; }
 
-    public string[] noteNames = { "Dear Sister", "17/12/2046", "Hidden Key", "Trust Me" };
+    public string[] noteNames = { "Dear Sister", "17/12/2046", "Find Me", "Trust Me" };
 
     [SerializeField]
     private GameObject _mainMenuCanvas;
@@ -160,6 +160,8 @@ public class MenuInteraction : MonoBehaviour
     public void DoAction(string actionName)
     {
         Debug.Log( $"action: {actionName}");
+
+
     }
 
     void activateCollectedNotes()
