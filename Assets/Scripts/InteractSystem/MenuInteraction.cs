@@ -7,9 +7,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class MenuInteraction : MonoBehaviour
 {
+    public static MenuInteraction Instance;
+
     public GameObject GlobalStateManagerObj;
     private GlobalStateManager GSM_script;
     private GameObject PlayerObj;
@@ -23,6 +26,7 @@ public class MenuInteraction : MonoBehaviour
     public bool MenuOpenCloseInput { get; private set; }
 
     public string[] noteNames = { "Dear Sister", "17/12/2046", "Find Me", "Trust Me" };
+    public bool[] savedNotes = { false, false, false, false, false };
 
     [SerializeField]
     private GameObject _mainMenuCanvas;
@@ -58,6 +62,21 @@ public class MenuInteraction : MonoBehaviour
     private GameObject _inventoryItemsFirstSelected;
 
     [SerializeField]
+    private GameObject childhoodToy_selected;
+
+    [SerializeField]
+    private GameObject oldKey_selected;
+
+    [SerializeField]
+    private GameObject CodeBreaker_selected;
+
+    [SerializeField]
+    private GameObject Torch_selected;
+
+    [SerializeField]
+    private GameObject vipRationCard_selected;
+
+    [SerializeField]
     private GameObject _deathScreenFirstSelected;
 
 
@@ -91,9 +110,24 @@ public class MenuInteraction : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            // If no instance exists, this becomes the singleton instance
+            Instance = this;
+
+            // Prevent this object from being destroyed when loading new scenes
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            // If an instance already exists and it's not this one, destroy this instance
+            Destroy(gameObject);
+        }
 
         PlayerObj = GameObject.FindWithTag("Player");
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded_2;
 
         if (PlayCamObj == null)
         {
@@ -148,6 +182,8 @@ public class MenuInteraction : MonoBehaviour
         {
             GSM_script.isPlayerDead = false;
             basicMouseLook_script.registerMouse = true;
+
+            UnDeathPause();
         }
 
         if(GSM_script.isPlayerDead && Time.timeSinceLevelLoad > 1.0f)
@@ -166,7 +202,7 @@ public class MenuInteraction : MonoBehaviour
 
     }
 
-    void activateCollectedNotes()
+    public void activateCollectedNotes()
     {
         bool[] collectedNotes = GSM_script.GetCollectedNoteArray();
 
@@ -184,6 +220,75 @@ public class MenuInteraction : MonoBehaviour
 
             }
         }
+    }
+
+    public void deactivateNotes()
+    {
+        bool[] collectedNotes = GSM_script.GetCollectedNoteArray();
+
+        for (int i = 0; i < collectedNotes.Length; i++)
+        {
+
+                string buttonName = i.ToString();
+                Transform buttonTransform = _inventoryNoteCanvas.transform.Find(buttonName);
+                Button b = buttonTransform.GetComponent<Button>();
+
+                TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+                buttonText.text = "???";
+                
+            
+        }
+    }
+
+    public void deactivateNonBackupItems()
+    {
+        if(GSM_script.backup_has_ChildhoodToy == false)
+        {
+            
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("0");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+        if (GSM_script.backup_has_oldKey == false)
+        {
+
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+        if (GSM_script.backup_has_codeBreaker == false)
+        {
+
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+        if (GSM_script.backup_has_torch == false)
+        {
+
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("3");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+
     }
 
     void activateCollectedItems()
@@ -295,6 +400,18 @@ public class MenuInteraction : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_deathScreenFirstSelected);
     }
 
+    private void closeAllMenus()
+    {
+        _mainMenuCanvas.SetActive(false);
+        _settingsMenuCanvas.SetActive(false);
+        _inventoryMenuCanvas.SetActive(false);
+        _inventoryNoteCanvas.SetActive(false);
+        _inventoryItemsCanvas.SetActive(false);
+        _DeathMenuCanvas.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
     private void openSettingsMenu()
     {
         _mainMenuCanvas.SetActive(false);
@@ -364,6 +481,10 @@ public class MenuInteraction : MonoBehaviour
 
     public void reloadCurrentScene()
     {
+        
+        GSM_script.wipeData();
+        GSM_script.restoreBackupData();
+
         //deadState = false;
         //GSM_script.isPlayerDead = false;
         Scene currentScene = SceneManager.GetActiveScene();
@@ -394,25 +515,19 @@ public class MenuInteraction : MonoBehaviour
     // This function will be called automatically when the scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GlobalStateManagerObj = GameObject.FindWithTag("GSO");
+        GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+
         PlayerObj = GameObject.FindWithTag("Player");
         // Set the player's position and rotation after the scene reloads
         PlayerObj.transform.position = GSM_script.level_0_startPos;
         PlayerObj.transform.rotation = GSM_script.level_0_startRot;
         Physics.SyncTransforms();
 
+        GSM_script.restoreBackupData();
+
         // Unsubscribe from the event to prevent duplicate calls in the future
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void closeAllMenus()
-    {
-        _mainMenuCanvas.SetActive(false);
-        _settingsMenuCanvas.SetActive(false);
-        _inventoryMenuCanvas.SetActive(false);
-        _inventoryNoteCanvas.SetActive(false);
-        _inventoryItemsCanvas.SetActive(false);
-
-        EventSystem.current.SetSelectedGameObject(null);
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Pause()
@@ -438,6 +553,23 @@ public class MenuInteraction : MonoBehaviour
         Time.timeScale = 0.0f;
 
         openDeathMenu();
+
+    }
+
+    private void UnDeathPause()
+    {
+        //deadState = false;
+        isPaused = false;
+        //GSM_script.shownOnce = false;
+
+        for (int i = 0; i < notePanels.Length; i++)
+        {
+            notePanels[i].SetActive(false);
+        }
+
+        Time.timeScale = 1.0f;
+
+        closeAllMenus();
 
     }
 
@@ -471,6 +603,16 @@ public class MenuInteraction : MonoBehaviour
         //SoundManager.instance.PlaySoundEffect(resumeSound, transform, 1.0f);
         //Unpause();
         reloadCurrentScene();
+    }
+
+    public void LoadNextScene(int sceneID)
+    {
+        
+        GSM_script.backUpData();
+        
+        loadScene(sceneID);
+
+
     }
 
     public void OnSettingsButtonPress()
@@ -540,6 +682,31 @@ public class MenuInteraction : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(pickupSelected[i]);
 
         notePanels[i].SetActive(true);
+    }
+
+    public void DisplayKeyItem(int i)
+    {
+        Pause();
+
+        openInventoryItemsMenu();
+
+        if(i == 0)
+            EventSystem.current.SetSelectedGameObject(childhoodToy_selected);
+
+        if(i == 1)
+            EventSystem.current.SetSelectedGameObject(oldKey_selected);
+
+        if(i == 2)
+            EventSystem.current.SetSelectedGameObject(CodeBreaker_selected);
+
+        if (i == 3)
+            EventSystem.current.SetSelectedGameObject(Torch_selected);
+
+        if (i == 4)
+            EventSystem.current.SetSelectedGameObject(vipRationCard_selected);
+
+
+        //notePanels[i].SetActive(true);
     }
 
     public void DisplayNote(int i)

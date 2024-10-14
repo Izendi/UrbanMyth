@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,7 +26,7 @@ public class LoadOnInteract : MonoBehaviour
     void Start()
     {
         loadSceneText.enabled = false;
-
+        MenuSystemObj = GameObject.FindWithTag("MENU");
         MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
     }
 
@@ -64,12 +65,13 @@ public class LoadOnInteract : MonoBehaviour
                     {
                         if (NoSceneToLoad >= 0)
                         {
-                            LoadScene(NoSceneToLoad);
+                            MI_script.LoadNextScene(NoSceneToLoad);
                         }
                         else
                         {
-                            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Load the next scene in the sequence
-                        }
+                            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Load the next scene in the sequence
+                            MI_script.LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    }
                     }
                 }
                 else

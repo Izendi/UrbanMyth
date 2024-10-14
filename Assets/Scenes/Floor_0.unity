@@ -1870,6 +1870,7 @@ MonoBehaviour:
   - Hidden Key
   - Trust Me
   - The Secret
+  savedNotes: 0000000000
   _mainMenuCanvas: {fileID: 934109750}
   _settingsMenuCanvas: {fileID: 501395294}
   _inventoryMenuCanvas: {fileID: 663525654}
@@ -2885,7 +2886,7 @@ PrefabInstance:
     - target: {fileID: 6870956031123909313, guid: 2d9d3931ee03bea449e9b5d443ea4926,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038270473
+      value: -2.0382705
       objectReference: {fileID: 0}
     - target: {fileID: 6870956031123909313, guid: 2d9d3931ee03bea449e9b5d443ea4926,
         type: 3}
@@ -19549,6 +19550,7 @@ MonoBehaviour:
   isPlayerDead: 0
   shownOnce: 0
   collectedNotes: 0000000000
+  backup_collectedNotes: 0000000000
   has_ChildhoodToy: 0
   has_oldKey: 0
   has_codeBreaker: 0
@@ -19559,6 +19561,16 @@ MonoBehaviour:
   givenAway_codeBreaker: 0
   givenAway_torch: 0
   givenAway_vipRationCard: 0
+  backup_has_ChildhoodToy: 0
+  backup_has_oldKey: 0
+  backup_has_codeBreaker: 0
+  backup_has_torch: 0
+  backup_has_vipRationCard: 0
+  backup_givenAway_ChildhoodToy: 0
+  backup_givenAway_oldKey: 0
+  backup_givenAway_codeBreaker: 0
+  backup_givenAway_torch: 0
+  backup_givenAway_vipRationCard: 0
 --- !u!1 &1217820967
 GameObject:
   m_ObjectHideFlags: 0
@@ -33772,6 +33784,7 @@ MonoBehaviour:
   loadSceneText: {fileID: 1523960650}
   NoSceneToLoad: 1
   radius: 1
+  MenuSystemObj: {fileID: 0}
 --- !u!65 &1953150411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36785,7 +36798,7 @@ PrefabInstance:
     - target: {fileID: 1727660537494772349, guid: 753004f9faec9734292eef0132ab6858,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038270235
+      value: -2.0382702
       objectReference: {fileID: 0}
     - target: {fileID: 1727660537494772349, guid: 753004f9faec9734292eef0132ab6858,
         type: 3}

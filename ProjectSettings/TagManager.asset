@@ -13,6 +13,7 @@ TagManager:
   - RetCanvas
   - Ret
   - LoadDoor
+  - KeyItem
   layers:
   - Default
   - TransparentFX
