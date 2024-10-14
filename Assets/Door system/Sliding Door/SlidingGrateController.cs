@@ -17,7 +17,7 @@ public class SlidingGrateController : MonoBehaviour
     private bool isOpen = false; // Check if the door is open
     private bool isPlayerNear = false; // Check if the player is near the door
     public TMP_Text openDoorText; // Text to show when player is near
-
+    public float slideDistance = 1f;
     public bool activated = false;
 
     // Start is called before the first frame update
@@ -25,7 +25,8 @@ public class SlidingGrateController : MonoBehaviour
     {
         closedPosition = door.localPosition;
         // Set the open position (you can adjust this based on how far you want the door to slide)
-        openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
+        //openPosition = closedPosition - new Vector3(1f, 0, 0); 
+        openPosition = closedPosition + door.right * slideDistance;
         openDoorText.enabled = false;
     }
 
