@@ -12,6 +12,7 @@ public class LoadOnInteract : MonoBehaviour
     public KeyCode keyToPress;
 
     public TMP_Text loadSceneText;
+    public TMP_Text entryDoorText;
 
     [SerializeField]
     private int NoSceneToLoad;
@@ -56,27 +57,35 @@ public class LoadOnInteract : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, radius))
             {
-                // Optional: Check if the object hit is the one you're looking for (by tag, layer, or name)
-                if (hit.collider.CompareTag("LoadDoor"))
-                {
-                    loadSceneText.enabled = true;
+            // Optional: Check if the object hit is the one you're looking for (by tag, layer, or name)
+            if (hit.collider.CompareTag("LoadDoor"))
+            {
+                loadSceneText.enabled = true;
 
-                    if (Input.GetKeyDown(keyToPress))
+                if (Input.GetKeyDown(keyToPress))
+                {
+                    if (NoSceneToLoad >= 0)
                     {
-                        if (NoSceneToLoad >= 0)
-                        {
-                            MI_script.LoadNextScene(NoSceneToLoad);
-                        }
-                        else
-                        {
-                            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Load the next scene in the sequence
-                            MI_script.LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        MI_script.LoadNextScene(NoSceneToLoad);
                     }
+                    else
+                    {
+                        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //Load the next scene in the sequence
+                        MI_script.LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
                     }
+                }
+            }
+            else
+            {
+                if (hit.collider.CompareTag("EntryDoor"))
+                {
+                    entryDoorText.enabled = true;
                 }
                 else
                 {
                     loadSceneText.enabled = false;
+                    entryDoorText.enabled = false;
+                }
                 }
             }
 
