@@ -1,0 +1,23 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Strange Man",
+      "Text": "This is the end of the demo. Full release will be available from the first of November. Please close the application and fill out the survey.",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Strange Man",
+      "Text": "Thanks again for taking the time to play the Doors of Deception Demo. Your feedback is invaluable.",
+      "Responses": []
+    }
+    
+  ]
+}

@@ -651,6 +651,17 @@ public class MenuInteraction : MonoBehaviour
         }
     }
 
+    public void OnQuitGameButtonPressed()
+    {
+        // Exits the game when built and running on a device or standalone build
+        UnityEngine.Application.Quit();
+
+        // If running in the Unity Editor, stop play mode (for testing purposes)
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
+
     public void OnInventoryItemButtonPressed()
     {
         PlayButtonPressSound();

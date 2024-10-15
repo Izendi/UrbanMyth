@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
+//using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,10 +34,19 @@ public class LoadOnInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        loadSceneText.enabled = false;
+        entryDoorText.enabled = false;
+
         if (MenuSystemObj == null)
         {
             MenuSystemObj = GameObject.FindWithTag("MENU");
             MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+        }
+
+        if(playerCamera == null)
+        {
+            GameObject cam =  GameObject.FindWithTag("PlayCam");
+            playerCamera = cam.GetComponent<Camera>();
         }
 
         if (playerCamera == null)
@@ -89,9 +98,9 @@ public class LoadOnInteract : MonoBehaviour
                 }
             }
 
+            
 
 
-        
     }
 
     void LoadScene(int i)
