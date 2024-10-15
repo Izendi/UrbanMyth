@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.DialogueSystem.Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractableNpc : InteractableObject
 {
@@ -23,7 +24,6 @@ public class InteractableNpc : InteractableObject
         if (string.IsNullOrEmpty(InteractPrompt))
             InteractPrompt = "Press E to talk.";
     }
-
 
     private void TriggerDialogue()
     {

@@ -1,0 +1,74 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Strange Man",
+      "Text": "Hello little girl! Lost are we?",
+      "Responses": [
+        {
+          "Text": "Can you help me! What is this PLACE! Where am I???",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "NPC_1",
+      "Text": "I can't help you! Ha ha ha ha ha! Only you can help yourself.",
+      "Responses": [
+        {
+          "Text": "What do you mean???",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "Are you crazy! I woke up here alone!",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "NPC_1",
+      "Text": "HAHAHAHAHA! That's what they all say!",
+      "Responses": [
+        {
+          "Text": "(continue)",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Strange Man",
+      "Text": "My brother has the key! You can find him across the spike spit!",
+      "Responses": [
+        {
+          "Text": "Spike Pit? What?",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+    "DialogueId": 5,
+      "NpcName": "Strange Man",
+      "Text": "Good Luck! Ha ha ha ha!"
+    },
+    {
+      "DialogueId": 6,
+        "NpcName": "Strange Man",
+        "Text": "I mean what I say and I say what I mean.",
+        "Responses": [
+          {
+            "Text": "(continue)",
+            "NextDialogueId": 3,
+            "ResponseNiceness": 1
+          }
+        ]
+      }
+  ]
+}

@@ -15,6 +15,11 @@ TagManager:
   - LoadDoor
   - KeyItem
   - EntryDoor
+  - hehehe_NPC
+  - floor_01_NPC
+  - floor_02_NPC
+  - floor_0_NPC
+  - DM
   layers:
   - Default
   - TransparentFX

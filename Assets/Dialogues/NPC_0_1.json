@@ -1,0 +1,76 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Other Strange Man",
+      "Text": "Another one of you huh?",
+      "Responses": [
+        {
+          "Text": "Who are you?",
+          "NextDialogueId": 2
+        },
+        {
+          "Text": "What do you mean 'another one?'",
+          "NextDialogueId": 3
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Other Strange Man",
+      "Text": "Me? I'm the brother of that idiot in the other room.",
+      "Responses": [
+        {
+          "Text": "The resemblance is uncanny.",
+          "NextDialogueId": 5
+        },
+        {
+          "Text": "Can you help me get out of here?",
+          "NextDialogueId": 4
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Other Strange Man",
+      "Text": "That's for you to find out little missy! hahahahaha",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Other Strange Man",
+      "Text": "No, I will only open the way, you will need to help yourself out of here. hahahahaha",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Other Strange Man",
+      "Text": "I'll do you a favor and remotely unlock all the doors on this floor",
+      "Responses": [
+        {
+          "Text": "Thanks [Unlock all Doors]",
+          "NextDialogueId": 6,
+          "Action": "UnlockAllDoors"
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Other Strange Man",
+      "Text": "Enjoy your journey to the top! hahahaha.",
+      "Responses": []
+    }
+    
+    
+  ]
+}

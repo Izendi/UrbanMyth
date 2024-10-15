@@ -1,0 +1,48 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Strange Man",
+      "Text": "He he he he",
+      "Responses": [
+        {
+          "Text": "What was that stuff on the wall???",
+          "NextDialogueId": 2
+        },
+        {
+          "Text": "What the heck is this place???'",
+          "NextDialogueId": 2
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Strange Man",
+      "Text": "he he he",
+      "Responses": [
+        {
+          "Text": "(continue)",
+          "NextDialogueId": 3
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Strange Man",
+      "Text": "DOORS OPEN! he he he.",
+      "Responses": [
+        {
+          "Text": "(Continue) [Unlock all Doors]",
+          "NextDialogueId": 6,
+          "Action": "UnlockAllDoors"
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Strange Man",
+      "Text": "he he he.",
+      "Responses": []
+    }
+  ]
+}
