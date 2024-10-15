@@ -11,8 +11,7 @@
         },
         {
           "Text": "What do you mean 'another one?'",
-          "NextDialogueId": 3,
-          "Action": "giveToy"
+          "NextDialogueId": 3
         }
       ]
     },
@@ -34,18 +33,13 @@
     {
       "DialogueId": 3,
       "NpcName": "NPC_1",
-      "Text": "That's for you to find out little missy! hahahahaha"
+      "Text": "That's for you to find out little missy! hahahahaha",
+      "NextDialogueId": 5
     },
     {
       "DialogueId": 4,
       "NpcName": "NPC_1",
-      "Text": "Little smarty pants are we? Mind your own buisness.",
-      "Responses": []
-    },
-    {
-      "DialogueId": 5,
-      "NpcName": "NPC_1",
-      "Text": "I do say so! hahahahaha.",
+      "Text": "Little smarty pants are we? Mind your own business.",
       "Responses": [
         {
           "Text": "(Continue)",
@@ -54,10 +48,35 @@
       ]
     },
     {
+      "DialogueId": 5,
+      "NpcName": "NPC_1",
+      "Text": "You know, I've taken a shine to you kid. I'll do you a favor and remotely unlock all the doors on this floor",
+      "Responses": [
+        {
+          "Text": "Thanks [Unlock all Doors]",
+          "NextDialogueId": 6,
+          "Action": "UnlockAllDoors"
+        }
+      ]
+    },
+    {
       "DialogueId": 6,
       "NpcName": "NPC_1",
-      "Text": "Now, get out of my sight!",
+      "Text": "Enjoy your journey to the top! hahahaha.",
       "Responses": []
+    },
+    {
+      "DialogueId": 7,
+      "NpcName": "NPC_1",
+      "Text": "Since I'd like to see the back of you sooner rather than later, I've taken the liberty of unlocking all the doors on this floor. Now get out of my sight.",
+      
+      "Responses": [
+        {
+          "Text": "(Continue) [Unlock all Doors]",
+          "NextDialogueId": 6,
+          "Action": "UnlockAllDoors"
+        }
+      ]
     }
   ]
 }

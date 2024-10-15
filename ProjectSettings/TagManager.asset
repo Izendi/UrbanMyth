@@ -12,6 +12,9 @@ TagManager:
   - PlayCam
   - RetCanvas
   - Ret
+  - LoadDoor
+  - KeyItem
+  - EntryDoor
   layers:
   - Default
   - TransparentFX

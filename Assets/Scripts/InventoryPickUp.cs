@@ -20,6 +20,9 @@ public class InventoryPickUp : MonoBehaviour
     [SerializeField]
     private AudioClip foundCollectibleSound;
 
+    [SerializeField]
+    private AudioClip keyItemFound;
+
     private void Awake()
     {
         if (Instance == null)
@@ -79,6 +82,24 @@ public class InventoryPickUp : MonoBehaviour
                 Destroy(collectedObject);
 
                 GSM_script.PauseAndDisplayNote(int.Parse(collectedObjectName));
+            }
+
+            var hitIndex2 = Array.FindIndex(hits, hit => hit.transform.tag == "KeyItem");
+
+            if (hitIndex2 != -1)
+            {
+                SoundManager.instance.PlaySoundEffect(keyItemFound, transform, 1.0f);
+
+                var hitObject = hits[hitIndex2].transform.gameObject;
+                collectedObject = hitObject;
+
+                string collectedObjectName = collectedObject.name;
+
+                GSM_script.KeyItemCollected(collectedObjectName);
+
+                Destroy(collectedObject);
+
+                GSM_script.PauseAndDisplayKeyItem(collectedObjectName);
             }
         }
         
