@@ -16153,11 +16153,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Daily Binary: Breaking News\n\nThe PRNA today annoced it would make further
-    ration cuts to districs 4 and 7. \n\"For the longevity of our nation in these
-    trying times, priorties must be adjusted for those most in need,\" said the minister
-    of argriculture in his daily address.\n\"It will be difficult, but know that
-    your sacrifce allows our men and women on the front line to..."
+  m_text: "Daily Binary: Breaking News\n\nToday, the PRNA announced it would make
+    further ration cuts to districts 4 and 7. \n\"For the longevity of our nation
+    in these trying times, priorities must be adjusted for those most in need,\"
+    said the minister of agriculture in his daily address.\n\"It will be difficult
+    but know that your sacrifice allows our men and women on the front line to..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4a395e4a0f292f4a91dc42fff349ff4, type: 2}
   m_sharedMaterial: {fileID: -8464256252641358571, guid: e4a395e4a0f292f4a91dc42fff349ff4,
@@ -27593,7 +27593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Colected Notes
+  m_text: Collected Notes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31270,7 +31270,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quite Game
+  m_text: Quit Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
