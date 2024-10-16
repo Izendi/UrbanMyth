@@ -33176,7 +33176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb35d7f4b9bd56b4fba18bd80a925068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 80
+  mouseSensitivity: 155
   playerBody: {fileID: 818770990}
   registerMouse: 1
 --- !u!114 &1867575355
@@ -36253,7 +36253,7 @@ GameObject:
   - component: {fileID: 2063399941}
   m_Layer: 0
   m_Name: DeathScreen
-  m_TagString: Untagged
+  m_TagString: DS_MENU
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
