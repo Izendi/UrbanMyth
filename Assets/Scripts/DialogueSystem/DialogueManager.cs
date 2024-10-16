@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Transform ResponseContainer; 
     private Dialogue CurrentDialogue;
     private DialogueNode currentDialogueNode;
+    private bool isPrinting = false;
 
     public disableReticle dr;
     public Canvas reticleCanvas;
@@ -71,9 +72,18 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseDialogue();
 
-        if (Input.GetKeyDown(KeyCode.Return) && !currentDialogueNode.Responses.Any())
+        if (Input.GetKeyDown(KeyCode.Return)) 
         {
-           CloseDialogue();
+            if (!currentDialogueNode.Responses.Any())
+            {
+                CloseDialogue();
+            }
+            else if (isPrinting)
+            {
+                isPrinting = false;
+                this.StopAllCoroutines();
+                DialogueText.text = currentDialogueNode.Text;
+            }
         }
     }
 
@@ -111,6 +121,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeNpcLine()
     {
+        isPrinting = true;
+
         DialogueText.text = "";
         foreach (char c in currentDialogueNode.Text)
         {
@@ -118,6 +130,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(PRINT_SPEED);
         }
 
+        isPrinting = false;
     }
 
     private void DisplayResponses()
@@ -152,7 +165,13 @@ public class DialogueManager : MonoBehaviour
 
     private void OnResponseSelected(int nextDialogueId, string action)
     {
-        if(!string.IsNullOrEmpty(action))
+        if (isPrinting)
+        {
+            isPrinting = false;
+            this.StopAllCoroutines();
+        }
+
+        if (!string.IsNullOrEmpty(action))
         {
             GSM_script.DoAction(action);
         }
