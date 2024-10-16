@@ -169,13 +169,23 @@ public class MenuInteraction : MonoBehaviour
 
         if (Input.GetKeyUp(menuKey) && isPaused == false && deadState == false)
         {
-            GSM_script.isGamePaused = true;
-            Pause();
+            GameObject DM = GameObject.FindWithTag("DS_MENU");
+
+            if (DM == null)
+            {
+                GSM_script.isGamePaused = true;
+                Pause();
+            }
         }
         else if (Input.GetKeyUp(menuKey) && isPaused == true && deadState == false)
         {
-            GSM_script.isGamePaused = false;
-            Unpause();
+            GameObject DM = GameObject.FindWithTag("DS_MENU");
+
+            if (DM == null)
+            {
+                GSM_script.isGamePaused = false;
+                Unpause();
+            }
         }
 
         if(Time.timeSinceLevelLoad < 1.0f)
