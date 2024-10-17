@@ -13210,10 +13210,6 @@ MonoBehaviour:
   ceilingLayer:
     serializedVersion: 2
     m_Bits: 128
-  velocity: {x: 0, y: 0, z: 0}
-  airborneTime: 0
-  fallSpeedThreshold: -3.5
-  fallSound: {fileID: 8300000, guid: e1289f5c2bbd4f5408a2b043e82e6d67, type: 3}
 --- !u!143 &818770986
 CharacterController:
   m_ObjectHideFlags: 0
