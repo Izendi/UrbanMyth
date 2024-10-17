@@ -44,7 +44,7 @@ public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
             foreach (var hitCollider in hitColliders)
             {
-                if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger))
+                if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
                 {
                     FocusCamera(dialogueTrigger.transform);
                     dialogueTrigger.Interact();
