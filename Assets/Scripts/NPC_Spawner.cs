@@ -90,5 +90,93 @@ public class NPC_Spawner : MonoBehaviour
             }
         }
 
+        if (sceneBuildIndex == 3)
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_03_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(true);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+
+        }
+        else
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_03_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(false);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+        }
+
+        if (sceneBuildIndex == 4)
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_04_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(true);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+
+        }
+        else
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_04_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(false);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+        }
+
+        if (sceneBuildIndex == 5)
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_05_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(true);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+
+        }
+        else
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_05_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(false);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+        }
+
+        if (sceneBuildIndex == 6)
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_06_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(true);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+
+        }
+        else
+        {
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("floor_06_NPC");
+
+            foreach (GameObject obj in objectsWithTag)
+            {
+                obj.SetActive(false);
+                // Perform actions with each object, e.g., enable, disable, change properties, etc.
+            }
+        }
+
     }
 }
