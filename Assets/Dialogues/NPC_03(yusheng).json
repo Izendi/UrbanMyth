@@ -58,12 +58,12 @@
         {
           "Text": "Deal.",
           "NextDialogueId": 5,
-          "Action": "UnlockLeftApartment"
+          "Action": "UnlockDoor_1"
         },
         {
           "Text": "Fine.",
           "NextDialogueId": 5,
-           "Action": "UnlockLeftApartment"
+           "Action": "UnlockDoor_1"
         }
       ]
     },
