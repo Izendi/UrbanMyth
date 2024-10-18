@@ -20,7 +20,8 @@ public class SlidingDoorController : MonoBehaviour
     {
         closedPosition = door.localPosition;
         // Set the open position (you can adjust this based on how far you want the door to slide)
-        openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
+        if (openPosition == null || openPosition == Vector3.zero)
+            openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
     }
 
     public void activateDoor()
