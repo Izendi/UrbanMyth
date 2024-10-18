@@ -1,0 +1,37 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Ha ha! I knew you could make it, kiddo.",
+      "Responses": [
+        {
+          "Text": "I found the money. Now what?",
+          "NextDialogueId": 2
+        },
+        {
+          "Text": "What else do you want from me?",
+          "NextDialogueId": 2
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Mysterious Stranger",
+      "Text": "The other apartment is unlocked now. Good luck with your hunt.",
+      "Responses": [
+        {
+          "Text": "(Continue) [Unlock Right Apartment]",
+          "NextDialogueId": 3,
+          "Action": "UnlockRightApartment"
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Heh, watch yourself in there.",
+      "Responses": []
+    }
+  ]
+}
