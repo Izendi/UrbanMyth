@@ -568,6 +568,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!95 &142303294
 Animator:
@@ -2530,6 +2531,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &548226335
 PrefabInstance:
@@ -5447,6 +5449,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &1255684983
 PrefabInstance:
