@@ -23,7 +23,7 @@
         {
           "Text": "(Continue) [Unlock Right Apartment]",
           "NextDialogueId": 3,
-          "Action": "UnlockRightApartment"
+          "Action": "UnlockDoor_2"
         }
       ]
     },

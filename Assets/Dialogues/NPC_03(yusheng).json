@@ -42,7 +42,7 @@
         {
           "Text": "Deal.",
           "NextDialogueId": 5,
-          "Action": "UnlockLeftApartment"
+          "Action": "UnlockDoor_1"
         },
         {
           "Text": "I don't trust you.",
