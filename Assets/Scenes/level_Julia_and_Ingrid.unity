@@ -7906,8 +7906,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
 --- !u!136 &615815412
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13031,8 +13029,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
 --- !u!136 &927644120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20001,6 +19997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shaft_Square (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ab8c9f78c619504e9675e307e5d5736,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24896,6 +24897,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shaft_Square
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ab8c9f78c619504e9675e307e5d5736,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27023,8 +27029,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
 --- !u!136 &1768742977
 CapsuleCollider:
   m_ObjectHideFlags: 0
