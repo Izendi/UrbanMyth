@@ -33474,8 +33474,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2080969844}
   - component: {fileID: 2080969848}
-  - component: {fileID: 2080969847}
-  - component: {fileID: 2080969846}
   - component: {fileID: 2080969845}
   m_Layer: 0
   m_Name: Slide Grate (1)
@@ -33520,42 +33518,6 @@ MonoBehaviour:
   interactKey: 102
   openDoorText: {fileID: 587877294}
   activated: 0
---- !u!95 &2080969846
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080969843}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc1fe27040ad30a45a5854f66e5f524d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2080969847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080969843}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008f8a43de88b1e4eb74eb63b464e392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 2080969846}
-  interactKey: 102
-  openDoorText: {fileID: 0}
 --- !u!65 &2080969848
 BoxCollider:
   m_ObjectHideFlags: 0
