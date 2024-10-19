@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>
+public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>, IEventHandler<InRangeOfDoorButton>
 {
 
     [SerializeField]
@@ -41,13 +41,14 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
     private static string PRESS_E { get; } = "Press E";
     private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift";
     private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop";
-
+    private static string PUSH_TO_OPEN_PROMPT { get; } = $"{PRESS_E} to push";
 
     private void Start()
     {
         EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<LiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
+        EventAggregator.Instance.Subscribe<InRangeOfDoorButton>(this);
     }
 
     private void Update()
@@ -102,6 +103,12 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
         }
     }
 
+    public void Handle(InRangeOfDoorButton @event)
+    {
+        if (currentStatus != CurrentStatus.HoldingObject)
+            currentStatus = CurrentStatus.InRangeOfDoorButton;
+    }
+
     private string GetInteractPrompt()
     {
         switch (currentStatus)
@@ -110,6 +117,8 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
                 return DROP_PROMPT;
             case CurrentStatus.InRangeOfLiftableObject:
                 return LIFT_PROMPT;
+            case CurrentStatus.InRangeOfDoorButton:
+                return PUSH_TO_OPEN_PROMPT;
             default:
                 return string.Empty;
         }
@@ -135,5 +144,6 @@ internal enum CurrentStatus
 {
     Undefined,
     InRangeOfLiftableObject,
-    HoldingObject
+    HoldingObject,
+    InRangeOfDoorButton,
 }

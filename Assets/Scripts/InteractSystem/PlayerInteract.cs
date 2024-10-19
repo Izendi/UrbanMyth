@@ -1,9 +1,6 @@
 using Assets.Scripts;
-using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
-using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -55,6 +52,12 @@ public class PlayerInteract : MonoBehaviour
         if (hits.Any(h => h.transform.tag == "PickUpAble"))
         {
             EventAggregator.Instance.Publish(new InRangeOfLiftableObjectEvent());
+            return null;
+        }
+
+        if (hits.Any(h => h.transform.tag == "Button"))
+        {
+            EventAggregator.Instance.Publish(new InRangeOfDoorButton());
             return null;
         }
 
