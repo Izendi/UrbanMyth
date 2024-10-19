@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
+using Assets.Scripts.Contracts;
 using Assets.Scripts.DialogueSystem.Models;
 using Assets.Scripts.Events;
 using TMPro;
@@ -11,7 +12,7 @@ using UnityEngine.Rendering;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEvent>
 {
     private const float PRINT_SPEED = 0.01f;
 
@@ -56,6 +57,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         HideDialogue();
+        EventAggregator.Instance.Subscribe(this);
     }
 
     void Update()
@@ -92,6 +94,13 @@ public class DialogueManager : MonoBehaviour
         CurrentDialogue = JsonUtility.FromJson<Dialogue>(dialogueFile.text);
         isDialogueActive = true;
         StartDialogue(startNode);
+    }
+
+    public void Handle(DialogueInitiatedEvent @event)
+    {
+        Debug.Log("initiate");
+
+        StartDialogue(@event.DialogueFile);
     }
 
     private void StartDialogue(int nodeId)
