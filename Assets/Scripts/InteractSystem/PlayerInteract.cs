@@ -1,6 +1,8 @@
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
+using System;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,6 +33,10 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            
+        }
     }
 
     public InteractableObject GetInteractableObject()
@@ -40,6 +46,16 @@ public class PlayerInteract : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out InteractableObject interactableObject))
                 return interactableObject;
+        }
+
+        Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
+
+        if (hits.Any(h => h.transform.tag == "PickUpAble"))
+        {
+            EventAggregator.Instance.Publish(new InRangeOfLiftableObjectEvent());
+            return null;
         }
 
         return null;

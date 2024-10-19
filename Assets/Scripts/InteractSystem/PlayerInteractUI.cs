@@ -1,7 +1,12 @@
+using System.Diagnostics;
+using Assets.Scripts;
+using Assets.Scripts.Contracts;
+using Assets.Scripts.Events;
 using TMPro;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-public class PlayerInteractUI : MonoBehaviour
+public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<ObjectLiftedEvent>
 {
     [SerializeField]
     private GameObject PlayerInteractPrompt;
@@ -11,6 +16,12 @@ public class PlayerInteractUI : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI interactText;
+
+    private void Start()
+    {
+        EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
+        EventAggregator.Instance.Subscribe<ObjectLiftedEvent>(this);
+    }
 
     private void Update()
     {
@@ -45,5 +56,19 @@ public class PlayerInteractUI : MonoBehaviour
     private void Hide()
     {
         PlayerInteractPrompt.SetActive(false);
+    }
+
+    public void Handle(InRangeOfLiftableObjectEvent @event)
+    {
+        Debug.Log("press E to lift");
+        Show();
+        interactText.text = "Press E to lift.";
+    }
+
+    public void Handle(ObjectLiftedEvent @event)
+    {
+        Debug.Log("press E to drop");
+        Show();
+        interactText.text = "Press E to drop.";
     }
 }
