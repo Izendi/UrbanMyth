@@ -13,7 +13,9 @@ public class PlayerInteractUI : MonoBehaviour,
     IEventHandler<NoObjectToInteractWithEvent>, 
     IEventHandler<InRangeOfDoorButton>,
     IEventHandler<InRangeOfLoadDoorEvent>,
-    IEventHandler<InRangeOfNpcEvent>
+    IEventHandler<InRangeOfNpcEvent>,
+    IEventHandler<DialogueInitiatedEvent>,
+    IEventHandler<DialogueEndedEvent>
 {
 
     [SerializeField]
@@ -60,6 +62,8 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Subscribe<InRangeOfDoorButton>(this);
         EventAggregator.Instance.Subscribe<InRangeOfLoadDoorEvent>(this);
         EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
+        EventAggregator.Instance.Subscribe<DialogueInitiatedEvent>(this);
+        EventAggregator.Instance.Subscribe<DialogueEndedEvent>(this);
     }
 
     private void Update()
@@ -131,6 +135,16 @@ public class PlayerInteractUI : MonoBehaviour,
             currentStatus = CurrentStatus.InRangeOfNpc;
     }
 
+    public void Handle(DialogueInitiatedEvent @event)
+    {
+        currentStatus = CurrentStatus.ActiveDialogue;
+    }
+
+    public void Handle(DialogueEndedEvent @event)
+    {
+        currentStatus = CurrentStatus.Undefined;
+    }
+
     private string GetInteractPrompt()
     {
         switch (currentStatus)
@@ -165,7 +179,6 @@ public class PlayerInteractUI : MonoBehaviour,
             Hide();
         }
     }
-
 }
 internal enum CurrentStatus
 {
@@ -174,5 +187,6 @@ internal enum CurrentStatus
     HoldingObject,
     InRangeOfDoorButton,
     InRangeOfLoadDoor,
-    InRangeOfNpc
+    InRangeOfNpc,
+    ActiveDialogue
 }
