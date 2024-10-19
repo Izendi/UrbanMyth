@@ -430,6 +430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 8aeff855abad02948b7d91be57f225bd, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 31a5c056f7edd5e43b1c6d1ff7d2d4e6, type: 3}
+  clickSprite: {fileID: 21300000, guid: 168612d7d9fc7bc47b8ada31a0647d9a, type: 3}
 --- !u!1 &219956355
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +952,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 872424bbee91d8f4db89bd054d6ff2ad, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 0a8292cd19f9c624cb98c5f94d044e10, type: 3}
+  clickSprite: {fileID: 21300000, guid: 13a7548949fe941489379497246c8438, type: 3}
 --- !u!1 &1069395287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: edeed32db28782d4eae6c761ac5000d8, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 519b49e0a2b701c439a2c3821ffa4089, type: 3}
+  clickSprite: {fileID: 21300000, guid: e815614db08cc274aaa05abbb712bbeb, type: 3}
 --- !u!1 &1280235411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 4ca86a7f081af5d43be2846fdf669c97, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 75afa2e3e67d2e34f929667fde3526a5, type: 3}
+  clickSprite: {fileID: 21300000, guid: c615beb0a94bccc42b91c7fe2a2645c4, type: 3}
 --- !u!1 &1484899701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 9a4c0388228948d4a98eaa4a9313ab54, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 63dda1e4f8b3f9842a7537825f817a07, type: 3}
+  clickSprite: {fileID: 21300000, guid: 9b891759d7609cf409fa1328b7df5d1e, type: 3}
 --- !u!1 &1697519045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCursor: {fileID: 2800000, guid: 31bd435614cc50d40a4476671571ad68, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 9a4c0388228948d4a98eaa4a9313ab54, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 63dda1e4f8b3f9842a7537825f817a07, type: 3}
+  clickSprite: {fileID: 21300000, guid: 9b891759d7609cf409fa1328b7df5d1e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
