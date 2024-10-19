@@ -8,15 +8,10 @@ public class InteractableNpc : InteractableObject
 {
     [SerializeField]
     private TextAsset DialogueFile; // The dialogue file to be used for this NPC
-    public disableReticle dr;
-    public Canvas reticleCanvas;
-    //private bool isPlayerInRange = true;
 
     public override void Interact()
     {
-        //dr.disable();
         TriggerDialogue();
-        //dr.enable(ref reticleCanvas);
     }
 
     private void Start()
@@ -27,7 +22,6 @@ public class InteractableNpc : InteractableObject
 
     private void TriggerDialogue()
     {
-
         DialogueManager.Instance.StartDialogue(DialogueFile);
     }
 }
