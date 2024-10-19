@@ -18529,8 +18529,8 @@ MonoBehaviour:
   keyToPress: 101
   loadSceneText: {fileID: 1523960650}
   entryDoorText: {fileID: 159542105}
-  NoSceneToLoad: 1
-  radius: 1
+  NoSceneToLoad: 3
+  radius: 3
   MenuSystemObj: {fileID: 0}
 --- !u!65 &1056179674
 BoxCollider:
@@ -36641,8 +36641,8 @@ MonoBehaviour:
   keyToPress: 101
   loadSceneText: {fileID: 1523960650}
   entryDoorText: {fileID: 159542105}
-  NoSceneToLoad: 1
-  radius: 1
+  NoSceneToLoad: 3
+  radius: 3
   MenuSystemObj: {fileID: 0}
 --- !u!65 &1953150411
 BoxCollider:
