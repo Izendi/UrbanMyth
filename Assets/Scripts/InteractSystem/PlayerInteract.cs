@@ -61,6 +61,12 @@ public class PlayerInteract : MonoBehaviour
             return null;
         }
 
+        if (hits.Any(h => h.transform.tag == "LoadDoor"))
+        {
+            EventAggregator.Instance.Publish(new InRangeOfLoadDoorEvent());
+            return null;
+        }
+
         EventAggregator.Instance.Publish(new NoObjectToInteractWithEvent());
 
         return null;

@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>, IEventHandler<InRangeOfDoorButton>
+public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>, IEventHandler<InRangeOfDoorButton>, IEventHandler<InRangeOfLoadDoorEvent>
 {
 
     [SerializeField]
@@ -39,16 +39,19 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
     }
 
     private static string PRESS_E { get; } = "Press E";
-    private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift";
-    private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop";
-    private static string PUSH_TO_OPEN_PROMPT { get; } = $"{PRESS_E} to push";
+    private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift.";
+    private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop.";
+    private static string PUSH_TO_OPEN_PROMPT { get; } = $"{PRESS_E} to push.";
+    private static string LOAD_DOOR_PROMPT { get; } = $"{PRESS_E} to proceed to next level.";
 
     private void Start()
     {
+        Hide();
         EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<LiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
         EventAggregator.Instance.Subscribe<InRangeOfDoorButton>(this);
+        EventAggregator.Instance.Subscribe<InRangeOfLoadDoorEvent>(this);
     }
 
     private void Update()
@@ -109,6 +112,12 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
             currentStatus = CurrentStatus.InRangeOfDoorButton;
     }
 
+    public void Handle(InRangeOfLoadDoorEvent @event)
+    {
+        if (currentStatus != CurrentStatus.HoldingObject)
+            currentStatus = CurrentStatus.InRangeOfLoadDoor;
+    }
+
     private string GetInteractPrompt()
     {
         switch (currentStatus)
@@ -119,6 +128,8 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
                 return LIFT_PROMPT;
             case CurrentStatus.InRangeOfDoorButton:
                 return PUSH_TO_OPEN_PROMPT;
+            case CurrentStatus.InRangeOfLoadDoor:
+                return LOAD_DOOR_PROMPT;
             default:
                 return string.Empty;
         }
@@ -139,6 +150,7 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
             Hide();
         }
     }
+
 }
 internal enum CurrentStatus
 {
@@ -146,4 +158,5 @@ internal enum CurrentStatus
     InRangeOfLiftableObject,
     HoldingObject,
     InRangeOfDoorButton,
+    InRangeOfLoadDoor
 }
