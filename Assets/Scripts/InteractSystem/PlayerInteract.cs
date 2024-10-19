@@ -11,7 +11,6 @@ public class PlayerInteract : MonoBehaviour
     
     [SerializeField] private Camera PlayerCamera;
 
-    private bool isTransitioning = false;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
     private Quaternion resetRotation;
