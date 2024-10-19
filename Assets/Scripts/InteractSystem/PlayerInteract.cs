@@ -67,6 +67,12 @@ public class PlayerInteract : MonoBehaviour
             return null;
         }
 
+        if (hits.Any(h => h.transform.tag == "NPC"))
+        {
+            EventAggregator.Instance.Publish(new InRangeOfNpcEvent());
+            return null;
+        }
+
         EventAggregator.Instance.Publish(new NoObjectToInteractWithEvent());
 
         return null;

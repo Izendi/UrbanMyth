@@ -7,7 +7,13 @@ using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>, IEventHandler<InRangeOfDoorButton>, IEventHandler<InRangeOfLoadDoorEvent>
+public class PlayerInteractUI : MonoBehaviour, 
+    IEventHandler<InRangeOfLiftableObjectEvent>,
+    IEventHandler<LiftableObjectEvent>, 
+    IEventHandler<NoObjectToInteractWithEvent>, 
+    IEventHandler<InRangeOfDoorButton>,
+    IEventHandler<InRangeOfLoadDoorEvent>,
+    IEventHandler<InRangeOfNpcEvent>
 {
 
     [SerializeField]
@@ -43,6 +49,7 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
     private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop.";
     private static string PUSH_TO_OPEN_PROMPT { get; } = $"{PRESS_E} to push.";
     private static string LOAD_DOOR_PROMPT { get; } = $"{PRESS_E} to proceed to next level.";
+    private static string TALK_PROMPT { get; } = $"{PRESS_E} to talk.";
 
     private void Start()
     {
@@ -52,6 +59,7 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
         EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
         EventAggregator.Instance.Subscribe<InRangeOfDoorButton>(this);
         EventAggregator.Instance.Subscribe<InRangeOfLoadDoorEvent>(this);
+        EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
     }
 
     private void Update()
@@ -117,6 +125,11 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
         if (currentStatus != CurrentStatus.HoldingObject)
             currentStatus = CurrentStatus.InRangeOfLoadDoor;
     }
+    public void Handle(InRangeOfNpcEvent @event)
+    {
+        if (currentStatus != CurrentStatus.HoldingObject)
+            currentStatus = CurrentStatus.InRangeOfNpc;
+    }
 
     private string GetInteractPrompt()
     {
@@ -130,6 +143,8 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
                 return PUSH_TO_OPEN_PROMPT;
             case CurrentStatus.InRangeOfLoadDoor:
                 return LOAD_DOOR_PROMPT;
+            case CurrentStatus.InRangeOfNpc:
+                return TALK_PROMPT;
             default:
                 return string.Empty;
         }
@@ -158,5 +173,6 @@ internal enum CurrentStatus
     InRangeOfLiftableObject,
     HoldingObject,
     InRangeOfDoorButton,
-    InRangeOfLoadDoor
+    InRangeOfLoadDoor,
+    InRangeOfNpc
 }
