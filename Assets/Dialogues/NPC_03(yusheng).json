@@ -1,0 +1,77 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Finally, you're here, kiddo.",
+      "Responses": [
+        {
+          "Text": "What do you want from me?",
+          "NextDialogueId": 2
+        },
+        {
+          "Text": "Who are you?",
+          "NextDialogueId": 2
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Mysterious Stranger",
+      "Text": "The apartment on your left... used to have a paranoid man living in it. One day, he hung himself. Rumor has it, before he died, he hid some valuable treasure in there, in a room full of traps.",
+      "Responses": [
+        {
+          "Text": "Traps? That sounds dangerous.",
+          "NextDialogueId": 3
+        },
+        {
+          "Text": "Treasure, huh? I'm listening.",
+          "NextDialogueId": 3
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Find the money, and I'll unlock the apartment on the right. There's a crazy survivalist living there. He has everything you could need: food, medincine,drugs, weapons. How about making a deal with me, huh?",
+      "Responses": [
+        {
+          "Text": "What's in it for you?",
+          "NextDialogueId": 4
+        },
+        {
+          "Text": "Deal.",
+          "NextDialogueId": 5,
+          "Action": "UnlockDoor_1"
+        },
+        {
+          "Text": "I don't trust you.",
+          "NextDialogueId": 4
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Heh, let's just say I have my reasons. Don't worry about it. So, are we on?",
+      "Responses": [
+        {
+          "Text": "Deal.",
+          "NextDialogueId": 5,
+          "Action": "UnlockDoor_1"
+        },
+        {
+          "Text": "Fine.",
+          "NextDialogueId": 5,
+           "Action": "UnlockDoor_1"
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Good choice. The door's unlocked. Be careful with those traps, kiddo.",
+      "Responses": []
+    }
+  ]
+}
