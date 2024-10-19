@@ -9,8 +9,6 @@ using Debug = UnityEngine.Debug;
 
 public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>
 {
-    
-
 
     [SerializeField]
     private GameObject PlayerInteractPrompt;
@@ -21,7 +19,24 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
     [SerializeField]
     private TextMeshProUGUI interactText;
 
-    CurrentStatus currentStatus = CurrentStatus.Undefined;
+    private CurrentStatus _currentStatus;
+
+    private CurrentStatus currentStatus
+    {
+        get
+        {
+            return _currentStatus;
+        }
+
+        set
+        {
+            if (value == _currentStatus)
+                return;
+
+            _currentStatus = value;
+            UpdatePrompt();
+        }
+    }
 
     private static string PRESS_E { get; } = "Press E";
     private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift";
@@ -48,30 +63,6 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
         }
 
         var interactableObject = playerInteract.GetInteractableObject();
-
-
-        var interactPrompt = GetInteractPrompt();
-
-        if (!string.IsNullOrEmpty(interactPrompt))
-        {
-            Show();
-            interactText.text = interactPrompt;
-        }
-        else
-        {
-            Hide();
-        }
-
-        //if (interactableObject is null || DialogueManager.IsDialogueActive)
-        //{
-        //    Hide();
-        //}
-        //else
-        //{
-        //    Show();
-        //    interactText.text = interactableObject.InteractPrompt;
-        //}
-            
     }
 
     private void Show()
@@ -124,6 +115,21 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
         }
     }
 
+    private void UpdatePrompt()
+    {
+        Debug.Log("updating prompt");
+        var interactPrompt = GetInteractPrompt();
+
+        if (!string.IsNullOrEmpty(interactPrompt))
+        {
+            Show();
+            interactText.text = interactPrompt;
+        }
+        else
+        {
+            Hide();
+        }
+    }
 }
 internal enum CurrentStatus
 {
