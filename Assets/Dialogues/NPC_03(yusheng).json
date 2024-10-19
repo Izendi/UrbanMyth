@@ -18,14 +18,14 @@
     {
       "DialogueId": 2,
       "NpcName": "Mysterious Stranger",
-      "Text": "The apartment on your left... used to have a paranoid man living in it. One day, he hung himself. Rumor has it, before he died, he hid some money in there, in a room full of traps.",
+      "Text": "The apartment on your left... used to have a paranoid man living in it. One day, he hung himself. Rumor has it, before he died, he hid some valuable treasure in there, in a room full of traps.",
       "Responses": [
         {
           "Text": "Traps? That sounds dangerous.",
           "NextDialogueId": 3
         },
         {
-          "Text": "Money, huh? I'm listening.",
+          "Text": "Treasure, huh? I'm listening.",
           "NextDialogueId": 3
         }
       ]
@@ -33,7 +33,7 @@
     {
       "DialogueId": 3,
       "NpcName": "Mysterious Stranger",
-      "Text": "Find the money, and I'll unlock the apartment on the right. There's a crazy survivalist living there. He has everything you could need—food, drugs, weapons. How about making a deal with me, huh?",
+      "Text": "Find the money, and I'll unlock the apartment on the right. There's a crazy survivalist living there. He has everything you could need: food, medincine,drugs, weapons. How about making a deal with me, huh?",
       "Responses": [
         {
           "Text": "What's in it for you?",
