@@ -9,9 +9,9 @@ public class SlidingDoorController : MonoBehaviour
     public Vector3 openPosition; // The target position when the door is open
     public Vector3 closedPosition; // The initial closed position of the door
     public float speed = 2f; // Speed of door opening and closing
-
+    public float slideDistance = 1f;
     private bool isOpen = false; // Check if the door is open
-    private bool isPlayerNear = false; // Check if the player is near the door
+    //private bool isPlayerNear = false; // Check if the player is near the door
 
     public bool activated = false;
 
@@ -20,8 +20,8 @@ public class SlidingDoorController : MonoBehaviour
     {
         closedPosition = door.localPosition;
         // Set the open position (you can adjust this based on how far you want the door to slide)
-        if (openPosition == null || openPosition == Vector3.zero)
-            openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
+        //openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
+        openPosition = closedPosition + door.right * slideDistance; //slide the door to its local right
     }
 
     public void activateDoor()
