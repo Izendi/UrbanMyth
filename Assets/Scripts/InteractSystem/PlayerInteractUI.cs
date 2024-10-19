@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
@@ -6,8 +7,11 @@ using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<ObjectLiftedEvent>
+public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableObjectEvent>, IEventHandler<LiftableObjectEvent>, IEventHandler<NoObjectToInteractWithEvent>
 {
+    
+
+
     [SerializeField]
     private GameObject PlayerInteractPrompt;
 
@@ -17,10 +21,18 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
     [SerializeField]
     private TextMeshProUGUI interactText;
 
+    CurrentStatus currentStatus = CurrentStatus.Undefined;
+
+    private static string PRESS_E { get; } = "Press E";
+    private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift";
+    private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop";
+
+
     private void Start()
     {
         EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
-        EventAggregator.Instance.Subscribe<ObjectLiftedEvent>(this);
+        EventAggregator.Instance.Subscribe<LiftableObjectEvent>(this);
+        EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
     }
 
     private void Update()
@@ -37,15 +49,28 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
 
         var interactableObject = playerInteract.GetInteractableObject();
 
-        if (interactableObject is null || DialogueManager.IsDialogueActive)
+
+        var interactPrompt = GetInteractPrompt();
+
+        if (!string.IsNullOrEmpty(interactPrompt))
         {
-            Hide();
+            Show();
+            interactText.text = interactPrompt;
         }
         else
         {
-            Show();
-            interactText.text = interactableObject.InteractPrompt;
+            Hide();
         }
+
+        //if (interactableObject is null || DialogueManager.IsDialogueActive)
+        //{
+        //    Hide();
+        //}
+        //else
+        //{
+        //    Show();
+        //    interactText.text = interactableObject.InteractPrompt;
+        //}
             
     }
 
@@ -60,15 +85,49 @@ public class PlayerInteractUI : MonoBehaviour, IEventHandler<InRangeOfLiftableOb
 
     public void Handle(InRangeOfLiftableObjectEvent @event)
     {
-        Debug.Log("press E to lift");
-        Show();
-        interactText.text = "Press E to lift.";
+        if (currentStatus != CurrentStatus.HoldingObject)
+        {
+            currentStatus = CurrentStatus.InRangeOfLiftableObject;
+        }
     }
 
-    public void Handle(ObjectLiftedEvent @event)
+    public void Handle(LiftableObjectEvent @event)
     {
-        Debug.Log("press E to drop");
-        Show();
-        interactText.text = "Press E to drop.";
+        if (@event.ObjectLifted)
+        {
+            currentStatus = CurrentStatus.HoldingObject;
+        }
+        else
+        {
+            Debug.Log("drop object");
+            currentStatus = CurrentStatus.Undefined;
+        }
     }
+    public void Handle(NoObjectToInteractWithEvent @event)
+    {
+        if (currentStatus != CurrentStatus.HoldingObject)
+        {
+            currentStatus = CurrentStatus.Undefined;
+        }
+    }
+
+    private string GetInteractPrompt()
+    {
+        switch (currentStatus)
+        {
+            case CurrentStatus.HoldingObject:
+                return DROP_PROMPT;
+            case CurrentStatus.InRangeOfLiftableObject:
+                return LIFT_PROMPT;
+            default:
+                return string.Empty;
+        }
+    }
+
+}
+internal enum CurrentStatus
+{
+    Undefined,
+    InRangeOfLiftableObject,
+    HoldingObject
 }

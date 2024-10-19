@@ -58,6 +58,8 @@ public class PlayerInteract : MonoBehaviour
             return null;
         }
 
+        EventAggregator.Instance.Publish(new NoObjectToInteractWithEvent());
+
         return null;
     }
 }
