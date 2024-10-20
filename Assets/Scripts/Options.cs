@@ -12,6 +12,11 @@ public class Options : MonoBehaviour
         audioMixer.SetFloat("volume", volume);
     }
 
+    public void SetQuality (int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
