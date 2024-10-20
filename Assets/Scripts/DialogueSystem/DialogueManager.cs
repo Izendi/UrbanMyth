@@ -27,9 +27,6 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
     private DialogueNode currentDialogueNode;
     private bool isPrinting = false;
 
-    public disableReticle dr;
-    public Canvas reticleCanvas;
-
     void Awake()
     {
         GlobalStateManagerObj = GameObject.FindWithTag("GSO");
