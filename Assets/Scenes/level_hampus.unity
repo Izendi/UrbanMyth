@@ -23190,7 +23190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  NoSceneToLoad: 2
+  NoSceneToLoad: 3
   radius: 1
   MenuSystemObj: {fileID: 0}
 --- !u!65 &2013586319
