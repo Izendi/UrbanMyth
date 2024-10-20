@@ -27,9 +27,15 @@ public class PlayerInteract : MonoBehaviour
 
             if (hits.Any(h => h.transform.tag == "NPC"))
             {
-                if (TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
+                Debug.Log(hitColliders.Length);
+                foreach (var hitCollider in hitColliders)
                 {
-                    dialogueTrigger.Interact();
+                    if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                    {
+                        Debug.Log("Interacting with NPC");
+                        dialogueTrigger.Interact();
+                    }
                 }
             }
         }
