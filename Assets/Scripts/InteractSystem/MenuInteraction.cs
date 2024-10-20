@@ -79,6 +79,12 @@ public class MenuInteraction : MonoBehaviour
     [SerializeField]
     private GameObject _deathScreenFirstSelected;
 
+    [SerializeField]
+    private GameObject _catTreat_selected;
+
+    [SerializeField]
+    private GameObject _photo_selected;
+
 
 
     [SerializeField]
@@ -725,6 +731,12 @@ public class MenuInteraction : MonoBehaviour
 
         if (i == 4)
             EventSystem.current.SetSelectedGameObject(vipRationCard_selected);
+
+        if (i == 5)
+            EventSystem.current.SetSelectedGameObject(_catTreat_selected);
+
+        if (i == 6)
+            EventSystem.current.SetSelectedGameObject(_photo_selected);
 
 
         //notePanels[i].SetActive(true);
