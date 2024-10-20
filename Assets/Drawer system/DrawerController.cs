@@ -14,7 +14,6 @@ public class DrawerController : MonoBehaviour
     public Vector3 closedPosition; // The initial closed position of the drawer
     public float speed = 2f; // Speed of drawer opening and closing
     public KeyCode interactKey = KeyCode.F; // The key to interact with the drawer
-    public TMP_Text openDrawerText; // Text to show when player is near
     public float slideDistance = 0.3f; // Distance the drawer will slide
 
     private bool isOpen = false; // Check if the drawer is open
@@ -25,7 +24,6 @@ public class DrawerController : MonoBehaviour
     {
         closedPosition = drawer.localPosition;
         openPosition = closedPosition - drawer.right * slideDistance; // Open the drawer by sliding it along its right side
-        openDrawerText.enabled = false;
     }
 
     // Update is called once per frame
@@ -59,7 +57,6 @@ public class DrawerController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            openDrawerText.enabled = true; // Show the "Press F to open drawer" text
         }
     }
 
@@ -69,7 +66,6 @@ public class DrawerController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            openDrawerText.enabled = false; // Hide the text when player leaves
         }
     }
 }
