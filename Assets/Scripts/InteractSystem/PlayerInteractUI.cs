@@ -55,7 +55,6 @@ public class PlayerInteractUI : MonoBehaviour,
 
     private void Start()
     {
-        Hide();
         EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<LiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
@@ -64,6 +63,7 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueEndedEvent>(this);
+        Hide();
     }
 
     private void Update()
@@ -81,13 +81,27 @@ public class PlayerInteractUI : MonoBehaviour,
         var interactableObject = playerInteract.GetInteractableObject();
     }
 
+    private void OnDestroy()
+    {
+        EventAggregator.Instance.Unsubscribe<InRangeOfLiftableObjectEvent>(this);
+        EventAggregator.Instance.Unsubscribe<LiftableObjectEvent>(this);
+        EventAggregator.Instance.Unsubscribe<NoObjectToInteractWithEvent>(this);
+        EventAggregator.Instance.Unsubscribe<InRangeOfDoorButton>(this);
+        EventAggregator.Instance.Unsubscribe<InRangeOfLoadDoorEvent>(this);
+        EventAggregator.Instance.Unsubscribe<InRangeOfNpcEvent>(this);
+        EventAggregator.Instance.Unsubscribe<DialogueInitiatedEvent>(this);
+        EventAggregator.Instance.Unsubscribe<DialogueEndedEvent>(this);
+        playerInteract = null;
+    }
+
     private void Show()
     {
-        PlayerInteractPrompt.SetActive(true);
+        PlayerInteractPrompt?.SetActive(true);
     }
     private void Hide()
     {
-        PlayerInteractPrompt.SetActive(false);
+        Debug.Log($"Hide: {PlayerInteractPrompt}");
+        PlayerInteractPrompt?.SetActive(false);
     }
 
     public void Handle(InRangeOfLiftableObjectEvent @event)
@@ -166,7 +180,6 @@ public class PlayerInteractUI : MonoBehaviour,
 
     private void UpdatePrompt()
     {
-        Debug.Log("updating prompt");
         var interactPrompt = GetInteractPrompt();
 
         if (!string.IsNullOrEmpty(interactPrompt))
