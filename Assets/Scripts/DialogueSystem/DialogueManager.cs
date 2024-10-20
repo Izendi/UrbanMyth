@@ -143,8 +143,6 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
 
             var stringToPrint = "Press Enter to close...";
             text.text = stringToPrint;
-
-            //dr.enable();
         }
 
         foreach (var response in currentDialogueNode.Responses)
