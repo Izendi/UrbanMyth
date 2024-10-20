@@ -6908,7 +6908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 0}
 --- !u!136 &615815412
@@ -9832,7 +9832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 0}
 --- !u!136 &927644120
@@ -20325,7 +20325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 0}
 --- !u!136 &1768742977
