@@ -1642,6 +1642,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!95 &142303294
 Animator:
@@ -2009,7 +2010,7 @@ Transform:
   m_GameObject: {fileID: 166756134}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.00000028312203, z: -0, w: 1}
-  m_LocalPosition: {x: 1.48, y: 4.6684794, z: 5.15}
+  m_LocalPosition: {x: 1.48, y: 4.6684794, z: 5.175}
   m_LocalScale: {x: 0.99399, y: 1.89, z: 0.023062844}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5770,6 +5771,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
 PrefabInstance:
@@ -7903,7 +7905,7 @@ Transform:
   m_GameObject: {fileID: 756710906}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0, z: -5.75}
+  m_LocalPosition: {x: 0.12, y: 0, z: -5.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13107,6 +13109,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &1212220831
 PrefabInstance:
@@ -17111,6 +17114,7 @@ GameObject:
   - component: {fileID: 1570685541}
   - component: {fileID: 1570685544}
   - component: {fileID: 1570685542}
+  - component: {fileID: 1570685545}
   m_Layer: 0
   m_Name: Slide Grate (5)
   m_TagString: Untagged
@@ -17141,7 +17145,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570685540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79f0d2e4741feb74ab02e79db24db9a1, type: 3}
   m_Name: 
@@ -17175,6 +17179,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.84, y: 0.88, z: 0.89}
   m_Center: {x: -3.62, y: -0.22, z: -3.81}
+--- !u!114 &1570685545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570685540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8713bbe038df91f4295fc65a507f46cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSound: {fileID: 8300000, guid: ddcf4406557a686428fb05c1bdf1db1b, type: 3}
+  door: {fileID: 1570685541}
+  openPosition: {x: 0, y: 0, z: 0}
+  closedPosition: {x: 0, y: 0, z: 0}
+  speed: 2
+  interactKey: 102
+  openDoorText: {fileID: 443819900}
+  slideDistance: 1
+  activated: 0
 --- !u!1 &1585675870
 GameObject:
   m_ObjectHideFlags: 0

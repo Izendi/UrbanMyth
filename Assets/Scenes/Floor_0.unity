@@ -8966,6 +8966,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
 PrefabInstance:
@@ -13210,10 +13211,6 @@ MonoBehaviour:
   ceilingLayer:
     serializedVersion: 2
     m_Bits: 128
-  velocity: {x: 0, y: 0, z: 0}
-  airborneTime: 0
-  fallSpeedThreshold: -3.5
-  fallSound: {fileID: 8300000, guid: e1289f5c2bbd4f5408a2b043e82e6d67, type: 3}
 --- !u!143 &818770986
 CharacterController:
   m_ObjectHideFlags: 0
@@ -17907,7 +17904,7 @@ MonoBehaviour:
   keyToPress: 101
   loadSceneText: {fileID: 1523960650}
   entryDoorText: {fileID: 159542105}
-  NoSceneToLoad: 1
+  NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
 --- !u!65 &1056179674
@@ -20415,6 +20412,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1 &1211722835
 GameObject:
@@ -35291,7 +35289,7 @@ MonoBehaviour:
   keyToPress: 101
   loadSceneText: {fileID: 1523960650}
   entryDoorText: {fileID: 159542105}
-  NoSceneToLoad: 1
+  NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
 --- !u!65 &1953150411
