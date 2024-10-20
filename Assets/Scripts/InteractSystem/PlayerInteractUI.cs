@@ -12,7 +12,8 @@ public class PlayerInteractUI : MonoBehaviour,
     IEventHandler<InRangeOfLoadDoorEvent>,
     IEventHandler<InRangeOfNpcEvent>,
     IEventHandler<DialogueInitiatedEvent>,
-    IEventHandler<DialogueEndedEvent>
+    IEventHandler<DialogueEndedEvent>,
+    IEventHandler<InRangeOfOpenableDoorEvent>
 {
 
     [SerializeField]
@@ -60,6 +61,7 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueEndedEvent>(this);
+        EventAggregator.Instance.Subscribe<InRangeOfOpenableDoorEvent>(this);
         Hide();
     }
 
@@ -88,6 +90,7 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Unsubscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueEndedEvent>(this);
+        EventAggregator.Instance.Unsubscribe<InRangeOfOpenableDoorEvent>(this);
         playerInteract = null;
     }
 
@@ -155,6 +158,12 @@ public class PlayerInteractUI : MonoBehaviour,
         currentStatus = CurrentStatus.Undefined;
     }
 
+    public void Handle(InRangeOfOpenableDoorEvent @event)
+    {
+        if (currentStatus != CurrentStatus.HoldingObject)
+            currentStatus = CurrentStatus.InRangeOfOpenableDoor;
+    }
+
     private string GetInteractPrompt()
     {
         switch (currentStatus)
@@ -163,6 +172,7 @@ public class PlayerInteractUI : MonoBehaviour,
                 return DROP_PROMPT;
             case CurrentStatus.InRangeOfLiftableObject:
                 return LIFT_PROMPT;
+            case CurrentStatus.InRangeOfOpenableDoor:
             case CurrentStatus.InRangeOfDoorButton:
                 return PUSH_TO_OPEN_PROMPT;
             case CurrentStatus.InRangeOfLoadDoor:
@@ -197,5 +207,6 @@ internal enum CurrentStatus
     InRangeOfDoorButton,
     InRangeOfLoadDoor,
     InRangeOfNpc,
-    ActiveDialogue
+    ActiveDialogue,
+    InRangeOfOpenableDoor
 }
