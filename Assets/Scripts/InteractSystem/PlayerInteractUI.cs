@@ -13,7 +13,7 @@ public class PlayerInteractUI : MonoBehaviour,
     IEventHandler<InRangeOfNpcEvent>,
     IEventHandler<DialogueInitiatedEvent>,
     IEventHandler<DialogueEndedEvent>,
-    IEventHandler<InRangeOfOpenableDoorEvent>
+    IEventHandler<InRangeOfOpenable>
 {
 
     [SerializeField]
@@ -45,11 +45,13 @@ public class PlayerInteractUI : MonoBehaviour,
     }
 
     private static string PRESS_E { get; } = "Press E";
+    private static string PRESS_F { get; } = "Press F";
     private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift.";
     private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop.";
-    private static string PUSH_TO_OPEN_PROMPT { get; } = $"{PRESS_E} to push.";
+    private static string PUSH_PROMPT { get; } = $"{PRESS_E} to push.";
     private static string LOAD_DOOR_PROMPT { get; } = $"{PRESS_E} to proceed to next level.";
     private static string TALK_PROMPT { get; } = $"{PRESS_E} to talk.";
+    private static string OPERATE_PROMPT { get; } = $"{PRESS_F} to operate.";
 
     private void Start()
     {
@@ -61,7 +63,7 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueEndedEvent>(this);
-        EventAggregator.Instance.Subscribe<InRangeOfOpenableDoorEvent>(this);
+        EventAggregator.Instance.Subscribe<InRangeOfOpenable>(this);
         Hide();
     }
 
@@ -90,7 +92,7 @@ public class PlayerInteractUI : MonoBehaviour,
         EventAggregator.Instance.Unsubscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueEndedEvent>(this);
-        EventAggregator.Instance.Unsubscribe<InRangeOfOpenableDoorEvent>(this);
+        EventAggregator.Instance.Unsubscribe<InRangeOfOpenable>(this);
         playerInteract = null;
     }
 
@@ -158,10 +160,12 @@ public class PlayerInteractUI : MonoBehaviour,
         currentStatus = CurrentStatus.Undefined;
     }
 
-    public void Handle(InRangeOfOpenableDoorEvent @event)
+    public void Handle(InRangeOfOpenable @event)
     {
-        if (currentStatus != CurrentStatus.HoldingObject)
-            currentStatus = CurrentStatus.InRangeOfOpenableDoor;
+        if (currentStatus == CurrentStatus.HoldingObject)
+            return;
+
+        currentStatus = CurrentStatus.InRangeOfDoor;
     }
 
     private string GetInteractPrompt()
@@ -172,9 +176,10 @@ public class PlayerInteractUI : MonoBehaviour,
                 return DROP_PROMPT;
             case CurrentStatus.InRangeOfLiftableObject:
                 return LIFT_PROMPT;
-            case CurrentStatus.InRangeOfOpenableDoor:
+            case CurrentStatus.InRangeOfDoor:
+                return OPERATE_PROMPT;
             case CurrentStatus.InRangeOfDoorButton:
-                return PUSH_TO_OPEN_PROMPT;
+                return PUSH_PROMPT;
             case CurrentStatus.InRangeOfLoadDoor:
                 return LOAD_DOOR_PROMPT;
             case CurrentStatus.InRangeOfNpc:
@@ -208,5 +213,5 @@ internal enum CurrentStatus
     InRangeOfLoadDoor,
     InRangeOfNpc,
     ActiveDialogue,
-    InRangeOfOpenableDoor
+    InRangeOfDoor,
 }

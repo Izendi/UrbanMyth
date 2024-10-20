@@ -72,9 +72,9 @@ public class PlayerInteract : MonoBehaviour
             return null;
         }
 
-        if (hits.Any(h => h.transform.tag == "OpenableDoor"))
+        if (hits.Any(h => h.transform.tag == "Openable"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfOpenableDoorEvent());
+            EventAggregator.Instance.Publish(new InRangeOfOpenable());
             return null;
         }
 
