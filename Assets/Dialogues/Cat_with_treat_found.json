@@ -9,7 +9,7 @@
           "Text": "Yes",
           "NextDialogueId": 2,
           "ResponseNiceness": 3,
-          "Action": "GiveCatTreat"
+          "Action": "RecievePhoto"
         },
         {
           "Text": "No",
@@ -35,7 +35,7 @@
     },
     {
       "DialogueId": 3,
-      "NpcName": "NPC_1",
+      "NpcName": "Misty the Cat",
       "Text": "Sad to hear.",
       "Responses": [
 

@@ -26,4 +26,9 @@ public class InteractableNpc : InteractableObject
     {
         EventAggregator.Instance.Publish(new DialogueInitiatedEvent { DialogueFile = DialogueFile });
     }
+
+    public void setDialogueFile(TextAsset df)
+    {
+        DialogueFile = df;
+    }
 }

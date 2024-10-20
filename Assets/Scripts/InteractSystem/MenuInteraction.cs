@@ -345,6 +345,24 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "Torch";
         }
+        if (GSM_script.has_catTreat)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("4");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Cat Treat";
+        }
+        if (GSM_script.has_photo)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("5");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Photo";
+        }
 
 
 

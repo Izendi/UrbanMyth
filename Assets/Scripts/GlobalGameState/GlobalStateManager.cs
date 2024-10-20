@@ -299,6 +299,18 @@ public class GlobalStateManager : MonoBehaviour
         {
             has_catTreat = true;
             MI_script.DisplayKeyItem(5);
+
+            GameObject[] NPCs = GameObject.FindGameObjectsWithTag("NPC");
+
+            for (int i = 0; i < NPCs.Length; i++)
+            {
+                if (NPCs[i].name == "NpcBillboard")
+                {
+                    TextAsset df = NPCs[i].GetComponent<dfPlaceholder>().getDF();
+                    NPCs[i].GetComponent<InteractableNpc>().setDialogueFile(df);
+                }
+            }
+
         }
         if (keyItemName == "Photo")
         {
@@ -371,6 +383,26 @@ public class GlobalStateManager : MonoBehaviour
                     doorButton.ActivateButton();
                 }
             }
+
+            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+        }
+
+        if (actionName == "RecievePhoto")
+        {
+            GameObject[] KeyItems = GameObject.FindGameObjectsWithTag("KeyItem");
+
+            for (int i = 0; i < KeyItems.Length; i++)
+            {
+                if (KeyItems[i].name == "Photo")
+                {
+                    Vector3 position = KeyItems[i].transform.position;
+
+                    position.y = 2.143f;
+
+                    KeyItems[i].transform.position = position;
+                }
+            }
+
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }

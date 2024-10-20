@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Linq;
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
@@ -164,6 +165,7 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
             isPrinting = false;
             this.StopAllCoroutines();
         }
+
 
         if (!string.IsNullOrEmpty(action))
         {
