@@ -1,11 +1,8 @@
-using System;
-using System.Diagnostics;
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
 using TMPro;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class PlayerInteractUI : MonoBehaviour, 
     IEventHandler<InRangeOfLiftableObjectEvent>,
@@ -100,7 +97,6 @@ public class PlayerInteractUI : MonoBehaviour,
     }
     private void Hide()
     {
-        Debug.Log($"Hide: {PlayerInteractPrompt}");
         PlayerInteractPrompt?.SetActive(false);
     }
 
