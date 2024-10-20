@@ -299,6 +299,38 @@ public class GlobalStateManager : MonoBehaviour
             }
         }
 
+        if(actionName == "UnlockDoor_1")
+        {
+            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+            for(int i = 0; i < Buttons.Length; i++)
+            {
+                if(Buttons[i].name == "Lock_1")
+                {
+                    DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
+                    doorButton.ActivateButton();
+                }
+            }
+
+            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+        }
+
+        if (actionName == "UnlockDoor_2")
+        {
+            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+            for (int i = 0; i < Buttons.Length; i++)
+            {
+                if (Buttons[i].name == "Lock_2")
+                {
+                    DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
+                    doorButton.ActivateButton();
+                }
+            }
+
+            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+        }
+
         if (actionName == "placeholder")
         {
             MI_script.DoAction(actionName);

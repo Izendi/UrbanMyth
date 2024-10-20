@@ -1,10 +1,10 @@
 using Assets.Scripts;
-using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
-using Unity.VisualScripting;
+using System.Linq;
+using Assets.Scripts.InteractSystem;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
+public class PlayerInteract : MonoBehaviour
 {
     private const float INTERACT_DISTANCE = 2.0f;
     private const float OFFSET_DISTANCE = 1.5f;
@@ -12,90 +12,64 @@ public class PlayerInteract : MonoBehaviour, IEventHandler<DialogueEndedEvent>
     
     [SerializeField] private Camera PlayerCamera;
 
-    private bool isTransitioning = false;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
     private Quaternion resetRotation;
     private Vector3 resetPosition;
 
-    void Start()
-    {
-        EventAggregator.Instance.Subscribe(this);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        // If transitioning - that is, if the camera is moving to focus on the npc we are interacting with, update the camera's position and rotation smoothly
-        if (false) // (isTransitioning)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            // Smoothly move the camera towards the target position
-            // PlayerCamera.transform.position = Vector3.Lerp(PlayerCamera.transform.position, targetPosition, Time.deltaTime * TRANSITION_SPEED);
+            Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 
-            // Smoothly rotate the camera towards the target rotation
-            PlayerCamera.transform.rotation = Quaternion.Lerp(PlayerCamera.transform.rotation, targetRotation, Time.deltaTime * TRANSITION_SPEED);
+            RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
 
-            // Check if the camera has reached the target
-            if (Quaternion.Angle(PlayerCamera.transform.rotation, targetRotation) < 0.02f)
-                isTransitioning = false; // Stop transitioning
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-            foreach (var hitCollider in hitColliders)
+            if (hits.Any(h => h.transform.tag == "NPC"))
             {
-                if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger))
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
+                foreach (var hitCollider in hitColliders)
                 {
-                    FocusCamera(dialogueTrigger.transform);
-                    dialogueTrigger.Interact();
+                    if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                    {
+                        dialogueTrigger.Interact();
+                    }
                 }
             }
         }
-        else if (!DialogueManager.IsDialogueActive)
-        {
-            if (PlayerCamera.transform.position.x != transform.position.x ||
-                PlayerCamera.transform.position.z != transform.position.z)
-            {
-                var cameraHeight = PlayerCamera.transform.position.y;
-                var transitionTarget = new Vector3(transform.position.x, cameraHeight, transform.position.z);
-
-                PlayerCamera.transform.position = transitionTarget;
-            }
-        }
     }
 
-    public InteractableObject GetInteractableObject()
+    public PlayerInteractUIState GetCurrentInteractableType()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-        foreach (var hitCollider in hitColliders)
+        Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
+
+        if (hits.Any(h => h.transform.tag == "PickUpAble"))
         {
-            if (hitCollider.TryGetComponent(out InteractableObject interactableObject))
-                return interactableObject;
+            return PlayerInteractUIState.InRangeOfLiftableObject;
         }
 
-        return null;
-    }
+        if (hits.Any(h => h.transform.tag == "Button"))
+        {
+            return PlayerInteractUIState.InRangeOfDoorButton;
+        }
 
-    private void FocusCamera(Transform target)
-    {
-        // Calculate the target rotation to look at the NPC
-        var direction = target.position - transform.position;
-        direction = new Vector3(-5.5f, PlayerCamera.transform.rotation.y, PlayerCamera.transform.rotation.z);
+        if (hits.Any(h => h.transform.tag == "LoadDoor"))
+        {
+            return PlayerInteractUIState.InRangeOfLoadDoor;
+        }
 
-        targetRotation = Quaternion.LookRotation(direction);
+        if (hits.Any(h => h.transform.tag == "NPC"))
+        {
+            return PlayerInteractUIState.InRangeOfNpc;
+        }
 
-        //Save the current camera position and rotation
-        resetPosition = PlayerCamera.transform.position;
-        resetRotation = PlayerCamera.transform.rotation;
+        if (hits.Any(h => h.transform.tag == "Openable"))
+        {
+            return PlayerInteractUIState.InRangeOfDoor;
+        }
 
-        // Start transitioning the camera
-        isTransitioning = true;
-    }
-
-    public void Handle(DialogueEndedEvent eventArgs)
-    {
-        isTransitioning = false;
-        PlayerCamera.transform.position = resetPosition;
-        PlayerCamera.transform.rotation = resetRotation;
+        return PlayerInteractUIState.Undefined;
     }
 }

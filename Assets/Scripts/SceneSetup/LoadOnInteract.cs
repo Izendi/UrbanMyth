@@ -11,9 +11,6 @@ public class LoadOnInteract : MonoBehaviour
     public Camera playerCamera;
     public KeyCode keyToPress;
 
-    public TMP_Text loadSceneText;
-    public TMP_Text entryDoorText;
-
     [SerializeField]
     private int NoSceneToLoad;
 
@@ -26,7 +23,6 @@ public class LoadOnInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadSceneText.enabled = false;
         MenuSystemObj = GameObject.FindWithTag("MENU");
         MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
     }
@@ -34,9 +30,6 @@ public class LoadOnInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        loadSceneText.enabled = false;
-        entryDoorText.enabled = false;
-
         if (MenuSystemObj == null)
         {
             MenuSystemObj = GameObject.FindWithTag("MENU");
@@ -59,17 +52,16 @@ public class LoadOnInteract : MonoBehaviour
             }
         }
 
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            //var hits = Physics.SphereCastAll(t.position + t.forward, radius, t.forward, radius);
-            RaycastHit hit;
+        //var hits = Physics.SphereCastAll(t.position + t.forward, radius, t.forward, radius);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, radius))
-            {
+        if (Physics.Raycast(ray, out hit, radius))
+        {
             // Optional: Check if the object hit is the one you're looking for (by tag, layer, or name)
             if (hit.collider.CompareTag("LoadDoor"))
             {
-                loadSceneText.enabled = true;
 
                 if (Input.GetKeyDown(keyToPress))
                 {
@@ -84,23 +76,7 @@ public class LoadOnInteract : MonoBehaviour
                     }
                 }
             }
-            else
-            {
-                if (hit.collider.CompareTag("EntryDoor"))
-                {
-                    entryDoorText.enabled = true;
-                }
-                else
-                {
-                    loadSceneText.enabled = false;
-                    entryDoorText.enabled = false;
-                }
-                }
-            }
-
-            
-
-
+        }
     }
 
     void LoadScene(int i)

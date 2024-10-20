@@ -16,7 +16,6 @@ public class SlidingGrateController : MonoBehaviour
 
     private bool isOpen = false; // Check if the door is open
     private bool isPlayerNear = false; // Check if the player is near the door
-    public TMP_Text openDoorText; // Text to show when player is near
     public float slideDistance = 1f;
     public bool activated = false;
 
@@ -27,7 +26,6 @@ public class SlidingGrateController : MonoBehaviour
         // Set the open position (you can adjust this based on how far you want the door to slide)
         //openPosition = closedPosition - new Vector3(1f, 0, 0); // Slides 3 units to the right
         openPosition = closedPosition + door.right * slideDistance; //slide the door to its local right
-        openDoorText.enabled = false;
     }
 
     // Update is called once per frame
@@ -57,7 +55,6 @@ public class SlidingGrateController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            openDoorText.enabled = true; // Show the "Press F to open door" text
         }
     }
 
@@ -72,7 +69,6 @@ public class SlidingGrateController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            openDoorText.enabled = false; // Hide the text when player leaves
         }
     }
 }
