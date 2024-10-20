@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Floor_0.unity
     guid: a1af62e5200253a4189b79a3966b636e
   - enabled: 1
+    path: Assets/Scenes/Floor_DeathMaze.unity
+    guid: 1b3ba63316a82cb49a829194ebfa1779
+  - enabled: 1
     path: Assets/Scenes/level_Julia_and_Ingrid.unity
     guid: 75bffbe2820d0454ba667623dcc035b5
   - enabled: 1

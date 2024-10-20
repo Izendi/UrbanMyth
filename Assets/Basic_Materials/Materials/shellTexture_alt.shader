@@ -75,7 +75,7 @@ Shader "Custom/UVToColorWithURPLighting"
                 float result = random(gridPos);
 
                 // Grass base color
-                float3 grassColor = float3(44.0 / 255.0, 169.0 / 255.0, 44.0 / 255.0);
+                float3 grassColor = float3(158.0 / 255.0, 62.0 / 255.0, 46.0 / 255.0);
 
                 // Cull some grass based on random value and _CullFactor
                 if (result >= 0.025 * _CullFactor)
