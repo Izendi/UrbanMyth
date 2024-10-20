@@ -460,8 +460,8 @@ Transform:
   m_GameObject: {fileID: 29745980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.779, y: 0.50699997, z: 5.829}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 13.52, y: 1.88, z: 35.88}
+  m_LocalScale: {x: 0.39128706, y: 0.2647196, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 565080556}
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &29745983
@@ -15252,7 +15252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 79009384dfef7914fa9cbc33d35e7e72, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &927644120
@@ -18839,7 +18839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &1101672377
@@ -21332,7 +21332,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f411f2b093e507d41bcb19fbcbcb9bab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a01b1366a5862684693df0d7ad9ccf5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -28947,7 +28947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPrompt: 
-  DialogueFile: {fileID: 4900000, guid: 34d49d105c7e2294bba68c19264f332a, type: 3}
+  DialogueFile: {fileID: 4900000, guid: a43f5015d4b6f4e42ab86c1b2ecbdd3c, type: 3}
   dr: {fileID: 0}
   reticleCanvas: {fileID: 127756623}
 --- !u!136 &1648819645
