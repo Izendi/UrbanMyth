@@ -71,13 +71,9 @@ public class PlayerInteractUI : MonoBehaviour,
         if (!(currentStatus == PlayerInteractUIState.HoldingObject || currentStatus == PlayerInteractUIState.ActiveDialogue))
         {
             var type = playerInteract.GetCurrentInteractableType();
-            Debug.Log(type);
             if (type != currentStatus)
                 currentStatus = type;
         }
-
-        //Debug.Log(currentStatus);
-
     }
 
     private void OnDestroy()
@@ -100,14 +96,9 @@ public class PlayerInteractUI : MonoBehaviour,
     public void Handle(LiftableObjectEvent @event)
     {
         if (@event.ObjectLifted)
-        {
             currentStatus = PlayerInteractUIState.HoldingObject;
-        }
         else
-        {
-            Debug.Log("drop object");
             currentStatus = PlayerInteractUIState.Undefined;
-        }
     }
 
     public void Handle(DialogueInitiatedEvent @event)
@@ -147,7 +138,6 @@ public class PlayerInteractUI : MonoBehaviour,
 
         if (!string.IsNullOrEmpty(interactPrompt))
         {
-            Debug.Log(interactPrompt);
             Show();
             interactText.text = interactPrompt;
         }

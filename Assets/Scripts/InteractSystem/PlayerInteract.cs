@@ -28,12 +28,10 @@ public class PlayerInteract : MonoBehaviour
             if (hits.Any(h => h.transform.tag == "NPC"))
             {
                 Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-                Debug.Log(hitColliders.Length);
                 foreach (var hitCollider in hitColliders)
                 {
                     if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
                     {
-                        Debug.Log("Interacting with NPC");
                         dialogueTrigger.Interact();
                     }
                 }
@@ -43,8 +41,6 @@ public class PlayerInteract : MonoBehaviour
 
     public PlayerInteractUIState GetCurrentInteractableType()
     {
-
-        Debug.Log("checking");
         Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
