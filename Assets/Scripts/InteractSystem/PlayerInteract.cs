@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using Assets.Scripts.Events;
 using System.Linq;
+using Assets.Scripts.InteractSystem;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -20,66 +21,53 @@ public class PlayerInteract : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-            foreach (var hitCollider in hitColliders)
+            Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
+
+            if (hits.Any(h => h.transform.tag == "NPC"))
             {
-                if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                if (TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
                 {
                     dialogueTrigger.Interact();
                 }
             }
         }
-        else
-        {
-            
-        }
     }
 
-    public InteractableObject GetInteractableObject()
+    public PlayerInteractUIState GetCurrentInteractableType()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-        foreach (var hitCollider in hitColliders)
-        {
-            if (hitCollider.TryGetComponent(out InteractableObject interactableObject))
-                return interactableObject;
-        }
 
+        Debug.Log("checking");
         Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
 
         if (hits.Any(h => h.transform.tag == "PickUpAble"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfLiftableObjectEvent());
-            return null;
+            return PlayerInteractUIState.InRangeOfLiftableObject;
         }
 
         if (hits.Any(h => h.transform.tag == "Button"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfDoorButton());
-            return null;
+            return PlayerInteractUIState.InRangeOfDoorButton;
         }
 
         if (hits.Any(h => h.transform.tag == "LoadDoor"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfLoadDoorEvent());
-            return null;
+            return PlayerInteractUIState.InRangeOfLoadDoor;
         }
 
         if (hits.Any(h => h.transform.tag == "NPC"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfNpcEvent());
-            return null;
+            return PlayerInteractUIState.InRangeOfNpc;
         }
 
         if (hits.Any(h => h.transform.tag == "Openable"))
         {
-            EventAggregator.Instance.Publish(new InRangeOfOpenable());
-            return null;
+            return PlayerInteractUIState.InRangeOfDoor;
         }
 
-        EventAggregator.Instance.Publish(new NoObjectToInteractWithEvent());
-
-        return null;
+        return PlayerInteractUIState.Undefined;
     }
 }

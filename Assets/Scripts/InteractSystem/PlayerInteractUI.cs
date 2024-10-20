@@ -1,19 +1,14 @@
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
+using Assets.Scripts.InteractSystem;
 using TMPro;
 using UnityEngine;
 
 public class PlayerInteractUI : MonoBehaviour, 
-    IEventHandler<InRangeOfLiftableObjectEvent>,
     IEventHandler<LiftableObjectEvent>, 
-    IEventHandler<NoObjectToInteractWithEvent>, 
-    IEventHandler<InRangeOfDoorButton>,
-    IEventHandler<InRangeOfLoadDoorEvent>,
-    IEventHandler<InRangeOfNpcEvent>,
     IEventHandler<DialogueInitiatedEvent>,
-    IEventHandler<DialogueEndedEvent>,
-    IEventHandler<InRangeOfOpenable>
+    IEventHandler<DialogueEndedEvent>
 {
 
     [SerializeField]
@@ -25,9 +20,9 @@ public class PlayerInteractUI : MonoBehaviour,
     [SerializeField]
     private TextMeshProUGUI interactText;
 
-    private CurrentStatus _currentStatus;
+    private PlayerInteractUIState _currentStatus;
 
-    private CurrentStatus currentStatus
+    private PlayerInteractUIState currentStatus
     {
         get
         {
@@ -55,15 +50,9 @@ public class PlayerInteractUI : MonoBehaviour,
 
     private void Start()
     {
-        EventAggregator.Instance.Subscribe<InRangeOfLiftableObjectEvent>(this);
         EventAggregator.Instance.Subscribe<LiftableObjectEvent>(this);
-        EventAggregator.Instance.Subscribe<NoObjectToInteractWithEvent>(this);
-        EventAggregator.Instance.Subscribe<InRangeOfDoorButton>(this);
-        EventAggregator.Instance.Subscribe<InRangeOfLoadDoorEvent>(this);
-        EventAggregator.Instance.Subscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Subscribe<DialogueEndedEvent>(this);
-        EventAggregator.Instance.Subscribe<InRangeOfOpenable>(this);
         Hide();
     }
 
@@ -79,20 +68,23 @@ public class PlayerInteractUI : MonoBehaviour,
             }
         }
 
-        var interactableObject = playerInteract.GetInteractableObject();
+        if (!(currentStatus == PlayerInteractUIState.HoldingObject || currentStatus == PlayerInteractUIState.ActiveDialogue))
+        {
+            var type = playerInteract.GetCurrentInteractableType();
+            Debug.Log(type);
+            if (type != currentStatus)
+                currentStatus = type;
+        }
+
+        //Debug.Log(currentStatus);
+
     }
 
     private void OnDestroy()
     {
-        EventAggregator.Instance.Unsubscribe<InRangeOfLiftableObjectEvent>(this);
         EventAggregator.Instance.Unsubscribe<LiftableObjectEvent>(this);
-        EventAggregator.Instance.Unsubscribe<NoObjectToInteractWithEvent>(this);
-        EventAggregator.Instance.Unsubscribe<InRangeOfDoorButton>(this);
-        EventAggregator.Instance.Unsubscribe<InRangeOfLoadDoorEvent>(this);
-        EventAggregator.Instance.Unsubscribe<InRangeOfNpcEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueInitiatedEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueEndedEvent>(this);
-        EventAggregator.Instance.Unsubscribe<InRangeOfOpenable>(this);
         playerInteract = null;
     }
 
@@ -105,84 +97,44 @@ public class PlayerInteractUI : MonoBehaviour,
         PlayerInteractPrompt?.SetActive(false);
     }
 
-    public void Handle(InRangeOfLiftableObjectEvent @event)
-    {
-        if (currentStatus != CurrentStatus.HoldingObject)
-        {
-            currentStatus = CurrentStatus.InRangeOfLiftableObject;
-        }
-    }
-
     public void Handle(LiftableObjectEvent @event)
     {
         if (@event.ObjectLifted)
         {
-            currentStatus = CurrentStatus.HoldingObject;
+            currentStatus = PlayerInteractUIState.HoldingObject;
         }
         else
         {
             Debug.Log("drop object");
-            currentStatus = CurrentStatus.Undefined;
+            currentStatus = PlayerInteractUIState.Undefined;
         }
-    }
-    public void Handle(NoObjectToInteractWithEvent @event)
-    {
-        if (currentStatus != CurrentStatus.HoldingObject)
-        {
-            currentStatus = CurrentStatus.Undefined;
-        }
-    }
-
-    public void Handle(InRangeOfDoorButton @event)
-    {
-        if (currentStatus != CurrentStatus.HoldingObject)
-            currentStatus = CurrentStatus.InRangeOfDoorButton;
-    }
-
-    public void Handle(InRangeOfLoadDoorEvent @event)
-    {
-        if (currentStatus != CurrentStatus.HoldingObject)
-            currentStatus = CurrentStatus.InRangeOfLoadDoor;
-    }
-    public void Handle(InRangeOfNpcEvent @event)
-    {
-        if (currentStatus != CurrentStatus.HoldingObject)
-            currentStatus = CurrentStatus.InRangeOfNpc;
     }
 
     public void Handle(DialogueInitiatedEvent @event)
     {
-        currentStatus = CurrentStatus.ActiveDialogue;
+        currentStatus = PlayerInteractUIState.ActiveDialogue;
     }
 
     public void Handle(DialogueEndedEvent @event)
     {
-        currentStatus = CurrentStatus.Undefined;
-    }
-
-    public void Handle(InRangeOfOpenable @event)
-    {
-        if (currentStatus == CurrentStatus.HoldingObject)
-            return;
-
-        currentStatus = CurrentStatus.InRangeOfDoor;
+        currentStatus = PlayerInteractUIState.Undefined;
     }
 
     private string GetInteractPrompt()
     {
         switch (currentStatus)
         {
-            case CurrentStatus.HoldingObject:
+            case PlayerInteractUIState.HoldingObject:
                 return DROP_PROMPT;
-            case CurrentStatus.InRangeOfLiftableObject:
+            case PlayerInteractUIState.InRangeOfLiftableObject:
                 return LIFT_PROMPT;
-            case CurrentStatus.InRangeOfDoor:
+            case PlayerInteractUIState.InRangeOfDoor:
                 return OPERATE_PROMPT;
-            case CurrentStatus.InRangeOfDoorButton:
+            case PlayerInteractUIState.InRangeOfDoorButton:
                 return PUSH_PROMPT;
-            case CurrentStatus.InRangeOfLoadDoor:
+            case PlayerInteractUIState.InRangeOfLoadDoor:
                 return LOAD_DOOR_PROMPT;
-            case CurrentStatus.InRangeOfNpc:
+            case PlayerInteractUIState.InRangeOfNpc:
                 return TALK_PROMPT;
             default:
                 return string.Empty;
@@ -195,6 +147,7 @@ public class PlayerInteractUI : MonoBehaviour,
 
         if (!string.IsNullOrEmpty(interactPrompt))
         {
+            Debug.Log(interactPrompt);
             Show();
             interactText.text = interactPrompt;
         }
@@ -203,15 +156,4 @@ public class PlayerInteractUI : MonoBehaviour,
             Hide();
         }
     }
-}
-internal enum CurrentStatus
-{
-    Undefined,
-    InRangeOfLiftableObject,
-    HoldingObject,
-    InRangeOfDoorButton,
-    InRangeOfLoadDoor,
-    InRangeOfNpc,
-    ActiveDialogue,
-    InRangeOfDoor,
 }
