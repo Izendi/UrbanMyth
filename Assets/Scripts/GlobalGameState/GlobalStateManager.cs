@@ -420,6 +420,21 @@ public class GlobalStateManager : MonoBehaviour
             MenuSystemObj = GameObject.FindWithTag("MENU");
             MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGamePaused)
+            {
+                isGamePaused = true;
+                MI_script.OnEscButtonPress();
+            }
+            else
+            {
+                isGamePaused = false;
+                MI_script.OnResumeButtonPress();
+
+            }
+        }
     }
 
 }

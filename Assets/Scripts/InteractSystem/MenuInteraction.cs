@@ -718,6 +718,13 @@ public class MenuInteraction : MonoBehaviour
         Unpause();
     }
 
+    public void OnEscButtonPress()
+    {
+        PlayButtonPressSound();
+        openMainMenu();
+        Pause();
+    }
+
     public void DisplayNoteOnMenu(int i)
     {
         Pause();
