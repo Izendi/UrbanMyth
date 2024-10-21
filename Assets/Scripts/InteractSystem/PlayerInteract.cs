@@ -1,7 +1,7 @@
 using Assets.Scripts;
-using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
-using Unity.VisualScripting;
+using System.Linq;
+using Assets.Scripts.InteractSystem;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -12,7 +12,6 @@ public class PlayerInteract : MonoBehaviour
     
     [SerializeField] private Camera PlayerCamera;
 
-    private bool isTransitioning = false;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
     private Quaternion resetRotation;
@@ -22,26 +21,55 @@ public class PlayerInteract : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-            foreach (var hitCollider in hitColliders)
+            Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
+
+            if (hits.Any(h => h.transform.tag == "NPC"))
             {
-                if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
+                foreach (var hitCollider in hitColliders)
                 {
-                    dialogueTrigger.Interact();
+                    if (hitCollider.TryGetComponent(out InteractableNpc dialogueTrigger) && !DialogueManager.IsDialogueActive)
+                    {
+                        dialogueTrigger.Interact();
+                    }
                 }
             }
         }
     }
 
-    public InteractableObject GetInteractableObject()
+    public PlayerInteractUIState GetCurrentInteractableType()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, INTERACT_DISTANCE);
-        foreach (var hitCollider in hitColliders)
+        Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, INTERACT_DISTANCE);
+
+        if (hits.Any(h => h.transform.tag == "PickUpAble"))
         {
-            if (hitCollider.TryGetComponent(out InteractableObject interactableObject))
-                return interactableObject;
+            return PlayerInteractUIState.InRangeOfLiftableObject;
         }
 
-        return null;
+        if (hits.Any(h => h.transform.tag == "Button"))
+        {
+            return PlayerInteractUIState.InRangeOfDoorButton;
+        }
+
+        if (hits.Any(h => h.transform.tag == "LoadDoor"))
+        {
+            return PlayerInteractUIState.InRangeOfLoadDoor;
+        }
+
+        if (hits.Any(h => h.transform.tag == "NPC"))
+        {
+            return PlayerInteractUIState.InRangeOfNpc;
+        }
+
+        if (hits.Any(h => h.transform.tag == "Openable"))
+        {
+            return PlayerInteractUIState.InRangeOfDoor;
+        }
+
+        return PlayerInteractUIState.Undefined;
     }
 }

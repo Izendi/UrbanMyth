@@ -42,24 +42,32 @@ public class GlobalStateManager : MonoBehaviour
     public bool has_codeBreaker;
     public bool has_torch;
     public bool has_vipRationCard;
+    public bool has_catTreat;
+    public bool has_photo;
 
     public bool givenAway_ChildhoodToy;
     public bool givenAway_oldKey;
     public bool givenAway_codeBreaker;
     public bool givenAway_torch;
     public bool givenAway_vipRationCard;
+    public bool givenAway_catTreat;
+    public bool givenAway_photo;
 
     public bool backup_has_ChildhoodToy;
     public bool backup_has_oldKey;
     public bool backup_has_codeBreaker;
     public bool backup_has_torch;
     public bool backup_has_vipRationCard;
-                
+    public bool backup_has_catTreat;
+    public bool backup_has_photo;
+
     public bool backup_givenAway_ChildhoodToy;
     public bool backup_givenAway_oldKey;
     public bool backup_givenAway_codeBreaker;
     public bool backup_givenAway_torch;
     public bool backup_givenAway_vipRationCard;
+    public bool backup_givenAway_catTreat;
+    public bool backup_givenAway_photo;
 
     public void backUpData()
     {
@@ -73,12 +81,16 @@ public class GlobalStateManager : MonoBehaviour
         backup_has_codeBreaker = has_codeBreaker;
         backup_has_torch = has_torch;
         backup_has_vipRationCard = has_vipRationCard;
+        backup_has_catTreat = has_catTreat;
+        backup_has_photo = has_photo;
 
         backup_givenAway_ChildhoodToy = givenAway_ChildhoodToy;
         backup_givenAway_oldKey = givenAway_oldKey;
         backup_givenAway_codeBreaker = givenAway_codeBreaker;
         backup_givenAway_torch = givenAway_torch;
         backup_givenAway_vipRationCard = givenAway_vipRationCard;
+        backup_givenAway_catTreat = givenAway_catTreat;
+        backup_givenAway_photo = givenAway_photo;
 
     }
 
@@ -99,12 +111,16 @@ public class GlobalStateManager : MonoBehaviour
         has_codeBreaker = false;
         has_torch = false;
         has_vipRationCard = false;
+        has_catTreat = false;
+        has_photo = false;
 
         givenAway_ChildhoodToy = false;
         givenAway_oldKey = false;
         givenAway_codeBreaker = false;
         givenAway_torch = false;
         givenAway_vipRationCard = false;
+        givenAway_catTreat = false;
+        givenAway_photo = false;
 
         
     }
@@ -128,12 +144,16 @@ public class GlobalStateManager : MonoBehaviour
         has_codeBreaker = backup_has_codeBreaker;
         has_torch = backup_has_torch;
         has_vipRationCard = backup_has_vipRationCard;
+        has_catTreat = backup_has_catTreat;
+        has_photo = backup_has_photo;
 
         givenAway_ChildhoodToy = backup_givenAway_ChildhoodToy;
         givenAway_oldKey = backup_givenAway_oldKey;
         givenAway_codeBreaker = backup_givenAway_codeBreaker;
         givenAway_torch = backup_givenAway_torch;
         givenAway_vipRationCard = backup_givenAway_vipRationCard;
+        givenAway_catTreat = backup_givenAway_catTreat;
+        givenAway_photo = backup_givenAway_photo;
 
         
     }
@@ -162,12 +182,18 @@ public class GlobalStateManager : MonoBehaviour
             backup_has_codeBreaker = false;
             backup_has_torch = false;
             backup_has_vipRationCard = false;
+            backup_has_catTreat = false;
+            backup_has_photo = false;
 
             backup_givenAway_ChildhoodToy = false;
             backup_givenAway_oldKey = false;
             backup_givenAway_codeBreaker = false;
             backup_givenAway_torch = false;
             backup_givenAway_vipRationCard = false;
+            backup_givenAway_catTreat= false;
+            backup_givenAway_photo = false;
+
+
 
             //DontDestroyOnLoad(gameObject);  // Keep it alive between scenes
         }
@@ -212,6 +238,14 @@ public class GlobalStateManager : MonoBehaviour
         if (itemName == "VipRationCard")
         {
             has_vipRationCard = true;
+        }
+        if (itemName == "CatTreat")
+        {
+            has_catTreat = true;
+        }
+        if (itemName == "Photo")
+        {
+            has_photo = true;
         }
     }
 
@@ -260,6 +294,28 @@ public class GlobalStateManager : MonoBehaviour
         {
             has_vipRationCard = true;
             MI_script.DisplayKeyItem(4);
+        }
+        if (keyItemName == "CatTreat")
+        {
+            has_catTreat = true;
+            MI_script.DisplayKeyItem(5);
+
+            GameObject[] NPCs = GameObject.FindGameObjectsWithTag("NPC");
+
+            for (int i = 0; i < NPCs.Length; i++)
+            {
+                if (NPCs[i].name == "NpcBillboard")
+                {
+                    TextAsset df = NPCs[i].GetComponent<dfPlaceholder>().getDF();
+                    NPCs[i].GetComponent<InteractableNpc>().setDialogueFile(df);
+                }
+            }
+
+        }
+        if (keyItemName == "Photo")
+        {
+            has_photo = true;
+            MI_script.DisplayKeyItem(6);
         }
 
     }
@@ -331,6 +387,26 @@ public class GlobalStateManager : MonoBehaviour
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
 
+        if (actionName == "RecievePhoto")
+        {
+            GameObject[] KeyItems = GameObject.FindGameObjectsWithTag("KeyItem");
+
+            for (int i = 0; i < KeyItems.Length; i++)
+            {
+                if (KeyItems[i].name == "Photo")
+                {
+                    Vector3 position = KeyItems[i].transform.position;
+
+                    position.y = 2.143f;
+
+                    KeyItems[i].transform.position = position;
+                }
+            }
+
+
+            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+        }
+
         if (actionName == "placeholder")
         {
             MI_script.DoAction(actionName);
@@ -343,6 +419,21 @@ public class GlobalStateManager : MonoBehaviour
         {
             MenuSystemObj = GameObject.FindWithTag("MENU");
             MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGamePaused)
+            {
+                isGamePaused = true;
+                MI_script.OnEscButtonPress();
+            }
+            else
+            {
+                isGamePaused = false;
+                MI_script.OnResumeButtonPress();
+
+            }
         }
     }
 
