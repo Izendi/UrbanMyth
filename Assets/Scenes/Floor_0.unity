@@ -4963,6 +4963,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
+  slideDistance: 1
   activated: 0
 --- !u!1 &226811670 stripped
 GameObject:
@@ -10064,6 +10065,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
 PrefabInstance:
@@ -14167,6 +14169,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
+  slideDistance: 1
   activated: 0
 --- !u!95 &777919661
 Animator:
@@ -20031,6 +20034,7 @@ GameObject:
   - component: {fileID: 1056179672}
   - component: {fileID: 1056179674}
   - component: {fileID: 1056179673}
+  - component: {fileID: 1056179675}
   m_Layer: 0
   m_Name: Load Scene Door (1)
   m_TagString: LoadDoor
@@ -20095,6 +20099,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.32, y: 1.97, z: 0.19}
   m_Center: {x: 0.41, y: 0, z: -0.74}
+--- !u!114 &1056179675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056179671}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166599ab01046c64dac504e449bcdc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1867575357}
+  keyToPress: 101
+  loadSceneText: {fileID: 1523960650}
+  entryDoorText: {fileID: 159542105}
+  NoSceneToLoad: 1
+  radius: 1
+  MenuSystemObj: {fileID: 0}
+  transitionCanvas: {fileID: 0}
+  transitionImage: {fileID: 21300000, guid: 6be70656fccf64c4c8a6b82b87cbf62c, type: 3}
+  transitionText: {fileID: 0}
+  transitionDuration: 20
 --- !u!1001 &1058619624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22823,6 +22850,7 @@ MonoBehaviour:
   speed: 2
   interactKey: 102
   openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1 &1211722835
 GameObject:
