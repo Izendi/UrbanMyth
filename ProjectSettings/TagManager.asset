@@ -21,6 +21,10 @@ TagManager:
   - floor_0_NPC
   - DM
   - DS_MENU
+  - floor_03_NPC
+  - floor_04_NPC
+  - floor_05_NPC
+  - floor_06_NPC
   layers:
   - Default
   - TransparentFX

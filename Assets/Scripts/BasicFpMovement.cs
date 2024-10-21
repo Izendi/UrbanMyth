@@ -123,7 +123,7 @@ public class BasicFpMovement : MonoBehaviour
         // Apply gravity
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; // Ensures the player stays grounded
+            velocity.y = -0.5f; // Ensures the player stays grounded
         }
 
         velocity.y += gravity * Time.deltaTime;
