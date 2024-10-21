@@ -1,0 +1,30 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Misty the Cat",
+      "Text": "Hello! Do you have any cat treats for me?",
+      "Responses": [
+        {
+          "Text": "No",
+          "NextDialogueId": 2,
+          "ResponseNiceness": -2,
+          "Action": "GiveCatTreat"
+        },
+                {
+          "Text": "Sorry, I don't have any",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Misty the Cat",
+      "Text": "Sad to hear.",
+      "Responses": [
+
+      ]
+    }
+  ]
+}

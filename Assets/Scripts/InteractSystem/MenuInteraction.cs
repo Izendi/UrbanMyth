@@ -79,6 +79,12 @@ public class MenuInteraction : MonoBehaviour
     [SerializeField]
     private GameObject _deathScreenFirstSelected;
 
+    [SerializeField]
+    private GameObject _catTreat_selected;
+
+    [SerializeField]
+    private GameObject _photo_selected;
+
 
 
     [SerializeField]
@@ -338,6 +344,24 @@ public class MenuInteraction : MonoBehaviour
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
 
             buttonText.text = "Torch";
+        }
+        if (GSM_script.has_catTreat)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("4");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Cat Treat";
+        }
+        if (GSM_script.has_photo)
+        {
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("5");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = "Photo";
         }
 
 
@@ -694,6 +718,13 @@ public class MenuInteraction : MonoBehaviour
         Unpause();
     }
 
+    public void OnEscButtonPress()
+    {
+        PlayButtonPressSound();
+        openMainMenu();
+        Pause();
+    }
+
     public void DisplayNoteOnMenu(int i)
     {
         Pause();
@@ -725,6 +756,12 @@ public class MenuInteraction : MonoBehaviour
 
         if (i == 4)
             EventSystem.current.SetSelectedGameObject(vipRationCard_selected);
+
+        if (i == 5)
+            EventSystem.current.SetSelectedGameObject(_catTreat_selected);
+
+        if (i == 6)
+            EventSystem.current.SetSelectedGameObject(_photo_selected);
 
 
         //notePanels[i].SetActive(true);

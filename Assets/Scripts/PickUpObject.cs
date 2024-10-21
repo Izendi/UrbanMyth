@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.Events;
 using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
@@ -28,6 +30,8 @@ public class PickUpObject : MonoBehaviour
 
             if (pressedE || (distanceFromPlayer > maxHoldDistance))
             {
+                EventAggregator.Instance.Publish(new LiftableObjectEvent { ObjectLifted = false });
+                
                 var rigidBody = heldObject.GetComponent<Rigidbody>();
                 rigidBody.drag = 1f;
                 rigidBody.useGravity = true;
@@ -48,6 +52,7 @@ public class PickUpObject : MonoBehaviour
 
                 if (hitIndex != -1)
                 {
+                    EventAggregator.Instance.Publish(new LiftableObjectEvent());
                     var hitObject = hits[hitIndex].transform.gameObject;
                     heldObject = hitObject;
                     var rigidBody = heldObject.GetComponent<Rigidbody>();

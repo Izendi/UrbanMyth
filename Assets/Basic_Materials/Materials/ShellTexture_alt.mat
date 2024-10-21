@@ -29,8 +29,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CullFactor: 0.1
-    - _LayerHeight: 0.1
+    - _CullFactor: 30.55
+    - _LayerHeight: 9.58
     - _Shininess: 32
     m_Colors: []
   m_BuildTextureStacks: []

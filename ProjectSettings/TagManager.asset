@@ -25,6 +25,8 @@ TagManager:
   - floor_04_NPC
   - floor_05_NPC
   - floor_06_NPC
+  - NPC
+  - Openable
   layers:
   - Default
   - TransparentFX

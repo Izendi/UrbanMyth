@@ -1,29 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using Assets.Scripts;
+using Assets.Scripts.Contracts;
 using Assets.Scripts.DialogueSystem.Models;
 using Assets.Scripts.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEvent>
 {
     private const float PRINT_SPEED = 0.01f;
-
-    public static DialogueManager Instance;
 
     public GameObject GlobalStateManagerObj;
     private GlobalStateManager GSM_script;
 
-    public static bool IsDialogueActive => Instance?.isDialogueActive ?? false;
+    public static bool IsDialogueActive { get; private set; }
 
-    private bool isDialogueActive = false;
-   
     [SerializeField] private GameObject DialogueObject;
     [SerializeField] private TextMeshProUGUI DialogueText;
     [SerializeField] private TextMeshProUGUI CurrentNpcName;
@@ -34,28 +28,17 @@ public class DialogueManager : MonoBehaviour
     private DialogueNode currentDialogueNode;
     private bool isPrinting = false;
 
-    public disableReticle dr;
-    public Canvas reticleCanvas;
-
     void Awake()
     {
         GlobalStateManagerObj = GameObject.FindWithTag("GSO");
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
-
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject); // Destroy duplicates when reloading
-        }
     }
 
     void Start()
     {
         HideDialogue();
+        IsDialogueActive = false;
+        EventAggregator.Instance.Subscribe(this);
     }
 
     void Update()
@@ -66,7 +49,7 @@ public class DialogueManager : MonoBehaviour
             GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
         }
 
-        if (!isDialogueActive)
+        if (!IsDialogueActive)
             return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -87,11 +70,24 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        EventAggregator.Instance.Unsubscribe<DialogueInitiatedEvent>(this);
+        GlobalStateManagerObj = null;
+        GSM_script = null;
+    }
+
+
     public void StartDialogue(TextAsset dialogueFile, int startNode = 1)
     {
         CurrentDialogue = JsonUtility.FromJson<Dialogue>(dialogueFile.text);
-        isDialogueActive = true;
+        IsDialogueActive = true;
         StartDialogue(startNode);
+    }
+
+    public void Handle(DialogueInitiatedEvent @event)
+    {
+        StartDialogue(@event.DialogueFile);
     }
 
     private void StartDialogue(int nodeId)
@@ -99,7 +95,7 @@ public class DialogueManager : MonoBehaviour
         if( CurrentDialogue is null)
             return;
 
-        isDialogueActive = true;
+        IsDialogueActive = true;
         DialogueObject.SetActive(true);
 
         PrintDialogueText(nodeId);
@@ -108,6 +104,7 @@ public class DialogueManager : MonoBehaviour
     private void HideDialogue()
     {
         DialogueObject.SetActive(false);
+        IsDialogueActive = false;
     }
 
     private void PrintDialogueText(int nodeId)
@@ -147,8 +144,6 @@ public class DialogueManager : MonoBehaviour
 
             var stringToPrint = "Press Enter to close...";
             text.text = stringToPrint;
-
-            //dr.enable();
         }
 
         foreach (var response in currentDialogueNode.Responses)
@@ -171,6 +166,7 @@ public class DialogueManager : MonoBehaviour
             this.StopAllCoroutines();
         }
 
+
         if (!string.IsNullOrEmpty(action))
         {
             GSM_script.DoAction(action);
@@ -181,7 +177,7 @@ public class DialogueManager : MonoBehaviour
 
     private void CloseDialogue()
     {
-        isDialogueActive = false;
+        IsDialogueActive = false;
         EventAggregator.Instance.Publish(new DialogueEndedEvent());
         HideDialogue();
     }
