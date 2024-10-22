@@ -3,28 +3,71 @@
     {
       "DialogueId": 1,
       "NpcName": "Misty the Cat",
-      "Text": "Hello! Do you have any cat treats for me?",
+      "Text": "Meow!",
       "Responses": [
         {
-          "Text": "No",
+          "Text": "Well Hello there little kitty!",
           "NextDialogueId": 2,
-          "ResponseNiceness": -2,
-          "Action": "GiveCatTreat"
+          "ResponseNiceness": 1
         },
-                {
-          "Text": "Sorry, I don't have any",
-          "NextDialogueId": 2,
-          "ResponseNiceness": 0
+        {
+          "Text": "Shoo! Get out of here!",
+          "NextDialogueId": 3,
+          "ResponseNiceness": -1
         }
       ]
     },
     {
       "DialogueId": 2,
       "NpcName": "Misty the Cat",
-      "Text": "Sad to hear.",
+      "Text": "...meow. Meow!",
       "Responses": [
-
+        {
+          "Text": "Oh here, I think I have some treats for you!",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1,
+          "Action": "GiveCatTreat"
+        },
+        {
+          "Text": "Do you know the way out of here?",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 0
+        }
       ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Misty the Cat",
+      "Text": "Grrrrrrr...."      
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Misty the Cat",
+      "Text": "Meow! Meow meow!",
+      "Responses": [
+        {
+          "Text": "Oh I'm sorry, I must not have any treats, Goodbye!",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Misty the Cat",
+      "Text": "Meow! Meow meow!",
+      "Responses": [
+        {
+          "Text": "Okay, Goodbye!",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Misty the Cat",
+      "Text": "Meooow!"      
     }
   ]
 }

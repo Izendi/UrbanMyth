@@ -3,43 +3,72 @@
     {
       "DialogueId": 1,
       "NpcName": "Misty the Cat",
-      "Text": "Hello! Do you have any cat treats for me?",
+      "Text": "Meow!",
       "Responses": [
         {
-          "Text": "Yes",
+          "Text": "Well Hello there little kitty!",
           "NextDialogueId": 2,
-          "ResponseNiceness": 3,
-          "Action": "RecievePhoto"
+          "ResponseNiceness": 1
         },
         {
-          "Text": "No",
+          "Text": "Shoo! Get out of here!",
           "NextDialogueId": 3,
-          "ResponseNiceness": -2,
-          "Action": "GiveCatTreat"
-        },
-                {
-          "Text": "Sorry, I don't have any",
-          "NextDialogueId": 3,
-          "ResponseNiceness": 0
+          "ResponseNiceness": -1
         }
       ]
     },
     {
       "DialogueId": 2,
       "NpcName": "Misty the Cat",
-      "Text": "Wow, thank you so much! To show my gratefulness I give you this photo I found.",
-      "Action": "RecievePhoto",
+      "Text": "...meow. Meow!",
       "Responses": [
-        
+        {
+          "Text": "Oh here, I think I have some treats for you!",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1,
+          "Action": "GiveCatTreat"
+        },
+        {
+          "Text": "Do you know the way out of here?",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 0
+        }
       ]
     },
     {
       "DialogueId": 3,
       "NpcName": "Misty the Cat",
-      "Text": "Sad to hear.",
+      "Text": "Grrrrrrr...."      
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Misty the Cat",
+      "Text": "Meow! Meow meow!",
+      "Action": "OpenCatHatch",
       "Responses": [
-
+        {
+          "Text": "Okay, Goodbye!",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        }
       ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Misty the Cat",
+      "Text": "Meow! Meow meow!",
+      "Responses": [
+        {
+          "Text": "Okay, Goodbye!",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Misty the Cat",
+      "Text": "Meooow!"      
     }
   ]
 }
