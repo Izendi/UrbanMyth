@@ -22415,6 +22415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayOpenSound: {fileID: 8300000, guid: f7ecc290571ad404b80b232df3dc8905, type: 3}
   wayClosedSound: {fileID: 8300000, guid: dc3eb1a598b510742b244b651e66550b, type: 3}
+  audioMixer: {fileID: 24300002, guid: 8869d9465ee331041bfc01e7b99fbab0, type: 2}
   level_0_startPos: {x: 0, y: 1, z: 0}
   level_0_startRot: {x: 0, y: 0, z: 0, w: 1}
   level_1_startPos: {x: 0, y: 1, z: 0}

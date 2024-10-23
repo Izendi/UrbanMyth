@@ -7,6 +7,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
+
 
 public class GlobalStateManager : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class GlobalStateManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip wayClosedSound;
+
+    [SerializeField]
+    private AudioMixerGroup audioMixer;
 
     public Vector3 level_0_startPos = new Vector3(16f,1f,8f);
     public Quaternion level_0_startRot = Quaternion.Euler(0, 0, 0);
@@ -28,6 +33,7 @@ public class GlobalStateManager : MonoBehaviour
     private PlayerInput playerInput;
 
     private InputAction menuOpenAction;
+
 
     // Global states
     public bool isGamePaused;
@@ -207,6 +213,12 @@ public class GlobalStateManager : MonoBehaviour
     void Start()
     {
         MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+
+        if (audioMixer == null)
+        {
+            Debug.LogError("AudioMixerGroup not assigned in the Inspector.");
+            return;
+        }
     }
 
     public void CollectedNote(String noteNumber)
@@ -434,6 +446,14 @@ public class GlobalStateManager : MonoBehaviour
                 MI_script.OnResumeButtonPress();
 
             }
+        }
+
+
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.outputAudioMixerGroup = audioMixer;
         }
     }
 
