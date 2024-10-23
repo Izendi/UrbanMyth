@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class InteractableNpc : InteractableObject
 {
     [SerializeField]
-    private TextAsset DialogueFile; // The dialogue file to be used for this NPC
+    protected TextAsset DialogueFile; // The dialogue file to be used for this NPC
 
     public override void Interact()
     {
@@ -22,7 +22,7 @@ public class InteractableNpc : InteractableObject
             InteractPrompt = "Press E to talk.";
     }
 
-    private void TriggerDialogue()
+    public virtual void TriggerDialogue()
     {
         EventAggregator.Instance.Publish(new DialogueInitiatedEvent { DialogueFile = DialogueFile });
     }

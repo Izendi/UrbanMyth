@@ -78,16 +78,16 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
     }
 
 
-    public void StartDialogue(TextAsset dialogueFile, int startNode = 1)
+    public void StartDialogue(TextAsset dialogueFile, int? startNode = 1)
     {
         CurrentDialogue = JsonUtility.FromJson<Dialogue>(dialogueFile.text);
         IsDialogueActive = true;
-        StartDialogue(startNode);
+        StartDialogue(startNode ?? 1);
     }
 
     public void Handle(DialogueInitiatedEvent @event)
     {
-        StartDialogue(@event.DialogueFile);
+        StartDialogue(@event.DialogueFile, @event.StartNodeId);
     }
 
     private void StartDialogue(int nodeId)
