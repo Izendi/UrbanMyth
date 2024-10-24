@@ -343,8 +343,7 @@ public class GlobalStateManager : MonoBehaviour
                 doorButton.ActivateButton();
             }
         }
-
-        if (actionName == "LockAllDoors")
+        else if (actionName == "LockAllDoors")
         {
             GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
@@ -357,8 +356,7 @@ public class GlobalStateManager : MonoBehaviour
                 doorButton.DeactivateButton();
             }
         }
-
-        if(actionName == "UnlockDoor_1")
+        else if(actionName == "UnlockDoor_1")
         {
             GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
@@ -373,8 +371,7 @@ public class GlobalStateManager : MonoBehaviour
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
-
-        if (actionName == "UnlockDoor_2")
+        else if (actionName == "UnlockDoor_2")
         {
             GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
@@ -389,8 +386,7 @@ public class GlobalStateManager : MonoBehaviour
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
-
-        if(actionName == "OpenHatch")
+        else if(actionName == "OpenHatch")
         {
             if(has_catTreat)
             {
@@ -409,8 +405,7 @@ public class GlobalStateManager : MonoBehaviour
 
             //Do open action
         }
-
-        if (actionName == "RecievePhoto")
+        else if (actionName == "RecievePhoto")
         {
             GameObject[] KeyItems = GameObject.FindGameObjectsWithTag("KeyItem");
 
@@ -429,15 +424,15 @@ public class GlobalStateManager : MonoBehaviour
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
-
-        if (actionName == "placeholder")
+        else if (actionName == "placeholder")
         {
             MI_script.DoAction(actionName);
         }
-
         else if (actionName.Any(c => char.IsDigit(c)))
         {
             var actions = actionName.Split("|");
+            if (actions.Length != 3)
+                return;
 
             var npcName = actions[0];
             var newPosition = actions[1];
