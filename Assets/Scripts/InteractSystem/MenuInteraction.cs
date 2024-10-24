@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using static System.Net.Mime.MediaTypeNames;
 
 public class MenuInteraction : MonoBehaviour
@@ -19,6 +20,7 @@ public class MenuInteraction : MonoBehaviour
 
     private GameObject PlayCamObj;
     private BasicMouseLook basicMouseLook_script;
+
 
     private bool deadState;
     //private bool shownOnce = false;
@@ -114,6 +116,9 @@ public class MenuInteraction : MonoBehaviour
 
     private bool isPaused = false;
 
+    Options menuOptions = new Options();
+    public AudioMixer audioMixer;
+
     private void Awake()
     {
         if (Instance == null)
@@ -151,6 +156,8 @@ public class MenuInteraction : MonoBehaviour
 
 
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
+
+        menuOptions.audioMixer = audioMixer;
     }
 
     // Update is called once per frame
@@ -209,6 +216,8 @@ public class MenuInteraction : MonoBehaviour
             DeathPause();
 
         }
+
+
     }
 
     public void DoAction(string actionName)
@@ -780,6 +789,30 @@ public class MenuInteraction : MonoBehaviour
             notePanels[i].SetActive(true);
         }
 
+    }
+
+    public void SetLowVolume()
+    {
+        menuOptions.SetVolume(-10);
+        PlayButtonPressSound();
+    }
+
+    public void SetMediumVolume()
+    {
+        menuOptions.SetVolume(0);
+        PlayButtonPressSound();
+    }
+
+    public void SetHighVolume()
+    {
+        menuOptions.SetVolume(20);
+        PlayButtonPressSound();
+    }
+
+    public void SetMute()
+    {
+        menuOptions.SetVolume(-80);
+        PlayButtonPressSound();
     }
 
     #endregion
