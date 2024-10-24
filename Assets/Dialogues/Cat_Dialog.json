@@ -23,13 +23,13 @@
       "Text": "...meow. Meow!",
       "Responses": [
         {
-          "Text": "Oh here, I think I have some treats for you!",
+          "Text": "Oh here, I think I have some treats for you! [Give Cat Treats]",
           "NextDialogueId": 4,
           "ResponseNiceness": 1,
           "Action": "GiveCatTreat"
         },
         {
-          "Text": "Do you know the way out of here?",
+          "Text": "I'm sorry, I don't have anything to give you.",
           "NextDialogueId": 5,
           "ResponseNiceness": 0
         }
@@ -56,7 +56,7 @@
     {
       "DialogueId": 5,
       "NpcName": "Misty the Cat",
-      "Text": "Meow! Meow meow!",
+      "Text": "(The cat looks at you disapprovingly, then seems to shake it's head in disbelief)",
       "Responses": [
         {
           "Text": "Okay, Goodbye!",
@@ -68,7 +68,7 @@
     {
       "DialogueId": 6,
       "NpcName": "Misty the Cat",
-      "Text": "Meooow!"      
+      "Text": "meow. (It sounds less enthusiastic this time)"      
     },
 
     {

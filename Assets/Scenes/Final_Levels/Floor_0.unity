@@ -2943,6 +2943,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145162014}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &151475518 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2542901489080591860, guid: e7aca7ff87c50e5409b03191e8c6f505,
+    type: 3}
+  m_PrefabInstance: {fileID: 3976893402176317727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &153040784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19751,7 +19757,7 @@ MonoBehaviour:
   NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 151475518}
 --- !u!65 &1056179674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39251,7 +39257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01004e7a03f432f4eaf3a745c7c595eb, type: 2}
+  - {fileID: 2100000, guid: eb267c1bfda35044b8b6ca899a05fe6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -396,9 +396,16 @@ public class GlobalStateManager : MonoBehaviour
             {
                 SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
 
-                GameObject catHatch = GameObject.FindGameObjectWithTag("cathatch");
+                GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
-                //Open
+                //SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
+
+                foreach (GameObject but in Buttons)
+                {
+                    //Debug.Log("Found object: " + but.name);
+                    DoorButton doorButton = but.GetComponent<DoorButton>();
+                    doorButton.ActivateButton();
+                }
             }
             else
             {
