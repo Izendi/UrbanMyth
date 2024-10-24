@@ -1,0 +1,108 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Daphne",
+      "Text": "Hello there, you must be Hans sister, he's told me all about you.",
+      "Responses": [
+        {
+          "Text": "And you must be Daphne.",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1,
+          "Action": null
+        },
+        {
+          "Text": "What have you done to my brother?",
+          "NextDialogueId": 3,
+          "ResponseNiceness": -1,
+          "Action": null
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Daphne",
+      "Text": "Indeed I am.",
+      "Responses": [
+        {
+          "Text": "Where is Hans?",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1,
+          "Action": null
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Daphne",
+      "Text": "Oh I haven't done anything to your brother, darling.",
+      "Responses": [
+        {
+          "Text": "Where is Hans?",
+          "NextDialogueId": 4,
+          "ResponseNicenss": 1,
+          "Action": null
+        },
+        {
+          "Text": "So you'll let us leave then??",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 1,
+          "Action": null
+        }     
+      ]    
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Daphne",
+      "Text": "Oh he's around here somewhere, I can never keep track of him.",
+      "Responses": [
+        {
+          "Text": "Okay, Goodbye!",
+          "ResponseNiceness": 1,
+          "Action": "Daphne|8.63,0,5.34|101"
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Daphne",
+      "Text": "You are free to leave anytime you want to. However, I don't think your brother will come with you",
+      "Responses": [
+        {
+          "Text": "Where is Hans by the way?",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 4,
+          "Action": null
+        },
+        {
+          "Text": "Goodbye",
+          "ResponseNiceness": 1,
+          "Action": "Daphne||201"
+        }
+      ]
+    },
+    {
+      "DialogueId": 101,
+      "NpcName": "Daphne",
+      "Text": "Your brother should be here somewhere, if you can find the right door... But I don't think he is going to want to come with you."
+    },
+    {
+      "DialogueId": 201,
+      "NpcName": "Daphne",
+      "Text": "I don't think Hans will want to come with you.",
+      "Responses": [
+        {
+          "Text": "Where is Hans by the way?",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 4,
+          "Action": null
+        },
+        {
+          "Text": "Goodbye",
+          "ResponseNiceness": 1,
+          "Action": null
+        }
+      ]
+    }
+  ]
+}

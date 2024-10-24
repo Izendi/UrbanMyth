@@ -1,0 +1,117 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Hans",
+      "Text": "Hey Sis! I was just coming to get you!",
+      "Responses": [
+        {
+          "Text": "Hans, where are we?",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Hans",
+      "Text": "Dad drugged us so that he could bring us here and lock us in.",
+      "Responses": [
+        {
+          "Text": "Why would Father leave us here?",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Where have you been?",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Hans",
+      "Text": "We're broke Greta, they can't afford to feed all of us anymore, and stepmother doesn't like us",
+      "Responses": [
+        {
+          "Text": "No, Father wouldn't do that!",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Where have you been?",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 0
+        }
+      ]
+    
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Hans",
+      "Text": "I was with Daphne, she came and woke me up and took me to her apartment.",
+      "Responses": [
+        {
+          "Text": "Why would Father leave us here?",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Who is Daphne?",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+    "DialogueId": 5,
+      "NpcName": "Hans",
+      "Text": "He did, Sis... it's gonna be okay, because now we have Daphne.",
+      "Responses": [
+        {
+          "Text": "Who is Daphne?",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Hans",
+      "Text": "Oh Sis, Daphne is amazing! She can take care of us now! You have to come and meet her!",
+      "Responses": [
+        {
+          "Text": "No Hans! I don't want to meet her, I want to go home!!!",
+          "NextDialogueId": 7,
+          "ResponseNiceness": -1
+        },
+        {
+          "Text": "Hans I'm scared. I just want to go home...",
+          "NextDialogueId": 8,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Okey, I'll come with you",
+          "NextDialogueId": 9,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 7,
+      "NpcName": "Hans",
+      "Text": "Why do you always have to ruin everything!?!"
+    },
+    {
+      "DialogueId": 8,
+      "NpcName": "Hans",
+      "Text": "Don't worry Sis, everything is goining to be okay, we have Daphne now. I'll go and get her and you just come and meet us on floor 3 in a little while."
+    },
+    {
+      "DialogueId": 9,
+      "NpcName": "Hans",
+      "Text": "This is gonna be great! I can't wait for you two to meet! I have to go and tell her! Just come and meet us on floor 3 in a little while."
+    }
+  ]
+}

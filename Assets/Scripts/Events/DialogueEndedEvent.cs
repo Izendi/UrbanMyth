@@ -2,6 +2,7 @@
 {
     public class DialogueEndedEvent : IEvent
     {
-        
+        public string NpcName { get; set; }
+
     }
 }
