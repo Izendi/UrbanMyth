@@ -419,23 +419,25 @@ public class GlobalStateManager : MonoBehaviour
         {
             var actions = actionName.Split("|");
 
-            var newPosition = actions.FirstOrDefault(a => a.Contains(","));
-            var newStart = actions.FirstOrDefault(a => a.All(char.IsDigit));
+            var npcName = actions[0];
+            var newPosition = actions[1];
+            var newStart = actions[2];
             Vector3? newPositionVector = null;
             int? newStartNode = null;
 
-            if (newPosition != null)
+            if (!string.IsNullOrEmpty(newPosition))
             {
                 var position = newPosition.Split(",");
 
                 float x = float.Parse(position[0], CultureInfo.InvariantCulture);
                 float y = float.Parse(position[1], CultureInfo.InvariantCulture);
                 float z = float.Parse(position[2], CultureInfo.InvariantCulture);
+                Debug.Log($"{x}; {y}; {z};");
 
                 newPositionVector = new Vector3(x, y, z);
             }
 
-            if (newStart != null)
+            if (!string.IsNullOrEmpty(newStart))
             {
                 newStartNode = int.TryParse(newStart, out var nsn) ? nsn : (int?)null;
             }
@@ -446,7 +448,8 @@ public class GlobalStateManager : MonoBehaviour
             EventAggregator.Instance.Publish(new NewDialogueStartNodeEvent
             {
                 NewPosition = newPositionVector,
-                NewStartNodeId = newStartNode
+                NewStartNodeId = newStartNode,
+                NpcName = npcName
             }); 
         }
     }

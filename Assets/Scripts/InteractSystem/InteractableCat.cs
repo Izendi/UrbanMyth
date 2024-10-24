@@ -16,9 +16,9 @@ public class InteractableCat : InteractableNpc
         if (globalStateManagerObj != null && globalStateManagerObj.TryGetComponent(out GlobalStateManager gsm))
         {
             var startNode = gsm.has_catTreat ? 1 : 101;
-            EventAggregator.Instance.Publish(new DialogueInitiatedEvent { DialogueFile = base.DialogueFile, StartNodeId = 101 });
+            EventAggregator.Instance.Publish(new DialogueInitiatedEvent { Dialogue = base.dialogue, StartNodeId = 101 });
         }
-    }
+    }   
 
     public void setDialogueFile(TextAsset df)
     {
