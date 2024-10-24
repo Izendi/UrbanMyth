@@ -141,9 +141,27 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-		}
 
-		private void LateUpdate()
+            Vector3 currentScale = transform.localScale;
+
+            // Crouch logic
+            if (Input.GetKey(KeyCode.C))
+            {
+                currentScale.y = Mathf.Max(currentScale.y - (Time.deltaTime * crouchSpeed), crouchHeight);
+            }
+            else
+            {
+                RaycastHit hitCeiling;
+                if (!Physics.Raycast(transform.position, Vector3.up, out hitCeiling, lowCeilingRange, ceilingLayer))
+                {
+                    currentScale.y = Mathf.Min(currentScale.y + (Time.deltaTime * crouchSpeed), standingHeight);
+                }
+            }
+
+            transform.localScale = currentScale;
+        }
+
+        private void LateUpdate()
 		{
 			CameraRotation();
 		}
