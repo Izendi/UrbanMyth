@@ -1,7 +1,10 @@
-﻿namespace Assets.Scripts.Events
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Events
 {
     public class NewDialogueStartNodeEvent : IEvent
     {
-        public int NewStartNodeId { get; }
+        public int? NewStartNodeId { get; set; }
+        public Vector3? NewPosition { get; set; }
     }
 }

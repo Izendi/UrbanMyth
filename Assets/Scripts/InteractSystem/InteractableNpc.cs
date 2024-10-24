@@ -1,7 +1,7 @@
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
 using Assets.Scripts.Events;
-using UnityEngine;
+using UnityEngine;  
 
 public class InteractableNpc : InteractableObject, IEventHandler<NewDialogueStartNodeEvent>, IEventHandler<DialogueEndedEvent>
 {
@@ -9,6 +9,7 @@ public class InteractableNpc : InteractableObject, IEventHandler<NewDialogueStar
     protected TextAsset DialogueFile; // The dialogue file to be used for this NPC
 
     private int startNodeId = 1;
+    private Vector3? moveToPosition;
 
     public override void Interact()
     {
@@ -35,13 +36,19 @@ public class InteractableNpc : InteractableObject, IEventHandler<NewDialogueStar
 
     public void Handle(NewDialogueStartNodeEvent @event)
     {
-        startNodeId = @event.NewStartNodeId;
+        if (@event.NewStartNodeId.HasValue)
+            startNodeId = @event.NewStartNodeId.Value;
+        if (@event.NewPosition.HasValue)
+            moveToPosition = @event.NewPosition.Value;
     }
 
     public void Handle(DialogueEndedEvent @event)
     {
         EventAggregator.Instance.Unsubscribe<NewDialogueStartNodeEvent>(this);
         EventAggregator.Instance.Unsubscribe<DialogueEndedEvent>(this);
+
+        if(moveToPosition.HasValue)
+            transform.position = moveToPosition.Value;
     }
 
     void OnDestroy()
