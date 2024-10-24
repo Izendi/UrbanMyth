@@ -226,7 +226,7 @@ public class GlobalStateManager : MonoBehaviour
         {
             has_ChildhoodToy = true;
         }
-        if (itemName == "OldKey")
+        if (itemName == "Money")
         {
             has_money = true;
         }
@@ -372,19 +372,21 @@ public class GlobalStateManager : MonoBehaviour
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
         else if (actionName == "UnlockDoor_2")
-        {
-            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
-
-            for (int i = 0; i < Buttons.Length; i++)
+        {   if (has_money)
             {
-                if (Buttons[i].name == "Lock_2")
-                {
-                    DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
-                    doorButton.ActivateButton();
-                }
-            }
+                GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
-            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+                for (int i = 0; i < Buttons.Length; i++)
+                {
+                    if (Buttons[i].name == "Lock_2")
+                    {
+                        DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
+                        doorButton.ActivateButton();
+                    }
+                }
+
+                SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+            }
         }
         else if(actionName == "OpenHatch")
         {
