@@ -390,6 +390,26 @@ public class GlobalStateManager : MonoBehaviour
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
 
+        if(actionName == "OpenHatch")
+        {
+            if(has_catTreat)
+            {
+                SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
+
+                GameObject catHatch = GameObject.FindGameObjectWithTag("cathatch");
+
+                //Open
+            }
+            else
+            {
+                SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+            }
+
+            
+
+            //Do open action
+        }
+
         if (actionName == "RecievePhoto")
         {
             GameObject[] KeyItems = GameObject.FindGameObjectsWithTag("KeyItem");
