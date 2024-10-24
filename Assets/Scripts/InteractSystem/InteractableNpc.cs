@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.Contracts;
-using Assets.Scripts.DialogueSystem.Models;
 using Assets.Scripts.Events;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class InteractableNpc : InteractableObject, IEventHandler<NewDialogueStartNodeEvent>, IEventHandler<DialogueEndedEvent>
 {
