@@ -9767,7 +9767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &615815410
 Transform:
   m_ObjectHideFlags: 0
@@ -9798,6 +9798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: c144c7b6013564e43bf485ab6030d7e9, type: 3}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &615815412
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26000,6 +26002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 6edf57fed374a014889849a1679c5dbb, type: 3}
+  spriteRenderer: {fileID: 1061570493}
+  fadeDuration: 0.05
 --- !u!136 &1768742977
 CapsuleCollider:
   m_ObjectHideFlags: 0
