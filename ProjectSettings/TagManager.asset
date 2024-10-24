@@ -27,6 +27,7 @@ TagManager:
   - floor_06_NPC
   - NPC
   - Openable
+  - CatHatch
   layers:
   - Default
   - TransparentFX
