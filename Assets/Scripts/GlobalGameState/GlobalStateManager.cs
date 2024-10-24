@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Assets.Scripts;
+using Assets.Scripts.Events;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine;
+using UnityEngine;  
 using UnityEngine.InputSystem;
 
 public class GlobalStateManager : MonoBehaviour
@@ -430,6 +433,44 @@ public class GlobalStateManager : MonoBehaviour
         if (actionName == "placeholder")
         {
             MI_script.DoAction(actionName);
+        }
+
+        else if (actionName.Any(c => char.IsDigit(c)))
+        {
+            var actions = actionName.Split("|");
+
+            var npcName = actions[0];
+            var newPosition = actions[1];
+            var newStart = actions[2];
+            Vector3? newPositionVector = null;
+            int? newStartNode = null;
+
+            if (!string.IsNullOrEmpty(newPosition))
+            {
+                var position = newPosition.Split(",");
+
+                float x = float.Parse(position[0], CultureInfo.InvariantCulture);
+                float y = float.Parse(position[1], CultureInfo.InvariantCulture);
+                float z = float.Parse(position[2], CultureInfo.InvariantCulture);
+                Debug.Log($"{x}; {y}; {z};");
+
+                newPositionVector = new Vector3(x, y, z);
+            }
+
+            if (!string.IsNullOrEmpty(newStart))
+            {
+                newStartNode = int.TryParse(newStart, out var nsn) ? nsn : (int?)null;
+            }
+
+            if (!newPositionVector.HasValue && !newStartNode.HasValue)
+                return;
+
+            EventAggregator.Instance.Publish(new NewDialogueStartNodeEvent
+            {
+                NewPosition = newPositionVector,
+                NewStartNodeId = newStartNode,
+                NpcName = npcName
+            }); 
         }
     }
 

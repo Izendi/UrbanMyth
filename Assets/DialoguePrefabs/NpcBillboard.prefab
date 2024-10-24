@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 7d837212e24571041bf5ba6933518dc5, type: 3}
+  spriteRenderer: {fileID: 7334392270157302343}
+  fadeDuration: 2
 --- !u!136 &1187410033741107966
 CapsuleCollider:
   m_ObjectHideFlags: 0
