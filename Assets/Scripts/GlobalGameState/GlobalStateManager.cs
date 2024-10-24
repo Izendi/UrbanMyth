@@ -38,7 +38,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool[] backup_collectedNotes;
 
     public bool has_ChildhoodToy;
-    public bool has_oldKey;
+    public bool has_money;
     public bool has_codeBreaker;
     public bool has_torch;
     public bool has_vipRationCard;
@@ -46,7 +46,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool has_photo;
 
     public bool givenAway_ChildhoodToy;
-    public bool givenAway_oldKey;
+    public bool givenAway_money;
     public bool givenAway_codeBreaker;
     public bool givenAway_torch;
     public bool givenAway_vipRationCard;
@@ -54,7 +54,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool givenAway_photo;
 
     public bool backup_has_ChildhoodToy;
-    public bool backup_has_oldKey;
+    public bool backup_has_money;
     public bool backup_has_codeBreaker;
     public bool backup_has_torch;
     public bool backup_has_vipRationCard;
@@ -62,7 +62,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool backup_has_photo;
 
     public bool backup_givenAway_ChildhoodToy;
-    public bool backup_givenAway_oldKey;
+    public bool backup_givenAway_money;
     public bool backup_givenAway_codeBreaker;
     public bool backup_givenAway_torch;
     public bool backup_givenAway_vipRationCard;
@@ -77,7 +77,7 @@ public class GlobalStateManager : MonoBehaviour
         }
 
         backup_has_ChildhoodToy = has_ChildhoodToy;
-        backup_has_oldKey = has_oldKey;
+        backup_has_money = has_money;
         backup_has_codeBreaker = has_codeBreaker;
         backup_has_torch = has_torch;
         backup_has_vipRationCard = has_vipRationCard;
@@ -85,13 +85,13 @@ public class GlobalStateManager : MonoBehaviour
         backup_has_photo = has_photo;
 
         backup_givenAway_ChildhoodToy = givenAway_ChildhoodToy;
-        backup_givenAway_oldKey = givenAway_oldKey;
+        backup_givenAway_money = givenAway_money;
         backup_givenAway_codeBreaker = givenAway_codeBreaker;
         backup_givenAway_torch = givenAway_torch;
         backup_givenAway_vipRationCard = givenAway_vipRationCard;
         backup_givenAway_catTreat = givenAway_catTreat;
         backup_givenAway_photo = givenAway_photo;
-
+        
     }
 
     public void wipeData()
@@ -107,7 +107,7 @@ public class GlobalStateManager : MonoBehaviour
         MI_script.deactivateNonBackupItems();
 
         has_ChildhoodToy = false;
-        has_oldKey = false;
+        has_money = false;
         has_codeBreaker = false;
         has_torch = false;
         has_vipRationCard = false;
@@ -115,7 +115,7 @@ public class GlobalStateManager : MonoBehaviour
         has_photo = false;
 
         givenAway_ChildhoodToy = false;
-        givenAway_oldKey = false;
+        givenAway_money = false;
         givenAway_codeBreaker = false;
         givenAway_torch = false;
         givenAway_vipRationCard = false;
@@ -140,7 +140,7 @@ public class GlobalStateManager : MonoBehaviour
         MI_script.activateCollectedNotes();
 
         has_ChildhoodToy = backup_has_ChildhoodToy;
-        has_oldKey = backup_has_oldKey;
+        has_money = backup_has_money;
         has_codeBreaker = backup_has_codeBreaker;
         has_torch = backup_has_torch;
         has_vipRationCard = backup_has_vipRationCard;
@@ -148,7 +148,7 @@ public class GlobalStateManager : MonoBehaviour
         has_photo = backup_has_photo;
 
         givenAway_ChildhoodToy = backup_givenAway_ChildhoodToy;
-        givenAway_oldKey = backup_givenAway_oldKey;
+        givenAway_money = backup_givenAway_money;
         givenAway_codeBreaker = backup_givenAway_codeBreaker;
         givenAway_torch = backup_givenAway_torch;
         givenAway_vipRationCard = backup_givenAway_vipRationCard;
@@ -178,7 +178,7 @@ public class GlobalStateManager : MonoBehaviour
             }
 
             backup_has_ChildhoodToy = false;
-            backup_has_oldKey = false;
+            backup_has_money = false;
             backup_has_codeBreaker = false;
             backup_has_torch = false;
             backup_has_vipRationCard = false;
@@ -186,7 +186,7 @@ public class GlobalStateManager : MonoBehaviour
             backup_has_photo = false;
 
             backup_givenAway_ChildhoodToy = false;
-            backup_givenAway_oldKey = false;
+            backup_givenAway_money = false;
             backup_givenAway_codeBreaker = false;
             backup_givenAway_torch = false;
             backup_givenAway_vipRationCard = false;
@@ -225,7 +225,7 @@ public class GlobalStateManager : MonoBehaviour
         }
         if (itemName == "OldKey")
         {
-            has_oldKey = true;
+            has_money = true;
         }
         if (itemName == "CodeBreaker")
         {
@@ -275,9 +275,9 @@ public class GlobalStateManager : MonoBehaviour
             MI_script.DisplayKeyItem(0);
 
         }
-        if (keyItemName == "OldKey")
+        if (keyItemName == "Money")
         {
-            has_oldKey = true;
+            has_money = true;
             MI_script.DisplayKeyItem(1);
         }
         if (keyItemName == "CodeBreaker")

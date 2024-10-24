@@ -6173,7 +6173,7 @@ GameObject:
   - component: {fileID: 425617838}
   m_Layer: 0
   m_Name: Note (1)(in drawer)
-  m_TagString: Untagged
+  m_TagString: CollectibleItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9760,6 +9760,7 @@ GameObject:
   - component: {fileID: 615815413}
   - component: {fileID: 615815412}
   - component: {fileID: 615815411}
+  - component: {fileID: 615815414}
   m_Layer: 0
   m_Name: npc_yusheng2
   m_TagString: NPC
@@ -9828,6 +9829,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615815409}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &615815414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615815409}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74836429c8b73004e974503e1586a567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &618188764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10079,7 +10092,7 @@ GameObject:
   - component: {fileID: 628119675}
   m_Layer: 0
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: KeyItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
