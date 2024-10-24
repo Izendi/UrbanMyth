@@ -12,14 +12,14 @@ public class BasicFpMovement : MonoBehaviour
     public float standingHeight = 1.0f;
     public float crouchSpeed = 0.5f;
 
+    // Ceiling and crouch settings
+    public float lowCeilingRange = 2.0f;
+    public LayerMask ceilingLayer;
+
     // Movement variables
     public float speed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
-
-    // Ceiling and crouch settings
-    public float lowCeilingRange = 2.0f;
-    public LayerMask ceilingLayer;
 
     // Private variables
     private CharacterController controller;
@@ -111,6 +111,7 @@ public class BasicFpMovement : MonoBehaviour
 
         transform.localScale = currentScale;
 
+        /*
         // Movement input (using Vector2 from Input System)
         Vector2 input = moveAction.ReadValue<Vector2>();
         float x = input.x;
@@ -134,5 +135,6 @@ public class BasicFpMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+        */
     }
 }

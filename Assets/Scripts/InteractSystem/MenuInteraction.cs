@@ -130,14 +130,14 @@ public class MenuInteraction : MonoBehaviour
             Destroy(gameObject);
         }
 
-        PlayerObj = GameObject.FindWithTag("Player");
+        PlayerObj = GameObject.FindWithTag("OtherPlayer");
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         //SceneManager.sceneLoaded += OnSceneLoaded_2;
 
         if (PlayCamObj == null)
         {
-            PlayCamObj = GameObject.FindWithTag("PlayCam");
+            PlayCamObj = GameObject.FindWithTag("MainCamera");
             basicMouseLook_script = PlayCamObj.GetComponent<BasicMouseLook>();
         }
 
@@ -158,7 +158,7 @@ public class MenuInteraction : MonoBehaviour
     {
         if (PlayerObj == null)
         {
-            PlayerObj = GameObject.FindWithTag("Player");
+            PlayerObj = GameObject.FindWithTag("OtherPlayer");
         }
         if (GlobalStateManagerObj == null)
         {
@@ -169,7 +169,7 @@ public class MenuInteraction : MonoBehaviour
 
         if (PlayCamObj == null)
         {
-            PlayCamObj = GameObject.FindWithTag("PlayCam");
+            PlayCamObj = GameObject.FindWithTag("MainCamera");
             basicMouseLook_script = PlayCamObj.GetComponent<BasicMouseLook>();
         }
 
@@ -552,7 +552,7 @@ public class MenuInteraction : MonoBehaviour
         GlobalStateManagerObj = GameObject.FindWithTag("GSO");
         GSM_script = GlobalStateManagerObj.GetComponent<GlobalStateManager>();
 
-        PlayerObj = GameObject.FindWithTag("Player");
+        PlayerObj = GameObject.FindWithTag("OtherPlayer");
         // Set the player's position and rotation after the scene reloads
         PlayerObj.transform.position = GSM_script.level_0_startPos;
         PlayerObj.transform.rotation = GSM_script.level_0_startRot;

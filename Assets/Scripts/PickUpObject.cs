@@ -20,8 +20,6 @@ public class PickUpObject : MonoBehaviour
 
     private void Update()
     {
-        
-
         var t = transform;
         var pressedE = Input.GetKeyDown(KeyCode.E);
         if (heldObject)

@@ -16,8 +16,13 @@ public class BasicMouseLook : MonoBehaviour
 
     public bool registerMouse = true;
 
+    //public GameObject mainCamera;
+
     void Start()
     {
+        //mainCamera = GameObject.FindWithTag("MainCamera");
+        //mainCam_script = mainCamera.GetComponent<BasicMouseLook>();
+
         Cursor.lockState = CursorLockMode.Locked; // Locks the cursor
 
         
@@ -54,6 +59,8 @@ public class BasicMouseLook : MonoBehaviour
         else
         {
             // Get mouse input
+
+            /*
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -64,6 +71,8 @@ public class BasicMouseLook : MonoBehaviour
 
             // Rotate the player left and right
             playerBody.Rotate(Vector3.up * mouseX);
+            */
+
         }
     }
 

@@ -33,7 +33,7 @@ public class SpikeRespawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("OtherPlayer"))
         {
 
             GSO_script.isPlayerDead = true;

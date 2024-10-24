@@ -52,7 +52,7 @@ public class SlidingGrateController : MonoBehaviour
     // Detect when the player enters the trigger zone
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("OtherPlayer"))
         {
             isPlayerNear = true;
         }
@@ -66,7 +66,7 @@ public class SlidingGrateController : MonoBehaviour
     // Detect when the player exits the trigger zone
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("OtherPlayer"))
         {
             isPlayerNear = false;
         }

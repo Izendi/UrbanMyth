@@ -38,7 +38,7 @@ public class LoadOnInteract : MonoBehaviour
 
         if(playerCamera == null)
         {
-            GameObject cam =  GameObject.FindWithTag("PlayCam");
+            GameObject cam =  GameObject.FindWithTag("MainCamera");
             playerCamera = cam.GetComponent<Camera>();
         }
 
