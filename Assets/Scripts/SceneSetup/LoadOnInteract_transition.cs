@@ -26,7 +26,9 @@ public class LoadOnInteract_transition : MonoBehaviour
     public GameObject transitionCanvas; // Assign this in the inspector (the canvas that holds the image and text)
     public Sprite transitionImage; // Assign the Image (background or visual)
     public TMP_Text transitionText; // Assign the TextMeshPro for the caption
-    public float transitionDuration = 10.0f; // How long the transition scene should last
+    public float transitionDuration = 3.0f; // How long the transition scene should last
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class LoadOnInteract_transition : MonoBehaviour
         loadSceneText.enabled = false;
         MenuSystemObj = GameObject.FindWithTag("MENU");
         MI_script = MenuSystemObj.GetComponent<MenuInteraction>();
+        
 
         // Ensure the transition canvas is initially disabled
         if (transitionCanvas != null)
@@ -83,11 +86,18 @@ public class LoadOnInteract_transition : MonoBehaviour
                 {
                     if (NoSceneToLoad >= 0)
                     {
-                        StartCoroutine(ShowTransitionAndLoadScene(NoSceneToLoad));
+                        // StartCoroutine(ShowTransitionAndLoadScene(NoSceneToLoad));
+                        ShowTransition();
+                        
+                        // Use Invoke to delay the scene load after the transition duration
+                        Invoke(nameof(LoadScene), transitionDuration);
+                        
                     }
                     else
                     {
-                        StartCoroutine(ShowTransitionAndLoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+                        //StartCoroutine(ShowTransitionAndLoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+                        ShowTransition();
+                        Invoke(nameof(LoadNextScene), transitionDuration);
                     }
                 }
             }
@@ -104,8 +114,26 @@ public class LoadOnInteract_transition : MonoBehaviour
                 }
             }
         }
+        
+    }
+    void ShowTransition()
+    {
+        if (transitionCanvas != null)
+        {
+            transitionCanvas.SetActive(true);
+            // Optionally, configure the image or UI if needed
+        }
     }
 
+    void LoadScene()
+    {
+        MI_script.LoadNextScene(NoSceneToLoad);
+    }
+
+    void LoadNextScene()
+    {
+        MI_script.LoadNextScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     IEnumerator ShowTransitionAndLoadScene(int sceneIndex)
     {
         // Show the transition canvas
@@ -124,12 +152,14 @@ public class LoadOnInteract_transition : MonoBehaviour
                 // Optionally, change the image if needed
                 // transitionImage.sprite = yourSprite;
             }
-
+            Debug.Log("dispaly img");
             // Wait for the specified duration
-            yield return new WaitForSeconds(transitionDuration);
+            yield return new WaitForSecondsRealtime(transitionDuration);
+            Debug.Log("wait for second");
 
             // Hide the transition canvas after the duration
             transitionCanvas.SetActive(false);
+            Debug.Log("set inactive");
         }
 
         // Load the next scene after the transition
