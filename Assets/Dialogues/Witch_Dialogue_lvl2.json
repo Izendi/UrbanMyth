@@ -1,0 +1,118 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Daphne",
+      "Text": "Hello dear, you must be Hans sister, he's told me all about you.",
+      "Responses": [
+        {
+          "Text": "And you must be Daphne.",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1,
+          "Action": null
+        },
+        {
+          "Text": "What have you done to my brother?",
+          "NextDialogueId": 3,
+          "ResponseNiceness": -1,
+          "Action": null
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Daphne",
+      "Text": "I am indeed.",
+      "Responses": [
+        {
+          "Text": "Where is Hans?",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1,
+          "Action": null
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Daphne",
+      "Text": "Oh I haven't done anything to your brother, darling.",
+      "Responses": [
+        {
+          "Text": "So you'll let us leave then??",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 1,
+          "Action": null
+        }     
+      ]    
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Daphne",
+      "Text": "Of course. I'd be delighted to help you leave. There is just one small problem, perhaps you could help me first?",
+      "Responses": [
+        {
+          "Text": "Oh. What's the problem?",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 5,
+          "Action": null
+        }
+
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Daphne",
+      "Text": "My darling little pet lives just upstairs. But the door to his enclosure has jammed and I can't get in to feed him!!!! I've been worried sick about my poor little Rufus.",
+      "Responses": [
+        {
+          "Text": "so... what exactly do you need me to do?",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 6,
+          "Action": null
+        }
+
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Daphne",
+      "Text": "There is a small pipe that can take you to the back entrance if you go up the stairs and crawl through a pipe. Sadly I'm too tall to fit, but a young girl like yourself should easily squeeze in",
+      "Responses": [
+        {
+          "Text": "I go in there and give your pet some food? That's it?",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 7,
+          "Action": null
+        }
+
+      ]
+    },
+    {
+      "DialogueId": 7,
+      "NpcName": "Daphne",
+      "Text": "Yes! Do that for me and I'll show you the way out. I'll unlock the doorway.",
+      "Responses": [
+        {
+          "Text": "Alright, I guess can do that...",
+          "ResponseNiceness": 1,
+          "NextDialogueId": 8,
+          "Action": "UnlockAllDoors"
+        }
+
+      ]
+    },
+    {
+      "DialogueId": 8,
+      "NpcName": "Daphne",
+      "Text": "Thank you darling, he really is to die for my little Rufus. I'm sure you'll love him. Now of you go! [Daphne marches off before you even have the chance to ask what kind of food 'Rufus' eats]",
+      "Responses": [
+        {
+          "Text": "Alright...",
+          "Action": "RemoveAllNPCs"
+        }
+
+      ]
+    }
+    
+  ]
+}

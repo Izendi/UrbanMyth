@@ -23,7 +23,11 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
     [SerializeField] private TextMeshProUGUI CurrentNpcName;
     [SerializeField] private GameObject PressEnterToClosePrefab;
     [SerializeField] private GameObject ResponsePrefab;
-    [SerializeField] private Transform ResponseContainer; 
+    [SerializeField] private Transform ResponseContainer;
+    [SerializeField] private Canvas DialogueCanvas;
+    [SerializeField] private Canvas MemoryCanvas;
+    [SerializeField] private bool ShowMemory;
+    [SerializeField] private Button CloseMemoryButton;
     private Dialogue CurrentDialogue;
     private DialogueNode currentDialogueNode;
     private bool isPrinting = false;
@@ -39,6 +43,15 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
         HideDialogue();
         IsDialogueActive = false;
         EventAggregator.Instance.Subscribe(this);
+
+        if (ShowMemory)
+        {
+            StartMemory();
+        }
+        else
+        {
+            CloseMemory();
+        }
     }
 
     void Update()
@@ -57,7 +70,9 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
 
         if (Input.GetKeyDown(KeyCode.Return)) 
         {
-            if (!currentDialogueNode.Responses.Any())
+            CloseMemory();
+
+            if (!currentDialogueNode?.Responses.Any() ?? false)
             {
                 CloseDialogue();
             }
@@ -77,11 +92,28 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
         GSM_script = null;
     }
 
+    private void StartMemory()
+    {
+        MemoryCanvas.gameObject.SetActive(true);
+        DialogueCanvas.gameObject.SetActive(false);
+        CloseMemoryButton.onClick.AddListener(CloseMemory);
+        IsDialogueActive = true;
+    }
+
+    private void CloseMemory()
+    {
+        ShowMemory = false;
+        MemoryCanvas.gameObject.SetActive(false);
+        CloseDialogue();
+    }
 
     public void StartDialogue(Dialogue dialogue, int? startNode = 1)
     {
         CurrentDialogue = dialogue;
         IsDialogueActive = true;
+        DialogueCanvas.gameObject.SetActive(true);
+        MemoryCanvas.gameObject.SetActive(false);
+        DialogueObject.SetActive(true);
         StartDialogue(startNode ?? 1);
     }
 
@@ -189,7 +221,7 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
     private void CloseDialogue()
     {
         IsDialogueActive = false;
-        EventAggregator.Instance.Publish(new DialogueEndedEvent{NpcName = currentDialogueNode.NpcName});
+        EventAggregator.Instance.Publish(new DialogueEndedEvent{NpcName = currentDialogueNode?.NpcName});
         HideDialogue();
     }
 }
