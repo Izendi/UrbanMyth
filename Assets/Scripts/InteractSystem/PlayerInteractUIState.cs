@@ -10,5 +10,6 @@
         InRangeOfNpc,
         ActiveDialogue,
         InRangeOfDoor,
+        CollectibleItem
     }
 }

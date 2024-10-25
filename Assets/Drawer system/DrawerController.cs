@@ -13,7 +13,7 @@ public class DrawerController : MonoBehaviour
     public Vector3 openPosition; // The target position when the drawer is open
     public Vector3 closedPosition; // The initial closed position of the drawer
     public float speed = 2f; // Speed of drawer opening and closing
-    public KeyCode interactKey = KeyCode.F; // The key to interact with the drawer
+    private KeyCode interactKey = KeyCode.E; // The key to interact with the drawer
     public float slideDistance = 0.3f; // Distance the drawer will slide
 
     private bool isOpen = false; // Check if the drawer is open

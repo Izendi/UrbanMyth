@@ -8675,6 +8675,7 @@ Transform:
   - {fileID: 568315822}
   - {fileID: 138875691}
   - {fileID: 1116005362}
+  - {fileID: 1993455131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456363767
@@ -10108,7 +10109,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
@@ -22321,7 +22321,7 @@ GameObject:
   - component: {fileID: 1200605702}
   m_Layer: 0
   m_Name: Slide Grate (2)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22415,7 +22415,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   slideDistance: 1
   activated: 0
 --- !u!1 &1211722835
@@ -22520,28 +22519,28 @@ MonoBehaviour:
   collectedNotes: 0000000000
   backup_collectedNotes: 0000000000
   has_ChildhoodToy: 0
-  has_oldKey: 0
+  has_money: 0
   has_codeBreaker: 0
   has_torch: 0
   has_vipRationCard: 0
   has_catTreat: 0
   has_photo: 0
   givenAway_ChildhoodToy: 0
-  givenAway_oldKey: 0
+  givenAway_money: 0
   givenAway_codeBreaker: 0
   givenAway_torch: 0
   givenAway_vipRationCard: 0
   givenAway_catTreat: 0
   givenAway_photo: 0
   backup_has_ChildhoodToy: 0
-  backup_has_oldKey: 0
+  backup_has_money: 0
   backup_has_codeBreaker: 0
   backup_has_torch: 0
   backup_has_vipRationCard: 0
   backup_has_catTreat: 0
   backup_has_photo: 0
   backup_givenAway_ChildhoodToy: 0
-  backup_givenAway_oldKey: 0
+  backup_givenAway_money: 0
   backup_givenAway_codeBreaker: 0
   backup_givenAway_torch: 0
   backup_givenAway_vipRationCard: 0
@@ -24039,7 +24038,7 @@ GameObject:
   - component: {fileID: 1291594893}
   m_Layer: 0
   m_Name: Slide Grate (4)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24077,7 +24076,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!65 &1291594895
 BoxCollider:
@@ -28965,7 +28963,7 @@ GameObject:
   - component: {fileID: 1570685542}
   m_Layer: 0
   m_Name: Slide Grate (5)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29003,7 +29001,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!65 &1570685544
 BoxCollider:
@@ -30574,7 +30571,7 @@ GameObject:
   - component: {fileID: 1632210975}
   m_Layer: 0
   m_Name: Slide Grate (3)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30633,7 +30630,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!1001 &1634308695
 PrefabInstance:
@@ -39174,6 +39170,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992560672}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1993455130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993455131}
+  - component: {fileID: 1993455134}
+  - component: {fileID: 1993455133}
+  - component: {fileID: 1993455132}
+  m_Layer: 0
+  m_Name: 3
+  m_TagString: CollectibleItem
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1993455131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993455130}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.972, y: 9.4268875, z: 7.785}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 453424663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1993455132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993455130}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1993455133
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993455130}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 01004e7a03f432f4eaf3a745c7c595eb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1993455134
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993455130}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1994022182
 GameObject:
   m_ObjectHideFlags: 0
@@ -39187,7 +39288,7 @@ GameObject:
   - component: {fileID: 1994022185}
   - component: {fileID: 1994022184}
   m_Layer: 0
-  m_Name: OldKey
+  m_Name: Money
   m_TagString: KeyItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40541,7 +40642,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NA
+  m_text: "The signs were there all along. The apocalypse is coming, and no one else
+    seems to realize it. They\u2019re blind to the truth, but I\u2019ve been preparing
+    for this. \n\nI\u2019ve hidden everything. Food, supplies, weapons\u2026 it\u2019s
+    all locked away in the secret room. Not these fools living in the building.\nI
+    don't trust anyone in this building. Especially that woman on the top floor.
+    Don\u2019t let her beauty fool you. She\u2019s like a snake, slithering through
+    these halls, pretending to be sweet, but I see her for what she is.\n\nWhen the
+    world collapses, it\u2019ll be me who survives. Not them.\n\n\u2014 M"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4a395e4a0f292f4a91dc42fff349ff4, type: 2}
   m_sharedMaterial: {fileID: -8464256252641358571, guid: e4a395e4a0f292f4a91dc42fff349ff4,

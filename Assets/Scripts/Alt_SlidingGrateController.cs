@@ -12,7 +12,7 @@ public class Alt_SlidingGrateController : MonoBehaviour
     public Vector3 openPosition; // The target position when the door is open
     public Vector3 closedPosition; // The initial closed position of the door
     public float speed = 2f; // Speed of door opening and closing
-    public KeyCode interactKey = KeyCode.F; // The key to interact with the door
+    private KeyCode interactKey = KeyCode.E; // The key to interact with the door
 
     private bool isOpen = false; // Check if the door is open
     private bool isPlayerNear = false; // Check if the player is near the door

@@ -10588,7 +10588,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
@@ -23192,7 +23191,7 @@ GameObject:
   - component: {fileID: 1200605702}
   m_Layer: 0
   m_Name: Slide Grate (2)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23286,7 +23285,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   slideDistance: 1
   activated: 0
 --- !u!1 &1211722835
@@ -23391,28 +23389,28 @@ MonoBehaviour:
   collectedNotes: 0000000000
   backup_collectedNotes: 0000000000
   has_ChildhoodToy: 0
-  has_oldKey: 0
+  has_money: 0
   has_codeBreaker: 0
   has_torch: 0
   has_vipRationCard: 0
   has_catTreat: 0
   has_photo: 0
   givenAway_ChildhoodToy: 0
-  givenAway_oldKey: 0
+  givenAway_money: 0
   givenAway_codeBreaker: 0
   givenAway_torch: 0
   givenAway_vipRationCard: 0
   givenAway_catTreat: 0
   givenAway_photo: 0
   backup_has_ChildhoodToy: 0
-  backup_has_oldKey: 0
+  backup_has_money: 0
   backup_has_codeBreaker: 0
   backup_has_torch: 0
   backup_has_vipRationCard: 0
   backup_has_catTreat: 0
   backup_has_photo: 0
   backup_givenAway_ChildhoodToy: 0
-  backup_givenAway_oldKey: 0
+  backup_givenAway_money: 0
   backup_givenAway_codeBreaker: 0
   backup_givenAway_torch: 0
   backup_givenAway_vipRationCard: 0
@@ -24910,7 +24908,7 @@ GameObject:
   - component: {fileID: 1291594893}
   m_Layer: 0
   m_Name: Slide Grate (4)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24948,7 +24946,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!65 &1291594895
 BoxCollider:
@@ -30019,7 +30016,7 @@ GameObject:
   - component: {fileID: 1570685542}
   m_Layer: 0
   m_Name: Slide Grate (5)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30057,7 +30054,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!65 &1570685544
 BoxCollider:
@@ -31628,7 +31624,7 @@ GameObject:
   - component: {fileID: 1632210975}
   m_Layer: 0
   m_Name: Slide Grate (3)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31687,7 +31683,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
   activated: 0
 --- !u!1001 &1634308695
 PrefabInstance:

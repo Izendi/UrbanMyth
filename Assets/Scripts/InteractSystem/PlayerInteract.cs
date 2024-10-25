@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private const float INTERACT_DISTANCE = 2.0f;
+    private const float INTERACT_DISTANCE = 1.0f;
     private const float OFFSET_DISTANCE = 1.5f;
     private const float TRANSITION_SPEED = 2f; // Speed of the transition
     
@@ -65,9 +65,14 @@ public class PlayerInteract : MonoBehaviour
             return PlayerInteractUIState.InRangeOfNpc;
         }
 
-        if (hits.Any(h => h.transform.tag == "Openable"))
+        if (hits.Any(h => h.transform.tag == "Openable")) // && Vector3.Distance(h.transform.position, transform.position)))
         {
             return PlayerInteractUIState.InRangeOfDoor;
+        }
+
+        if (hits.Any(h => h.transform.tag == "CollectibleItem"))
+        {
+            return PlayerInteractUIState.CollectibleItem;
         }
 
         return PlayerInteractUIState.Undefined;
