@@ -40,7 +40,7 @@ public class KarmaSetup : MonoBehaviour
             Debug.Log("Oven");
 
         }
-        else if (GSM_script.KarmaLevel >= 2 && GSM_script.has_fireEscapePlan && GSM_script.has_oldKey && GSM_script.hasShownPhoto)
+        else if (GSM_script.KarmaLevel >= 2 && GSM_script.has_fireEscapePlan && GSM_script.has_oldKey && GSM_script.has_photo)
         {
             // set up scene for best ending
             GSM_script.DoAction("Hans|9.57,0,20.93|1");
