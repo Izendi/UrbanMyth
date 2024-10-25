@@ -291,7 +291,7 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "???";
         }
-        if (GSM_script.backup_has_codeBreaker == false)
+        if (GSM_script.backup_has_fireEscapePlan == false)
         {
 
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
@@ -302,10 +302,32 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "???";
         }
-        if (GSM_script.backup_has_torch == false)
+        if (GSM_script.backup_has_oldKey == false)
         {
 
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("3");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+        if (GSM_script.backup_has_vipRationCard == false)
+        {
+
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("4");
+            Button b = buttonTransform.GetComponent<Button>();
+
+            TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
+
+
+            buttonText.text = "???";
+        }
+        if (GSM_script.backup_has_catTreat == false)
+        {
+
+            Transform buttonTransform = _inventoryItemsCanvas.transform.Find("5");
             Button b = buttonTransform.GetComponent<Button>();
 
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
@@ -327,32 +349,32 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "Childhood Toy";
         }
-        if (GSM_script.has_codeBreaker)
+        if (GSM_script.has_money)
         {
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
             Button b = buttonTransform.GetComponent<Button>();
 
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
 
-            buttonText.text = "Code Breaker";
+            buttonText.text = "money";
         }
-        if (GSM_script.has_money)
+        if (GSM_script.has_fireEscapePlan)
         {
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
             Button b = buttonTransform.GetComponent<Button>();
 
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
 
-            buttonText.text = "Money";
+            buttonText.text = "fire escape plan";
         }
-        if (GSM_script.has_torch)
+        if (GSM_script.has_oldKey)
         {
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("3");
             Button b = buttonTransform.GetComponent<Button>();
 
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
 
-            buttonText.text = "Torch";
+            buttonText.text = "old key";
         }
         if (GSM_script.has_catTreat)
         {
@@ -390,10 +412,10 @@ public class MenuInteraction : MonoBehaviour
         buttonText.text = "(Given Away)";
     }
 
-    void giveAway_codeBreaker()
+    void giveAway_fireEscapePlan()
     {
-        GSM_script.has_codeBreaker = false;
-        GSM_script.givenAway_codeBreaker = true;
+        GSM_script.has_fireEscapePlan = false;
+        GSM_script.givenAway_fireEscapePlan = true;
 
         Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
         Button b = buttonTransform.GetComponent<Button>();
@@ -405,8 +427,8 @@ public class MenuInteraction : MonoBehaviour
 
     void giveAway_oldKey()
     {
-        GSM_script.has_money = false;
-        GSM_script.givenAway_money = true;
+        GSM_script.has_oldKey = false;
+        GSM_script.givenAway_oldKey = true;
 
         Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
         Button b = buttonTransform.GetComponent<Button>();

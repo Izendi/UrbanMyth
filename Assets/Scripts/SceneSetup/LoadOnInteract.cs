@@ -11,8 +11,8 @@ public class LoadOnInteract : MonoBehaviour
     public Camera playerCamera;
     public KeyCode keyToPress;
 
-    [SerializeField]
-    private int NoSceneToLoad;
+    
+    public int NoSceneToLoad;
 
     [SerializeField]
     private float radius = 1.0f;

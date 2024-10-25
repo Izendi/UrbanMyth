@@ -1,0 +1,60 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Daphne",
+      "Text": "You should have accepted my medicine last time!",
+      "Responses": [
+        {
+          "Text": "Last time???",
+          "NextDialogueId": 2
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Daphne",
+      "Text": "Why of course. My darling pet secrets a venom that, when in the bloodstream of an adolescent, produces a serum that halt's aging. If only momentarily.",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Daphne",
+      "Text": "Unfortunately, the process causes rapid aging, bloodshot eyes, decrease in cognitive abilities... oh, I won't bore you with the long list of side effects. ",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Daphne",
+      "Text": "But really you should be thanking me! What was the alternative? Starving on the streets? That is, if they don't pick the flesh of your bones first! Hahahahahahaha",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Daphne",
+      "Text": "Now my darling little Hans. Would do the honours. [you feel a sharp prick in your neck and everything starts to fade.]",
+      "Responses": [
+        {
+          "Text": "...",
+          "Action": "EndGame"
+        }
+      ]
+    }
+    
+  ]
+}
