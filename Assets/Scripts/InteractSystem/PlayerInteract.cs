@@ -70,6 +70,11 @@ public class PlayerInteract : MonoBehaviour
             return PlayerInteractUIState.InRangeOfDoor;
         }
 
+        if (hits.Any(h => h.transform.tag == "CollectibleItem"))
+        {
+            return PlayerInteractUIState.CollectibleItem;
+        }
+
         return PlayerInteractUIState.Undefined;
     }
 }
