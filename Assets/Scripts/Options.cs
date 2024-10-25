@@ -11,6 +11,8 @@ public class Options : MonoBehaviour
 
     public TMP_Dropdown resolutionDropdown;
 
+    public Toggle fullscreenToggle;
+
     Resolution[] resolutions;
 
     void Start()
@@ -38,7 +40,10 @@ public class Options : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        fullscreenToggle.isOn = Screen.fullScreen;
     }
+
 
     public void SetVolume (float volume)
     {
@@ -52,7 +57,8 @@ public class Options : MonoBehaviour
 
     public void setFullscreen (bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        //Screen.fullScreen = isFullscreen;
+        Screen.fullScreen = !Screen.fullScreen;
     }
 
     public void SetResolution (int resolutionIndex)

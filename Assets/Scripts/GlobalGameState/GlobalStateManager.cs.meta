@@ -3,7 +3,11 @@ guid: b5c8476916a0a584d91c2313ddcc4ebb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - wayOpenSound: {instanceID: 0}
+  - wayClosedSound: {instanceID: 0}
+  - audioMixerGroup: {fileID: 24300002, guid: 8869d9465ee331041bfc01e7b99fbab0, type: 2}
+  - MenuSystemObj: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
