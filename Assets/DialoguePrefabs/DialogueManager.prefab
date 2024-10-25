@@ -880,7 +880,7 @@ MonoBehaviour:
   DialogueCanvas: {fileID: 7775506498655091754}
   MemoryCanvas: {fileID: 3618716101718807458}
   ShowMemory: 0
-  CloseMemortButton: {fileID: 5646100673561043345}
+  CloseMemoryButton: {fileID: 5646100673561043345}
 --- !u!1 &2532348335547901575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press enter to close
+  m_text: Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4a395e4a0f292f4a91dc42fff349ff4, type: 2}
   m_sharedMaterial: {fileID: -8464256252641358571, guid: e4a395e4a0f292f4a91dc42fff349ff4,
