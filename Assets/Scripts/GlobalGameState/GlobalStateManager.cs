@@ -37,6 +37,7 @@ public class GlobalStateManager : MonoBehaviour
 
     private InputAction menuOpenAction;
 
+    public int KarmaLevel = 0;
 
     // Global states
     public bool isGamePaused;
@@ -496,6 +497,14 @@ public class GlobalStateManager : MonoBehaviour
             {
                 npc.SetActive(false);
             }
+        }
+        else if (actionName == "IncrementKarma")
+        {
+            KarmaLevel = KarmaLevel + 1;
+        }
+        else if (actionName == "decrmentKarma")
+        {
+            KarmaLevel = KarmaLevel - 1;
         }
 
     }
