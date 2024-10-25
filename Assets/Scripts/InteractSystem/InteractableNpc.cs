@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class InteractableNpc : InteractableObject, IEventHandler<NewDialogueStartNodeEvent>, IEventHandler<DialogueEndedEvent>
 {
-    [SerializeField]
-    protected TextAsset DialogueFile; // The dialogue file to be used for this NPC
+    
+    public TextAsset DialogueFile; // The dialogue file to be used for this NPC
     [SerializeField]
     public SpriteRenderer spriteRenderer;
     private Color originalColor => spriteRenderer.color;

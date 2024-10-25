@@ -1,0 +1,79 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Misty the Cat",
+      "Text": "Meow",
+      "Responses": [
+        {
+          "Text": "Well Hello there little kitty!",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "Shoo! Get out of here!",
+          "NextDialogueId": 3,
+          "ResponseNiceness": -1
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Misty the Cat",
+      "Text": "...meow. Meow!",
+      "Responses": [
+        {
+          "Text": "Oh here, I think I have some treats for you! [Give Cat Treat]",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 1
+        },
+        {
+          "Text": "I'm sorry, I don't have anything to give you.",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Misty the Cat",
+      "Text": "That's for you to find out little missy! hahahahaha",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Misty the Cat",
+      "Text": "(The cat looks mildly upset)",
+      "Responses": [
+        {
+          "Text": "(Continue)"
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Misty the Cat",
+      "Text": "(The cat looks at you disapprovingly, then seems to shake it's head in disbelief)",
+      "Responses": [
+        {
+          "Text": "Ahahaha, sorry kitty. I guess not. (Maybe that weird spider thing had a treat hidden somewhere)",
+          "NextDialogueId": 6,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 6,
+      "NpcName": "Misty the Cat",
+      "Text": "(The cat seems to nod solemnly)",
+      "Responses": []
+    }
+    
+    
+  ]
+}

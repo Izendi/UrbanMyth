@@ -23,10 +23,9 @@
       "Text": "...meow. Meow!",
       "Responses": [
         {
-          "Text": "Oh here, I think I have some treats for you! [Give Cat Treats]",
+          "Text": "Oh here, I think I have some treats for you! [No Cat Treat in Inventory]",
           "NextDialogueId": 4,
-          "ResponseNiceness": 1,
-          "Action": "UnlockAllDoors"
+          "ResponseNiceness": 1
         },
         {
           "Text": "I'm sorry, I don't have anything to give you.",
@@ -38,7 +37,7 @@
     {
       "DialogueId": 3,
       "NpcName": "Misty the Cat",
-      "Text": "Grrrrrrr...."      
+      "Text": "(The cat seems to shake it's head in disapointment)"      
     },
     {
       "DialogueId": 4,
@@ -59,7 +58,7 @@
       "Text": "(The cat looks at you disapprovingly, then seems to shake it's head in disbelief)",
       "Responses": [
         {
-          "Text": "Okay, Goodbye!",
+          "Text": "Ahahaha, sorry kitty. I guess not. (Maybe that weird spider thing had a treat hidden somewhere)",
           "NextDialogueId": 6,
           "ResponseNiceness": 1
         }
@@ -68,9 +67,9 @@
     {
       "DialogueId": 6,
       "NpcName": "Misty the Cat",
-      "Text": "meow. (It sounds less enthusiastic this time)"      
+      "Text": "Meow. (It almost seems to be nodding in agreement, but you can't go back now, even if you wanted to)",    
+      "Responses": [ ]  
     },
-
     {
       "DialogueId": 101,
       "NpcName": "Misty the Cat",
