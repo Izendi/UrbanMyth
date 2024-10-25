@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 142303293}
   m_Layer: 0
   m_Name: Slide Grate (2)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23238,7 +23238,7 @@ GameObject:
   - component: {fileID: 1570685542}
   m_Layer: 0
   m_Name: Slide Grate (5)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24508,7 +24508,7 @@ GameObject:
   - component: {fileID: 1636792987}
   m_Layer: 0
   m_Name: Slide Grate (6)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

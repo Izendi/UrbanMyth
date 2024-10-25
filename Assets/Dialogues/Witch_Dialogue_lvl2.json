@@ -107,6 +107,7 @@
       "Text": "Thank you darling, he really is to die for my little Rufus. I'm sure you'll love him. Now of you go! [Daphne marches off before you even have the chance to ask what kind of food 'Rufus' eats]",
       "Responses": [
         {
+          "Text": "Alright...",
           "Action": "RemoveAllNPCs"
         }
 

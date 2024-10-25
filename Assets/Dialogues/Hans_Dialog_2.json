@@ -44,20 +44,20 @@
       "Responses": [
         {
           "Text": "Why would you trust that witch who tried to get me killed and not your own sister.",
-          "NextDialogueId": 3,
+          "NextDialogueId": 10,
           "ResponseNiceness": 0,
           "Action": "DecrementKarma"
         },
         {
           "Text": "I know it's hard to belive, but as your sister please belive me!",
-          "NextDialogueId": 3,
+          "NextDialogueId": 5,
           "ResponseNiceness": 0,
           "Action": "IncrementKarma"
         }
       ]
     },
     {
-      "DialogueId": 3,
+      "DialogueId": 5,
       "NpcName": "Hans",
       "Text": "(He hesitates for a moment)",
       "Responses": [
