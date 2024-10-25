@@ -998,6 +998,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7aca7ff87c50e5409b03191e8c6f505, type: 3}
+--- !u!95 &1128095048 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2542901489080591860, guid: e7aca7ff87c50e5409b03191e8c6f505,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128095047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1241981087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1306,7 @@ MonoBehaviour:
   NoSceneToLoad: 0
   radius: 1
   MenuSystemObj: {fileID: 0}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 1128095048}
 --- !u!4 &1431312501
 Transform:
   m_ObjectHideFlags: 0
