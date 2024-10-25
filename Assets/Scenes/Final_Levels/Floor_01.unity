@@ -10520,7 +10520,7 @@ PrefabInstance:
         type: 3}
       propertyPath: DialogueFile
       value: 
-      objectReference: {fileID: 4900000, guid: 631f9801b0254cb4ba14bb09f68e64cf, type: 3}
+      objectReference: {fileID: 4900000, guid: 7729107a9252d1542a9810a9534c5285, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
