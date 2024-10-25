@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quitButton: {fileID: 1568444416}
+  nextSceneNo: 0
 --- !u!1 &598079190
 GameObject:
   m_ObjectHideFlags: 0
