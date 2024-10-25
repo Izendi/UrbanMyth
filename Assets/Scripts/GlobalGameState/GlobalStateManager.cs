@@ -400,7 +400,7 @@ public class GlobalStateManager : MonoBehaviour
                 SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
             }
         }
-        else if(actionName == "OpenHatch")
+        else if(actionName == "GiveCatTreat")
         {
             if(has_catTreat)
             {
@@ -497,6 +497,7 @@ public class GlobalStateManager : MonoBehaviour
                 npc.SetActive(false);
             }
         }
+
     }
 
     private void Update()

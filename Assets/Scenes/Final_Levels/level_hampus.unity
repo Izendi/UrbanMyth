@@ -3738,7 +3738,7 @@ PrefabInstance:
     - target: {fileID: 1587176339871211568, guid: 57092a9bf2e224049b6478733e17e88c,
         type: 3}
       propertyPath: m_Name
-      value: NpcBillboard (1)
+      value: NpcBillboard
       objectReference: {fileID: 0}
     - target: {fileID: 5031502709098163598, guid: 57092a9bf2e224049b6478733e17e88c,
         type: 3}
