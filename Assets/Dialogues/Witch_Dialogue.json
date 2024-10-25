@@ -3,19 +3,19 @@
     {
       "DialogueId": 1,
       "NpcName": "Daphne",
-      "Text": "Hello there, you must be Hans sister, he's told me all about you.",
+      "Text": "[This Dialogue is being updated] Hello there, you must be Hans sister, he's told me all about you.",
       "Responses": [
         {
           "Text": "And you must be Daphne.",
           "NextDialogueId": 2,
           "ResponseNiceness": 1,
-          "Action": null
+          "Action": "UnlockAllDoors"
         },
         {
           "Text": "What have you done to my brother?",
           "NextDialogueId": 3,
           "ResponseNiceness": -1,
-          "Action": null
+          "Action": "UnlockAllDoors"
         }
       ]
     },

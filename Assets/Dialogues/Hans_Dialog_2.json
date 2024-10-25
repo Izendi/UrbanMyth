@@ -1,0 +1,52 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Hans",
+      "Text": "Hey Sis! Where have you been?",
+      "Responses": [
+        {
+          "Text": "Hans, you can't trust Her!!!",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Hans",
+      "Text": "What do you mean???",
+      "Responses": [
+        {
+          "Text": "Have you seen that thing she keeps as her 'pet?'",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Hans",
+      "Text": "More dialogue needs to be added...",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 10,
+          "ResponseNiceness": 0
+        }
+      ]
+    
+    },
+    {
+      "DialogueId": 10,
+      "NpcName": "Hans",
+      "Text": "(He shoves you aside and runs off)",
+      "Responses": [
+        {
+          "Text": "(close)",
+          "Action": "RemoveAllNPCs"
+        }
+      ]
+    }
+  ]
+}
