@@ -27,7 +27,7 @@ public class MenuInteraction : MonoBehaviour
 
     public bool MenuOpenCloseInput { get; private set; }
 
-    public string[] noteNames = { "Dear Sister", "17/12/2046", "Find Me", "Trust Me" };
+    public string[] noteNames = { "Dear Sister", "17/12/2046", "Hidden Note", "Note", "Diary" };
     public bool[] savedNotes = { false, false, false, false, false };
 
     [SerializeField]
