@@ -3,26 +3,26 @@
     {
       "DialogueId": 1,
       "NpcName": "Daphne",
-      "Text": "[This Dialogue is being updated, witch asks you to feed her pet here] Hello there, you must be Hans sister, he's told me all about you.",
+      "Text": "Hello there, you must be Hans sister, he's told me all about you.",
       "Responses": [
         {
-          "Text": "And you must be Daphne.",
+          "Text": "You tried to have your 'pet eat me'",
           "NextDialogueId": 2,
-          "ResponseNiceness": 1,
-          "Action": "UnlockAllDoors"
+          "ResponseNiceness": 1
+
         },
         {
           "Text": "What have you done to my brother?",
           "NextDialogueId": 3,
-          "ResponseNiceness": -1,
-          "Action": "UnlockAllDoors"
+          "ResponseNiceness": -1
+
         }
       ]
     },
     {
       "DialogueId": 2,
       "NpcName": "Daphne",
-      "Text": "Indeed I am.",
+      "Text": "Rufus would never do such a thing. He only wanted to play.",
       "Responses": [
         {
           "Text": "Where is Hans?",
@@ -44,7 +44,7 @@
           "Action": null
         },
         {
-          "Text": "So you'll let us leave then??",
+          "Text": "Yeah right!",
           "NextDialogueId": 5,
           "ResponseNiceness": 1,
           "Action": null
@@ -54,10 +54,10 @@
     {
       "DialogueId": 4,
       "NpcName": "Daphne",
-      "Text": "Oh he's around here somewhere, I can never keep track of him.",
+      "Text": "He's around here somewhere, But you will never escape without the key. I'll wait here until you inevitably give up.",
       "Responses": [
         {
-          "Text": "Okay, Goodbye!",
+          "Text": "(Leave)",
           "ResponseNiceness": 1,
           "Action": "Daphne|8.63,0,5.34|101"
         }
@@ -66,7 +66,7 @@
     {
       "DialogueId": 5,
       "NpcName": "Daphne",
-      "Text": "You are free to leave anytime you want to. However, I don't think your brother will come with you",
+      "Text": "Hmmm, I don't think your brother will come with you",
       "Responses": [
         {
           "Text": "Where is Hans by the way?",
