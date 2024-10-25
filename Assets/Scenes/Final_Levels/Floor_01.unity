@@ -2765,7 +2765,7 @@ MonoBehaviour:
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
   interactKey: 102
-  openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!95 &142303294
 Animator:
@@ -2802,7 +2802,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 142303294}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!65 &142303296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3653,7 +3652,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 225259758}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!114 &225259761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3670,6 +3668,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
+  slideDistance: 1
   activated: 0
 --- !u!1001 &231078210
 PrefabInstance:
@@ -8738,7 +8737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 537990990}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!65 &537990992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8778,7 +8776,7 @@ MonoBehaviour:
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
   interactKey: 102
-  openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &541034308
 PrefabInstance:
@@ -10013,8 +10011,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &615815412
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11590,11 +11588,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  loadSceneText: {fileID: 1523960650}
-  entryDoorText: {fileID: 1894145873}
   NoSceneToLoad: 0
   radius: 1
   MenuSystemObj: {fileID: 0}
+  transitionAnimator: {fileID: 0}
 --- !u!65 &756710909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14223,8 +14220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &927644120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17659,7 +17656,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 1200605699}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!65 &1200605701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17699,7 +17695,7 @@ MonoBehaviour:
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
   interactKey: 102
-  openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1 &1205831122
 GameObject:
@@ -23500,7 +23496,6 @@ MonoBehaviour:
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
   interactKey: 102
-  openDoorText: {fileID: 443819900}
   activated: 0
 --- !u!65 &1570685544
 BoxCollider:
@@ -27011,8 +27006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &1768742977
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30777,11 +30772,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  loadSceneText: {fileID: 1523960650}
-  entryDoorText: {fileID: 1894145873}
   NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
+  transitionAnimator: {fileID: 2110461306}
 --- !u!65 &1953150411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31422,11 +31416,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  loadSceneText: {fileID: 1523960650}
-  entryDoorText: {fileID: 1894145873}
   NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
+  transitionAnimator: {fileID: 0}
 --- !u!65 &2013586319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32178,6 +32171,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100392189}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2110461305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4601240423007973321, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTranistionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.7043791
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1399994
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832929760215390221, guid: e7aca7ff87c50e5409b03191e8c6f505,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7aca7ff87c50e5409b03191e8c6f505, type: 3}
+--- !u!95 &2110461306 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2542901489080591860, guid: e7aca7ff87c50e5409b03191e8c6f505,
+    type: 3}
+  m_PrefabInstance: {fileID: 2110461305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2115306972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32529,6 +32596,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1937285296}
+  - {fileID: 2110461305}
   - {fileID: 1311604717}
   - {fileID: 841883197}
   - {fileID: 829124335}

@@ -20,6 +20,8 @@ public class LoadOnInteract : MonoBehaviour
     public GameObject MenuSystemObj;
     private MenuInteraction MI_script;
 
+    public Animator transitionAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +69,8 @@ public class LoadOnInteract : MonoBehaviour
                 {
                     if (NoSceneToLoad >= 0)
                     {
-                        MI_script.LoadNextScene(NoSceneToLoad);
+                        //MI_script.LoadNextScene(NoSceneToLoad);
+                        StartCoroutine(LoadLevel(NoSceneToLoad));
                     }
                     else
                     {
@@ -77,6 +80,15 @@ public class LoadOnInteract : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        MI_script.LoadNextScene(NoSceneToLoad);
     }
 
     void LoadScene(int i)
