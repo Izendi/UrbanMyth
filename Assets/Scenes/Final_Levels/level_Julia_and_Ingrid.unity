@@ -9251,7 +9251,7 @@ MonoBehaviour:
   NoSceneToLoad: 0
   radius: 1
   MenuSystemObj: {fileID: 0}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 1128095048}
 --- !u!65 &756710909
 BoxCollider:
   m_ObjectHideFlags: 0
