@@ -280,7 +280,7 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "???";
         }
-        if (GSM_script.backup_has_oldKey == false)
+        if (GSM_script.backup_has_money == false)
         {
 
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("1");
@@ -336,14 +336,14 @@ public class MenuInteraction : MonoBehaviour
 
             buttonText.text = "Code Breaker";
         }
-        if (GSM_script.has_oldKey)
+        if (GSM_script.has_money)
         {
             Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
             Button b = buttonTransform.GetComponent<Button>();
 
             TMP_Text buttonText = b.GetComponentInChildren<TMP_Text>();
 
-            buttonText.text = "Old Key";
+            buttonText.text = "Money";
         }
         if (GSM_script.has_torch)
         {
@@ -405,8 +405,8 @@ public class MenuInteraction : MonoBehaviour
 
     void giveAway_oldKey()
     {
-        GSM_script.has_oldKey = false;
-        GSM_script.givenAway_oldKey = true;
+        GSM_script.has_money = false;
+        GSM_script.givenAway_money = true;
 
         Transform buttonTransform = _inventoryItemsCanvas.transform.Find("2");
         Button b = buttonTransform.GetComponent<Button>();

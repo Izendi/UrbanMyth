@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Assets.Scripts;
+using Assets.Scripts.Events;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine;
+using UnityEngine;  
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
 
@@ -44,7 +47,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool[] backup_collectedNotes;
 
     public bool has_ChildhoodToy;
-    public bool has_oldKey;
+    public bool has_money;
     public bool has_codeBreaker;
     public bool has_torch;
     public bool has_vipRationCard;
@@ -52,7 +55,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool has_photo;
 
     public bool givenAway_ChildhoodToy;
-    public bool givenAway_oldKey;
+    public bool givenAway_money;
     public bool givenAway_codeBreaker;
     public bool givenAway_torch;
     public bool givenAway_vipRationCard;
@@ -60,7 +63,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool givenAway_photo;
 
     public bool backup_has_ChildhoodToy;
-    public bool backup_has_oldKey;
+    public bool backup_has_money;
     public bool backup_has_codeBreaker;
     public bool backup_has_torch;
     public bool backup_has_vipRationCard;
@@ -68,7 +71,7 @@ public class GlobalStateManager : MonoBehaviour
     public bool backup_has_photo;
 
     public bool backup_givenAway_ChildhoodToy;
-    public bool backup_givenAway_oldKey;
+    public bool backup_givenAway_money;
     public bool backup_givenAway_codeBreaker;
     public bool backup_givenAway_torch;
     public bool backup_givenAway_vipRationCard;
@@ -83,7 +86,7 @@ public class GlobalStateManager : MonoBehaviour
         }
 
         backup_has_ChildhoodToy = has_ChildhoodToy;
-        backup_has_oldKey = has_oldKey;
+        backup_has_money = has_money;
         backup_has_codeBreaker = has_codeBreaker;
         backup_has_torch = has_torch;
         backup_has_vipRationCard = has_vipRationCard;
@@ -91,13 +94,13 @@ public class GlobalStateManager : MonoBehaviour
         backup_has_photo = has_photo;
 
         backup_givenAway_ChildhoodToy = givenAway_ChildhoodToy;
-        backup_givenAway_oldKey = givenAway_oldKey;
+        backup_givenAway_money = givenAway_money;
         backup_givenAway_codeBreaker = givenAway_codeBreaker;
         backup_givenAway_torch = givenAway_torch;
         backup_givenAway_vipRationCard = givenAway_vipRationCard;
         backup_givenAway_catTreat = givenAway_catTreat;
         backup_givenAway_photo = givenAway_photo;
-
+        
     }
 
     public void wipeData()
@@ -113,7 +116,7 @@ public class GlobalStateManager : MonoBehaviour
         MI_script.deactivateNonBackupItems();
 
         has_ChildhoodToy = false;
-        has_oldKey = false;
+        has_money = false;
         has_codeBreaker = false;
         has_torch = false;
         has_vipRationCard = false;
@@ -121,7 +124,7 @@ public class GlobalStateManager : MonoBehaviour
         has_photo = false;
 
         givenAway_ChildhoodToy = false;
-        givenAway_oldKey = false;
+        givenAway_money = false;
         givenAway_codeBreaker = false;
         givenAway_torch = false;
         givenAway_vipRationCard = false;
@@ -146,7 +149,7 @@ public class GlobalStateManager : MonoBehaviour
         MI_script.activateCollectedNotes();
 
         has_ChildhoodToy = backup_has_ChildhoodToy;
-        has_oldKey = backup_has_oldKey;
+        has_money = backup_has_money;
         has_codeBreaker = backup_has_codeBreaker;
         has_torch = backup_has_torch;
         has_vipRationCard = backup_has_vipRationCard;
@@ -154,7 +157,7 @@ public class GlobalStateManager : MonoBehaviour
         has_photo = backup_has_photo;
 
         givenAway_ChildhoodToy = backup_givenAway_ChildhoodToy;
-        givenAway_oldKey = backup_givenAway_oldKey;
+        givenAway_money = backup_givenAway_money;
         givenAway_codeBreaker = backup_givenAway_codeBreaker;
         givenAway_torch = backup_givenAway_torch;
         givenAway_vipRationCard = backup_givenAway_vipRationCard;
@@ -184,7 +187,7 @@ public class GlobalStateManager : MonoBehaviour
             }
 
             backup_has_ChildhoodToy = false;
-            backup_has_oldKey = false;
+            backup_has_money = false;
             backup_has_codeBreaker = false;
             backup_has_torch = false;
             backup_has_vipRationCard = false;
@@ -192,7 +195,7 @@ public class GlobalStateManager : MonoBehaviour
             backup_has_photo = false;
 
             backup_givenAway_ChildhoodToy = false;
-            backup_givenAway_oldKey = false;
+            backup_givenAway_money = false;
             backup_givenAway_codeBreaker = false;
             backup_givenAway_torch = false;
             backup_givenAway_vipRationCard = false;
@@ -235,9 +238,9 @@ public class GlobalStateManager : MonoBehaviour
         {
             has_ChildhoodToy = true;
         }
-        if (itemName == "OldKey")
+        if (itemName == "Money")
         {
-            has_oldKey = true;
+            has_money = true;
         }
         if (itemName == "CodeBreaker")
         {
@@ -287,9 +290,9 @@ public class GlobalStateManager : MonoBehaviour
             MI_script.DisplayKeyItem(0);
 
         }
-        if (keyItemName == "OldKey")
+        if (keyItemName == "Money")
         {
-            has_oldKey = true;
+            has_money = true;
             MI_script.DisplayKeyItem(1);
         }
         if (keyItemName == "CodeBreaker")
@@ -352,8 +355,7 @@ public class GlobalStateManager : MonoBehaviour
                 doorButton.ActivateButton();
             }
         }
-
-        if (actionName == "LockAllDoors")
+        else if (actionName == "LockAllDoors")
         {
             GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
@@ -366,8 +368,7 @@ public class GlobalStateManager : MonoBehaviour
                 doorButton.DeactivateButton();
             }
         }
-
-        if(actionName == "UnlockDoor_1")
+        else if(actionName == "UnlockDoor_1")
         {
             GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
 
@@ -382,24 +383,50 @@ public class GlobalStateManager : MonoBehaviour
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
-
-        if (actionName == "UnlockDoor_2")
-        {
-            GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
-
-            for (int i = 0; i < Buttons.Length; i++)
+        else if (actionName == "UnlockDoor_2")
+        {   if (has_money)
             {
-                if (Buttons[i].name == "Lock_2")
+                GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+                for (int i = 0; i < Buttons.Length; i++)
                 {
-                    DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
+                    if (Buttons[i].name == "Lock_2")
+                    {
+                        DoorButton doorButton = Buttons[i].GetComponent<DoorButton>();
+                        doorButton.ActivateButton();
+                    }
+                }
+
+                SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+            }
+        }
+        else if(actionName == "OpenHatch")
+        {
+            if(has_catTreat)
+            {
+                SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
+
+                GameObject[] Buttons = GameObject.FindGameObjectsWithTag("Button");
+
+                //SoundManager.instance.PlaySoundEffect(wayOpenSound, transform, 1.0f);
+
+                foreach (GameObject but in Buttons)
+                {
+                    //Debug.Log("Found object: " + but.name);
+                    DoorButton doorButton = but.GetComponent<DoorButton>();
                     doorButton.ActivateButton();
                 }
             }
+            else
+            {
+                SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+            }
 
-            SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
+            
+
+            //Do open action
         }
-
-        if (actionName == "RecievePhoto")
+        else if (actionName == "RecievePhoto")
         {
             GameObject[] KeyItems = GameObject.FindGameObjectsWithTag("KeyItem");
 
@@ -418,10 +445,48 @@ public class GlobalStateManager : MonoBehaviour
 
             SoundManager.instance.PlaySoundEffect(wayClosedSound, transform, 1.0f);
         }
-
-        if (actionName == "placeholder")
+        else if (actionName == "placeholder")
         {
             MI_script.DoAction(actionName);
+        }
+        else if (actionName.Any(c => char.IsDigit(c)))
+        {
+            var actions = actionName.Split("|");
+            if (actions.Length != 3)
+                return;
+
+            var npcName = actions[0];
+            var newPosition = actions[1];
+            var newStart = actions[2];
+            Vector3? newPositionVector = null;
+            int? newStartNode = null;
+
+            if (!string.IsNullOrEmpty(newPosition))
+            {
+                var position = newPosition.Split(",");
+
+                float x = float.Parse(position[0], CultureInfo.InvariantCulture);
+                float y = float.Parse(position[1], CultureInfo.InvariantCulture);
+                float z = float.Parse(position[2], CultureInfo.InvariantCulture);
+                Debug.Log($"{x}; {y}; {z};");
+
+                newPositionVector = new Vector3(x, y, z);
+            }
+
+            if (!string.IsNullOrEmpty(newStart))
+            {
+                newStartNode = int.TryParse(newStart, out var nsn) ? nsn : (int?)null;
+            }
+
+            if (!newPositionVector.HasValue && !newStartNode.HasValue)
+                return;
+
+            EventAggregator.Instance.Publish(new NewDialogueStartNodeEvent
+            {
+                NewPosition = newPositionVector,
+                NewStartNodeId = newStartNode,
+                NpcName = npcName
+            }); 
         }
     }
 

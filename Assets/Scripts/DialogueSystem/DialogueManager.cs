@@ -78,16 +78,18 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
     }
 
 
-    public void StartDialogue(TextAsset dialogueFile, int startNode = 1)
+    public void StartDialogue(Dialogue dialogue, int? startNode = 1)
     {
-        CurrentDialogue = JsonUtility.FromJson<Dialogue>(dialogueFile.text);
+        CurrentDialogue = dialogue;
         IsDialogueActive = true;
-        StartDialogue(startNode);
+        StartDialogue(startNode ?? 1);
     }
 
     public void Handle(DialogueInitiatedEvent @event)
     {
-        StartDialogue(@event.DialogueFile);
+        Debug.Log(@event.StartNodeId);
+
+        StartDialogue(@event.Dialogue, @event.StartNodeId);
     }
 
     private void StartDialogue(int nodeId)
@@ -158,7 +160,7 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
         }
     }
 
-    private void OnResponseSelected(int nextDialogueId, string action)
+    private void OnResponseSelected(int nextDialogueId, string actionsString)
     {
         if (isPrinting)
         {
@@ -167,18 +169,27 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
         }
 
 
-        if (!string.IsNullOrEmpty(action))
+        if (!string.IsNullOrEmpty(actionsString))
         {
-            GSM_script.DoAction(action);
+            var actions = actionsString.Split(";");
+
+            foreach (var action in actions)
+            {
+                GSM_script.DoAction(action);
+
+            }
         }
         
-        PrintDialogueText(nextDialogueId);
+        if (nextDialogueId == 0)
+            CloseDialogue();
+        else
+            PrintDialogueText(nextDialogueId);
     }
 
     private void CloseDialogue()
     {
         IsDialogueActive = false;
-        EventAggregator.Instance.Publish(new DialogueEndedEvent());
+        EventAggregator.Instance.Publish(new DialogueEndedEvent{NpcName = currentDialogueNode.NpcName});
         HideDialogue();
     }
 }
