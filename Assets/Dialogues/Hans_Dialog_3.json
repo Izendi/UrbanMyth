@@ -56,7 +56,8 @@
     {
       "DialogueId": 5,
       "NpcName": "Hans",
-      "Text": "I remember! Oh Sis! Let's get out of here!"
+      "Text": "I remember! Oh Sis! Let's get out of here!",
+      "Action": "RemoveAllNPCs"
     },
    
 
@@ -116,12 +117,14 @@
     {
       "DialogueId": 105,
       "NpcName": "Hans",
-      "Text": "If you wan't to leave I wont stop you."
+      "Text": "If you wan't to leave I wont stop you.",
+      "Action": "RemoveAllNPCs"
     },
     {
       "DialogueId": 106,
       "NpcName": "Hans",
-      "Text": "Sis... I can't go with you, I don't want to. But I won't stop you from leaving..."
+      "Text": "Sis... I can't go with you, I don't want to. But I won't stop you from leaving...",
+      "Action": "RemoveAllNPCs"
     },
 
 
@@ -181,7 +184,8 @@
     {
       "DialogueId": 205,
       "NpcName": "Hans",
-      "Text": "If you wan't to leave I wont stop you."
+      "Text": "If you wan't to leave I wont stop you.",
+      "Action": "RemoveAllNPCs"
     },
     
     
@@ -247,12 +251,14 @@
     {
       "DialogueId": 305,
       "NpcName": "Hans",
-      "Text": "You can't leave, You can't leave me ever again!"
+      "Text": "You can't leave, You can't leave me ever again!",
+      "Action": "RemoveAllNPCs"
     },
     {
       "DialogueId": 306,
       "NpcName": "Hans",
-      "Text": "THERE'S ONLY ONE DOOR YOU'LL LEAVE THROUGH AND IT'S NOT THE FRONT DOOR!!!"
+      "Text": "THERE'S ONLY ONE DOOR YOU'LL LEAVE THROUGH AND IT'S NOT THE FRONT DOOR!!!",
+      "Action": "RemoveAllNPCs"
     }
   ]
 }

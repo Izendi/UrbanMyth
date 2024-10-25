@@ -31,33 +31,32 @@ public class KarmaSetup : MonoBehaviour
     {
         GameObject[] NPCs = GameObject.FindGameObjectsWithTag("NPC");
 
-        LOI_script.NoSceneToLoad = 8;
+        LOI_script.NoSceneToLoad = 13;
 
-        if (GSM_script.KarmaLevel < 0)
-            {
-                for (int i = 0; i < NPCs.Length; i++)
-                {
-                    if (NPCs[i].name == "TheWitch")
-                    {
-                        //Set Script A
-                    }
-                    if (NPCs[i].name == "Hansel")
-                    {
-                        //Set Script B
-                    }
+        if (false)//(GSM_script.KarmaLevel < 0) //Thrown in oven no matter how many stuffs
+        {
+            LOI_script.NoSceneToLoad = 12;
+            GSM_script.DoAction("Hans|9.57,0,20.93|301");
 
-                    LOI_script.NoSceneToLoad = 9;
-            }
-            }
-            else if (GSM_script.KarmaLevel > 2 && GSM_script.has_fireEscapePlan && GSM_script.has_oldKey && GSM_script.hasShownPhoto)
-            {
-                // set up scene for best ending
 
-            }
-            else if (GSM_script.KarmaLevel > 2)
-            {
+        }
+        else if (true)//(GSM_script.KarmaLevel >= 2 && GSM_script.has_fireEscapePlan && GSM_script.has_oldKey && GSM_script.hasShownPhoto)
+        {
+            // set up scene for best ending
+            GSM_script.DoAction("Hans|9.57,0,20.93|1");
+            LOI_script.NoSceneToLoad = 1;
 
-            }
+        }
+        else if (GSM_script.KarmaLevel > 1 && GSM_script.has_fireEscapePlan) //Escape Alone
+        {
+            GSM_script.DoAction("Hans|9.57,0,20.93|101");
+            LOI_script.NoSceneToLoad = 9;
+        }
+        else //Locked up
+        {
+            GSM_script.DoAction("Hans|9.57,0,20.93|201");
+            LOI_script.NoSceneToLoad = 10;
+        }
         
 
         // You can modify specific objects using their tags, names, or components as well
