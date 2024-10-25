@@ -815,5 +815,25 @@ public class MenuInteraction : MonoBehaviour
         PlayButtonPressSound();
     }
 
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;   
+    }
+
+    public void SetHighFideltyQuality()
+    {
+        menuOptions.SetQuality(2);
+    }
+
+    public void SetBalancedQuality()
+    {
+        menuOptions.SetQuality(1);
+    }
+
+    public void SetPerformantQuality()
+    {
+        menuOptions.SetQuality(0);
+    }
+
     #endregion
 }
