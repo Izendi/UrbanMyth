@@ -12174,7 +12174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  NoSceneToLoad: 9
+  NoSceneToLoad: 13
   radius: 1
   MenuSystemObj: {fileID: 0}
   transitionAnimator: {fileID: 1128095048}
@@ -15142,7 +15142,7 @@ MonoBehaviour:
   radius: 1
   pulseDuration: 2
   maxEmission: 1.5
-  isActive: 0
+  isActive: 1
 --- !u!65 &1161386964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21719,23 +21719,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41fae2aec21aa8e448daf32b92073f2f,
+      objectReference: {fileID: 21300000, guid: ad6d20d78ffddba47865d9ae4231c6da,
         type: 3}
     - target: {fileID: 7880206529952426273, guid: 57092a9bf2e224049b6478733e17e88c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7880206529952426273, guid: 57092a9bf2e224049b6478733e17e88c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880206529952426273, guid: 57092a9bf2e224049b6478733e17e88c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880206529952426273, guid: 57092a9bf2e224049b6478733e17e88c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.733
+      value: 1.12
       objectReference: {fileID: 0}
+    - target: {fileID: 7949813459936323810, guid: 57092a9bf2e224049b6478733e17e88c,
+        type: 3}
+      propertyPath: DialogueFile
+      value: 
+      objectReference: {fileID: 4900000, guid: a50af5baa6ed6e74d9b8db92c2b89035, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

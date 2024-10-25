@@ -106,7 +106,8 @@
         {
           "Text": "(Continue)",
           "NextDialogueId": 10,
-          "ResponseNiceness": 0
+          "ResponseNiceness": 0,
+          "Action": "DecrementKarma"
         }
       ]
     },
@@ -130,7 +131,8 @@
         {
           "Text": "(Continue)",
           "NextDialogueId": 10,
-          "ResponseNiceness": 0
+          "ResponseNiceness": 0,
+          "Action": "IncrementKarma"
         }
       ]
     },
