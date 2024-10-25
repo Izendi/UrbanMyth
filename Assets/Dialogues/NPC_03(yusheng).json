@@ -25,7 +25,7 @@
           "NextDialogueId": 3
         },
         {
-          "Text": "Treasure, huh? I'm listening.",
+          "Text": "The last person who offered me something almost got me killed.",
           "NextDialogueId": 3
         }
       ]
@@ -33,7 +33,7 @@
     {
       "DialogueId": 3,
       "NpcName": "Mysterious Stranger",
-      "Text": "Find the money, and I'll unlock the apartment on the right. There's a crazy survivalist living there. He has everything you could need: food, medincine,drugs, weapons. How about making a deal with me, huh?",
+      "Text": "You can trust me! Find the money. There's a crazy survivalist living there. He has everything you could need: food, medincine,drugs, weapons. How about making a deal with me, huh?",
       "Responses": [
         {
           "Text": "What's in it for you?",
@@ -43,10 +43,6 @@
           "Text": "Deal.",
           "NextDialogueId": 5,
           "Action": "UnlockDoor_1;Mysterious Stranger|-5.57,0.369,4.742|101"
-        },
-        {
-          "Text": "I don't trust you.",
-          "NextDialogueId": 4
         }
       ]
     },
@@ -91,10 +87,10 @@
     {
       "DialogueId": 102,
       "NpcName": "Mysterious Stranger",
-      "Text": "Ha ha! I knew you could make it, kiddo. The other apartment is unlocked now. Good luck with your hunt.",
+      "Text": "Ha ha! I knew you could make it, kiddo. I'll tell you what. There's a handy little fire escape plan in the bedside drawers in the other apartment. Might show you a way out eh!",
       "Responses": [
         {
-          "Text": "(Continue) [Unlock Right Apartment]",
+          "Text": "(Continue)",
           "NextDialogueId": 104,
           "Action": "UnlockDoor_2"
         }
@@ -109,7 +105,7 @@
     {
       "DialogueId": 104,
       "NpcName": "Mysterious Stranger",
-      "Text": "Heh, watch yourself in there.",
+      "Text": "Heh, watch yourself in there. (He walks off, seemingly unaware that he never asked for you to actually give him the 'treasure')",
       "Responses": []
     }
   ]
