@@ -35,7 +35,7 @@
       "Text": "I don't want to leave, I like it here.",
       "Responses": [
         {
-          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "Text": "I know, but don't you remember how good it used to be?",
           "NextDialogueId": 5,
           "ResponseNiceness": 0
         }
@@ -47,7 +47,7 @@
       "Text": "I like it here, can't we just stay here and be happy?",
       "Responses": [
         {
-          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "Text": "I know, but don't you remember how good it used to be?",
           "NextDialogueId": 5,
           "ResponseNiceness": 0
         }
@@ -107,7 +107,7 @@
       "Text": "I like it here, can't we just stay here and be happy?",
       "Responses": [
         {
-          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "Text": "I know, but don't you remember how good it used to be?",
           "NextDialogueId": 106,
           "ResponseNiceness": 0
         }
@@ -148,7 +148,7 @@
       "Text": "I did. I like it here, I hoped you'd like it too. I want us to stay here.",
       "Responses": [
         {
-          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "Text": "I know, but don't you remember how good it used to be?",
           "NextDialogueId": 204,
           "ResponseNiceness": 0
         }
@@ -204,7 +204,7 @@
       "Text": "No! Stop it! You're ruining everything!",
       "Responses": [
         {
-          "Text": "Don't you remember how good it used to be? Look at this photo!",
+          "Text": "Don't you remember how good it used to be?",
           "NextDialogueId": 303,
           "ResponseNiceness": 0
         },
