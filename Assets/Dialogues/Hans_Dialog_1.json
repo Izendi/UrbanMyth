@@ -67,7 +67,7 @@
     {
     "DialogueId": 5,
       "NpcName": "Hans",
-      "Text": "He did, Sis... it's gonna be okay, because now we have Daphne.",
+      "Text": "He did, Sis... it's gonna be okay, because we have Daphne now.",
       "Responses": [
         {
           "Text": "Who is Daphne?",
@@ -101,17 +101,49 @@
     {
       "DialogueId": 7,
       "NpcName": "Hans",
-      "Text": "Why do you always have to ruin everything!?!"
+      "Text": "Why do you always have to ruin everything!?!",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 10,
+          "ResponseNiceness": 0
+        }
+      ]
     },
     {
       "DialogueId": 8,
       "NpcName": "Hans",
-      "Text": "Don't worry Sis, everything is goining to be okay, we have Daphne now. I'll go and get her and you just come and meet us on floor 3 in a little while."
+      "Text": "Don't worry Sis, everything is going to be okay, we have Daphne now. I'll go and get her and you just come and meet us on floor 3 in a little while.",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 10,
+          "ResponseNiceness": 0
+        }
+      ]
     },
     {
       "DialogueId": 9,
       "NpcName": "Hans",
-      "Text": "This is gonna be great! I can't wait for you two to meet! I have to go and tell her! Just come and meet us on floor 3 in a little while."
+      "Text": "This is gonna be great! I can't wait for you two to meet! I have to go and tell her! Just come and meet us on floor 3 in a little while.",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 10,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 10,
+      "NpcName": "Hans",
+      "Text": "(Before you can say anything else, he sprints up the stair's and you hear a door slamming shut. Leaving you standing there alone.)",
+      "Responses": [
+        {
+          "Text": "(close)",
+          "Action": "RemoveAllNPCs"
+        }
+      ]
     }
   ]
 }

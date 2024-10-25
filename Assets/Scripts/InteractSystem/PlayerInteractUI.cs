@@ -40,13 +40,14 @@ public class PlayerInteractUI : MonoBehaviour,
     }
 
     private static string PRESS_E { get; } = "Press E";
-    private static string PRESS_F { get; } = "Press F";
     private static string LIFT_PROMPT { get; } = $"{PRESS_E} to lift.";
     private static string DROP_PROMPT { get; } = $"{PRESS_E} to drop.";
     private static string PUSH_PROMPT { get; } = $"{PRESS_E} to push.";
     private static string LOAD_DOOR_PROMPT { get; } = $"{PRESS_E} to proceed to next level.";
     private static string TALK_PROMPT { get; } = $"{PRESS_E} to talk.";
-    private static string OPERATE_PROMPT { get; } = $"{PRESS_F} to operate.";
+    private static string OPERATE_PROMPT { get; } = $"{PRESS_E} to operate.";
+    private static string COLLECT_PROMPT { get; } = $"{PRESS_E} to collect.";
+
 
     private void Start()
     {
@@ -127,6 +128,8 @@ public class PlayerInteractUI : MonoBehaviour,
                 return LOAD_DOOR_PROMPT;
             case PlayerInteractUIState.InRangeOfNpc:
                 return TALK_PROMPT;
+            case PlayerInteractUIState.CollectibleItem:
+                return COLLECT_PROMPT;
             default:
                 return string.Empty;
         }

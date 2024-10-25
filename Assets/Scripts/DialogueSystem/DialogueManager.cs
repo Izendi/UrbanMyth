@@ -207,7 +207,7 @@ public class DialogueManager : MonoBehaviour, IEventHandler<DialogueInitiatedEve
 
             foreach (var action in actions)
             {
-                GSM_script.DoAction(actionsString);
+                GSM_script.DoAction(action);
 
             }
         }
