@@ -2,11 +2,11 @@
   "DialogueNodes": [
     {
       "DialogueId": 1,
-      "NpcName": "Other Strange Man",
+      "NpcName": "Strange Man",
       "Text": "Another one of you huh?",
       "Responses": [
         {
-          "Text": "Who are you?",
+          "Text": "Who are you? Where am I? Can you help me?",
           "NextDialogueId": 2
         },
         {
@@ -18,15 +18,11 @@
     {
       "DialogueId": 2,
       "NpcName": "Other Strange Man",
-      "Text": "Me? I'm the brother of that idiot in the other room.",
+      "Text": "Who am I? Hahahahaha. No one can help you now!",
       "Responses": [
         {
-          "Text": "The resemblance is uncanny.",
+          "Text": "(Continue)",
           "NextDialogueId": 5
-        },
-        {
-          "Text": "Can you help me get out of here?",
-          "NextDialogueId": 4
         }
       ]
     },
@@ -55,10 +51,10 @@
     {
       "DialogueId": 5,
       "NpcName": "Other Strange Man",
-      "Text": "I'll do you a favor and remotely unlock all the doors on this floor",
+      "Text": "This conversation is boring me. I've unlocked the door to the next level. Now get out of my sight.",
       "Responses": [
         {
-          "Text": "Thanks [Unlock all Doors]",
+          "Text": "[Unlock all Doors]",
           "NextDialogueId": 6,
           "Action": "UnlockAllDoors"
         }

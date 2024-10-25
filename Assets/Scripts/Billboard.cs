@@ -10,7 +10,7 @@ public class Billboard : MonoBehaviour
     {
         if (playerCamera == null)
         {
-            playerCamera = GameObject.FindWithTag("PlayCam").GetComponent<Camera>(); 
+            playerCamera = GameObject.FindWithTag("PlayCam").GetComponent<Camera>();
             //basicMouseLook_script = PlayCamObj.GetComponent<BasicMouseLook>();
         }
     }

@@ -476,6 +476,15 @@ public class GlobalStateManager : MonoBehaviour
                 NpcName = npcName
             }); 
         }
+        else if(actionName == "RemoveAllNPCs")
+        {
+            GameObject[] npcs = GameObject.FindGameObjectsWithTag("NPC");
+
+            foreach (GameObject npc in npcs)
+            {
+                npc.SetActive(false);
+            }
+        }
     }
 
     private void Update()
