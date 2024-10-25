@@ -184,7 +184,7 @@
     {
       "DialogueId": 205,
       "NpcName": "Hans",
-      "Text": "If you wan't to leave I wont stop you.",
+      "Text": "I can't do that... It's for your own good Sis.",
       "Action": "RemoveAllNPCs"
     },
     

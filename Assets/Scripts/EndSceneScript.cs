@@ -8,6 +8,8 @@ public class EndSceneScript : MonoBehaviour
 {
     [SerializeField]
     private Button quitButton;
+    [SerializeField]
+    private int nextSceneNo = 13;
 
     public void Start()
     {
@@ -21,6 +23,6 @@ public class EndSceneScript : MonoBehaviour
     }
     public void quitGame()
    {
-        SceneManager.LoadScene(13);
+        SceneManager.LoadScene(nextSceneNo);
    }
 }
