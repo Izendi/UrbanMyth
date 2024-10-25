@@ -30,9 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Final_Levels/level_Julia_and_Ingrid.unity
     guid: 75bffbe2820d0454ba667623dcc035b5
   - enabled: 1
-    path: Assets/Scenes/Transition_1.unity
-    guid: 71ce31c72c8f91c4f9655a8412d016b5
-  - enabled: 1
     path: Assets/Scenes/Final_Levels/Bad_Ending.unity
     guid: 784684752fefdfb438de75835ecbf8aa
+  - enabled: 1
+    path: Assets/Scenes/Final_Levels/Credits.unity
+    guid: 56606cea9f57cdc439f4a22f48e8e142
+  - enabled: 1
+    path: Assets/Scenes/Transition_1.unity
+    guid: 71ce31c72c8f91c4f9655a8412d016b5
   m_configObjects: {}

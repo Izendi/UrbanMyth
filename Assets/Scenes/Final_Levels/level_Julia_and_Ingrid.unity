@@ -12174,7 +12174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  NoSceneToLoad: 2
+  NoSceneToLoad: 9
   radius: 1
   MenuSystemObj: {fileID: 0}
   transitionAnimator: {fileID: 1128095048}
@@ -15142,7 +15142,7 @@ MonoBehaviour:
   radius: 1
   pulseDuration: 2
   maxEmission: 1.5
-  isActive: 1
+  isActive: 0
 --- !u!65 &1161386964
 BoxCollider:
   m_ObjectHideFlags: 0
