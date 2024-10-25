@@ -42,7 +42,7 @@
         {
           "Text": "Deal.",
           "NextDialogueId": 5,
-          "Action": "UnlockDoor_1"
+          "Action": "UnlockDoor_1;Mysterious Stranger|-5.57,0.369,4.742|101"
         },
         {
           "Text": "I don't trust you.",
@@ -58,12 +58,12 @@
         {
           "Text": "Deal.",
           "NextDialogueId": 5,
-          "Action": "UnlockDoor_1"
+          "Action": "UnlockDoor_1;Mysterious Stranger|-5.57,0.369,4.742|101"
         },
         {
           "Text": "Fine.",
           "NextDialogueId": 5,
-           "Action": "UnlockDoor_1"
+           "Action": "UnlockDoor_1;Mysterious Stranger|-5.57,0.369,4.742|101"
         }
       ]
     },
@@ -71,6 +71,45 @@
       "DialogueId": 5,
       "NpcName": "Mysterious Stranger",
       "Text": "Good choice. The door's unlocked. Be careful with those traps, kiddo.",
+      "Responses": []
+    },
+    {
+      "DialogueId": 101,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Did you get the treasure, kiddo?",
+      "Responses": [
+        {
+          "Text": "Yeah, I got it.",
+          "NextDialogueId": 102
+        },
+        {
+          "Text": "I didn't find it.",
+          "NextDialogueId": 103
+        }
+      ]
+    },
+    {
+      "DialogueId": 102,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Ha ha! I knew you could make it, kiddo. The other apartment is unlocked now. Good luck with your hunt.",
+      "Responses": [
+        {
+          "Text": "(Continue) [Unlock Right Apartment]",
+          "NextDialogueId": 104,
+          "Action": "UnlockDoor_2"
+        }
+      ]
+    },
+    {
+      "DialogueId": 103,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Then get your ass back in there and find it for me!",
+      "Responses": []
+    },
+    {
+      "DialogueId": 104,
+      "NpcName": "Mysterious Stranger",
+      "Text": "Heh, watch yourself in there.",
       "Responses": []
     }
   ]
