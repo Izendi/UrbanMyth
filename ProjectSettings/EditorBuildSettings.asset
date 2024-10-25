@@ -45,6 +45,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final_Levels/Ending_Thrown_In_Oven.unity
     guid: 5c3e6e832efc65b429dd878d39ecc77a
   - enabled: 1
-    path: Assets/Scenes/Final_Levels/Credits.unity
-    guid: 56606cea9f57cdc439f4a22f48e8e142
+    path: Assets/Scenes/Final_Levels/Credits_Alternative.unity
+    guid: 185ff555db6789b46ba5ae88835bf42e
   m_configObjects: {}

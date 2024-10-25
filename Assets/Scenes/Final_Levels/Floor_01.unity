@@ -11800,7 +11800,7 @@ MonoBehaviour:
   NoSceneToLoad: 0
   radius: 1
   MenuSystemObj: {fileID: 0}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 2110461306}
 --- !u!65 &756710909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31747,7 +31747,7 @@ MonoBehaviour:
   NoSceneToLoad: 3
   radius: 1
   MenuSystemObj: {fileID: 0}
-  transitionAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 2110461306}
 --- !u!65 &2013586319
 BoxCollider:
   m_ObjectHideFlags: 0
