@@ -4200,7 +4200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 225259758}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!114 &225259761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4217,6 +4216,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
+  slideDistance: 1
   activated: 0
 --- !u!1 &226811670 stripped
 GameObject:
@@ -7776,7 +7776,7 @@ GameObject:
   - component: {fileID: 537990993}
   m_Layer: 0
   m_Name: Slide Grate (1)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7831,7 +7831,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 537990990}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!65 &537990992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7870,8 +7869,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &539205941
 PrefabInstance:
@@ -10086,8 +10084,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 30edda61b087ed7498821e01dd62b275, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &723419085
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13196,8 +13194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: c1ae93ed2b9bfcd42b4138994cb68256, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &927644120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16516,7 +16514,7 @@ GameObject:
   - component: {fileID: 1200605702}
   m_Layer: 0
   m_Name: Slide Grate (2)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16571,7 +16569,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 1200605699}
   interactKey: 102
-  openDoorText: {fileID: 443819900}
 --- !u!65 &1200605701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16610,8 +16607,7 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
+  slideDistance: 1
   activated: 0
 --- !u!1001 &1220111027
 PrefabInstance:
@@ -17562,7 +17558,7 @@ GameObject:
   - component: {fileID: 1291594893}
   m_Layer: 0
   m_Name: Slide Grate (4)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17600,8 +17596,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
   activated: 0
 --- !u!65 &1291594895
 BoxCollider:
@@ -20414,6 +20408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerHeight: 2
+  CullFactor: 1
+  maxLights: 8
 --- !u!1001 &1343883206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23017,7 +23013,7 @@ GameObject:
   - component: {fileID: 1570685542}
   m_Layer: 0
   m_Name: Slide Grate (5)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23055,8 +23051,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
   activated: 0
 --- !u!65 &1570685544
 BoxCollider:
@@ -23307,8 +23301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  loadSceneText: {fileID: 1523960650}
-  entryDoorText: {fileID: 1894145873}
   NoSceneToLoad: 0
   radius: 1
   MenuSystemObj: {fileID: 0}
@@ -24140,7 +24132,7 @@ GameObject:
   - component: {fileID: 1632210975}
   m_Layer: 0
   m_Name: Slide Grate (3)
-  m_TagString: Untagged
+  m_TagString: Openable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24198,8 +24190,6 @@ MonoBehaviour:
   openPosition: {x: 0, y: 0, z: 0}
   closedPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  interactKey: 102
-  openDoorText: {fileID: 443819900}
   activated: 0
 --- !u!1001 &1634308695
 PrefabInstance:
@@ -24605,8 +24595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &1648819645
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26831,8 +26821,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractPrompt: 
   DialogueFile: {fileID: 4900000, guid: 065792c99a1c0ee4c8812109e4252805, type: 3}
-  dr: {fileID: 0}
-  reticleCanvas: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fadeDuration: 0.05
 --- !u!136 &1663779606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29628,6 +29618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerHeight: 0
+  CullFactor: 1
+  maxLights: 8
 --- !u!1001 &1853322410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31542,8 +31534,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   keyToPress: 101
-  loadSceneText: {fileID: 1523960650}
-  entryDoorText: {fileID: 1894145873}
   NoSceneToLoad: 2
   radius: 1
   MenuSystemObj: {fileID: 0}
