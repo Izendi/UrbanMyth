@@ -1,0 +1,46 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Notice",
+      "Text": "Thank you for playing doors of deception",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 2
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Notice",
+      "Text": "This game was created by: Julia, Ingrid, Christopher Winters, Hampus and Yusheng",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Notice",
+      "Text": "Assets used: Cat sprite from: ...",
+      "Responses": [
+        {
+          "Text": "(Continue)",
+          "NextDialogueId": 5
+        }
+      ]
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Notice",
+      "Text": "please go through the main door to return to the main menu",
+      "Responses": [
+      ]
+    }
+    
+    
+  ]
+}

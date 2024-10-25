@@ -1,0 +1,24 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Hansel",
+      "Text": "It's ok sis. You'll see. Daphne is going to make it all better!",
+      "Responses": [
+        {
+          "Text": "No! Please don't let her",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 1
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Hansel",
+      "Text": "Relax, she said, after she's given us some food, that we 'can be her new cute little spiders!' hahahahaha. She sure is funny. I'm so glas we're together sis. Once you have some of her medicine, everything will be better.",
+      "Responses": [
+      ]
+    }
+
+  ]
+}

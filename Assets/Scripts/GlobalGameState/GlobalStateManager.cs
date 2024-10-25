@@ -11,6 +11,7 @@ using Unity.VisualScripting;
 using UnityEngine;  
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 
 public class GlobalStateManager : MonoBehaviour
@@ -37,6 +38,7 @@ public class GlobalStateManager : MonoBehaviour
 
     private InputAction menuOpenAction;
 
+    public int KarmaLevel = 0;
 
     // Global states
     public bool isGamePaused;
@@ -48,32 +50,34 @@ public class GlobalStateManager : MonoBehaviour
 
     public bool has_ChildhoodToy;
     public bool has_money;
-    public bool has_codeBreaker;
-    public bool has_torch;
+    public bool has_fireEscapePlan;
+    public bool has_oldKey;
     public bool has_vipRationCard;
     public bool has_catTreat;
     public bool has_photo;
 
+    public bool hasShownPhoto = false;
+
     public bool givenAway_ChildhoodToy;
     public bool givenAway_money;
-    public bool givenAway_codeBreaker;
-    public bool givenAway_torch;
+    public bool givenAway_fireEscapePlan;
+    public bool givenAway_oldKey;
     public bool givenAway_vipRationCard;
     public bool givenAway_catTreat;
     public bool givenAway_photo;
 
     public bool backup_has_ChildhoodToy;
     public bool backup_has_money;
-    public bool backup_has_codeBreaker;
-    public bool backup_has_torch;
+    public bool backup_has_fireEscapePlan;
+    public bool backup_has_oldKey;
     public bool backup_has_vipRationCard;
     public bool backup_has_catTreat;
     public bool backup_has_photo;
 
     public bool backup_givenAway_ChildhoodToy;
     public bool backup_givenAway_money;
-    public bool backup_givenAway_codeBreaker;
-    public bool backup_givenAway_torch;
+    public bool backup_givenAway_fireEscapePlan;
+    public bool backup_givenAway_oldKey;
     public bool backup_givenAway_vipRationCard;
     public bool backup_givenAway_catTreat;
     public bool backup_givenAway_photo;
@@ -87,16 +91,16 @@ public class GlobalStateManager : MonoBehaviour
 
         backup_has_ChildhoodToy = has_ChildhoodToy;
         backup_has_money = has_money;
-        backup_has_codeBreaker = has_codeBreaker;
-        backup_has_torch = has_torch;
+        backup_has_fireEscapePlan = has_fireEscapePlan;
+        backup_has_oldKey = has_oldKey;
         backup_has_vipRationCard = has_vipRationCard;
         backup_has_catTreat = has_catTreat;
         backup_has_photo = has_photo;
 
         backup_givenAway_ChildhoodToy = givenAway_ChildhoodToy;
         backup_givenAway_money = givenAway_money;
-        backup_givenAway_codeBreaker = givenAway_codeBreaker;
-        backup_givenAway_torch = givenAway_torch;
+        backup_givenAway_fireEscapePlan = givenAway_fireEscapePlan;
+        backup_givenAway_oldKey = givenAway_oldKey;
         backup_givenAway_vipRationCard = givenAway_vipRationCard;
         backup_givenAway_catTreat = givenAway_catTreat;
         backup_givenAway_photo = givenAway_photo;
@@ -117,16 +121,16 @@ public class GlobalStateManager : MonoBehaviour
 
         has_ChildhoodToy = false;
         has_money = false;
-        has_codeBreaker = false;
-        has_torch = false;
+        has_fireEscapePlan = false;
+        has_oldKey = false;
         has_vipRationCard = false;
         has_catTreat = false;
         has_photo = false;
 
         givenAway_ChildhoodToy = false;
         givenAway_money = false;
-        givenAway_codeBreaker = false;
-        givenAway_torch = false;
+        givenAway_fireEscapePlan = false;
+        givenAway_oldKey = false;
         givenAway_vipRationCard = false;
         givenAway_catTreat = false;
         givenAway_photo = false;
@@ -150,16 +154,16 @@ public class GlobalStateManager : MonoBehaviour
 
         has_ChildhoodToy = backup_has_ChildhoodToy;
         has_money = backup_has_money;
-        has_codeBreaker = backup_has_codeBreaker;
-        has_torch = backup_has_torch;
+        has_fireEscapePlan = backup_has_fireEscapePlan;
+        has_oldKey = backup_has_oldKey;
         has_vipRationCard = backup_has_vipRationCard;
         has_catTreat = backup_has_catTreat;
         has_photo = backup_has_photo;
 
         givenAway_ChildhoodToy = backup_givenAway_ChildhoodToy;
         givenAway_money = backup_givenAway_money;
-        givenAway_codeBreaker = backup_givenAway_codeBreaker;
-        givenAway_torch = backup_givenAway_torch;
+        givenAway_fireEscapePlan = backup_givenAway_fireEscapePlan;
+        givenAway_oldKey = backup_givenAway_oldKey;
         givenAway_vipRationCard = backup_givenAway_vipRationCard;
         givenAway_catTreat = backup_givenAway_catTreat;
         givenAway_photo = backup_givenAway_photo;
@@ -188,16 +192,16 @@ public class GlobalStateManager : MonoBehaviour
 
             backup_has_ChildhoodToy = false;
             backup_has_money = false;
-            backup_has_codeBreaker = false;
-            backup_has_torch = false;
+            backup_has_fireEscapePlan = false;
+            backup_has_oldKey = false;
             backup_has_vipRationCard = false;
             backup_has_catTreat = false;
             backup_has_photo = false;
 
             backup_givenAway_ChildhoodToy = false;
             backup_givenAway_money = false;
-            backup_givenAway_codeBreaker = false;
-            backup_givenAway_torch = false;
+            backup_givenAway_fireEscapePlan = false;
+            backup_givenAway_oldKey = false;
             backup_givenAway_vipRationCard = false;
             backup_givenAway_catTreat= false;
             backup_givenAway_photo = false;
@@ -242,13 +246,13 @@ public class GlobalStateManager : MonoBehaviour
         {
             has_money = true;
         }
-        if (itemName == "CodeBreaker")
+        if (itemName == "fireEscapePlan")
         {
-            has_codeBreaker = true;
+            has_fireEscapePlan = true;
         }
-        if (itemName == "Torch")
+        if (itemName == "oldKey")
         {
-            has_torch = true;
+            has_fireEscapePlan = true;
         }
         if (itemName == "VipRationCard")
         {
@@ -295,14 +299,14 @@ public class GlobalStateManager : MonoBehaviour
             has_money = true;
             MI_script.DisplayKeyItem(1);
         }
-        if (keyItemName == "CodeBreaker")
+        if (keyItemName == "fireEscapePlan")
         {
-            has_codeBreaker = true;
+            has_fireEscapePlan = true;
             MI_script.DisplayKeyItem(2);
         }
-        if (keyItemName == "Torch")
+        if (keyItemName == "oldKey")
         {
-            has_torch = true;
+            has_oldKey = true;
             MI_script.DisplayKeyItem(3);
         }
         if (keyItemName == "VipRationCard")
@@ -367,6 +371,10 @@ public class GlobalStateManager : MonoBehaviour
                 DoorButton doorButton = but.GetComponent<DoorButton>();
                 doorButton.DeactivateButton();
             }
+        }
+        else if (actionName == "EndGame")
+        {
+            MI_script.LoadNextScene(10);
         }
         else if(actionName == "UnlockDoor_1")
         {
@@ -496,6 +504,18 @@ public class GlobalStateManager : MonoBehaviour
             {
                 npc.SetActive(false);
             }
+        }
+        else if (actionName == "ShowPhoto")
+        {
+            hasShownPhoto = true;
+        }
+        else if (actionName == "IncrementKarma")
+        {
+            KarmaLevel = KarmaLevel + 1;
+        }
+        else if (actionName == "DecrementKarma")
+        {
+            KarmaLevel = KarmaLevel - 1;
         }
 
     }

@@ -3,7 +3,7 @@
     {
       "DialogueId": 1,
       "NpcName": "Daphne",
-      "Text": "[This Dialogue is being updated] Hello there, you must be Hans sister, he's told me all about you.",
+      "Text": "[This Dialogue is being updated, witch asks you to feed her pet here] Hello there, you must be Hans sister, he's told me all about you.",
       "Responses": [
         {
           "Text": "And you must be Daphne.",
