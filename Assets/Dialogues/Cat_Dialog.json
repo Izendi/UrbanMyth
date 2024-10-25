@@ -26,7 +26,7 @@
           "Text": "Oh here, I think I have some treats for you! [Give Cat Treats]",
           "NextDialogueId": 4,
           "ResponseNiceness": 1,
-          "Action": "GiveCatTreat"
+          "Action": "UnlockAllDoors"
         },
         {
           "Text": "I'm sorry, I don't have anything to give you.",

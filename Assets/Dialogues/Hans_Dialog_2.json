@@ -27,20 +27,52 @@
     {
       "DialogueId": 3,
       "NpcName": "Hans",
-      "Text": "More dialogue needs to be added...",
+      "Text": "Pet? What are you talking about",
       "Responses": [
         {
-          "Text": "(Continue)",
-          "NextDialogueId": 10,
+          "Text": "She has this monster, this weird spider thing with a human face!",
+          "NextDialogueId": 4,
           "ResponseNiceness": 0
         }
       ]
     
     },
     {
+      "DialogueId": 4,
+      "NpcName": "Hans",
+      "Text": "Agh! I'm not a stupid kid anymore sis! You always do this. Make up stories to get your way.",
+      "Responses": [
+        {
+          "Text": "Why would you trust that witch who tried to get me killed and not your own sister.",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0,
+          "Action": "DecrementKarma"
+        },
+        {
+          "Text": "I know it's hard to belive, but as your sister please belive me!",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0,
+          "Action": "IncrementKarma"
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Hans",
+      "Text": "(He hesitates for a moment)",
+      "Responses": [
+        {
+          "Text": "(Continue))",
+          "NextDialogueId": 10,
+          "ResponseNiceness": 0,
+          "Action": "DecrementKarma"
+        }
+      ]
+    },
+    {
       "DialogueId": 10,
       "NpcName": "Hans",
-      "Text": "(He shoves you aside and runs off)",
+      "Text": "(He runs off out the back door, leaving you with nothing but humming of electric lights)",
       "Responses": [
         {
           "Text": "(close)",
