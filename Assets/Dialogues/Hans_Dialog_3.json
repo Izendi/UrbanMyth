@@ -1,0 +1,258 @@
+{
+  "DialogueNodes": [
+    {
+      "DialogueId": 1,
+      "NpcName": "Hans",
+      "Text": "You're actually here!",
+      "Responses": [
+        {
+          "Text": "Yes, you wanted me to meet Daphne.",
+          "NextDialogueId": 2,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "I wanted to see if you'd reconsider coming home with me?",
+          "NextDialogueId": 3,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 2,
+      "NpcName": "Hans",
+      "Text": "Oh, I'm so happy that you're here. This is gonna be great, you'll see!",
+      "Responses": [
+        {
+          "Text": "Yes, she seems very nice.",
+          "NextDialogueId": 4,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 3,
+      "NpcName": "Hans",
+      "Text": "I don't want to leave, I like it here.",
+      "Responses": [
+        {
+          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 0
+        }
+      ]      
+    },
+    {
+      "DialogueId": 4,
+      "NpcName": "Hans",
+      "Text": "I like it here, can't we just stay here and be happy?",
+      "Responses": [
+        {
+          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "NextDialogueId": 5,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 5,
+      "NpcName": "Hans",
+      "Text": "I remember! Oh Sis! Let's get out of here!"
+    },
+   
+
+    {
+      "DialogueId": 101,
+      "NpcName": "Hans",
+      "Text": "You're actually here!",
+      "Responses": [
+        {
+          "Text": "Yes, you wanted me to meet Daphne.",
+          "NextDialogueId": 102,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "I wanted to see if you'd reconsider coming home with me?",
+          "NextDialogueId": 103,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 102,
+      "NpcName": "Hans",
+      "Text": "Oh, I'm so happy that you're here. This is gonna be great, you'll see!",
+      "Responses": [
+        {
+          "Text": "Yes, she seems very nice.",
+          "NextDialogueId": 104,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 103,
+      "NpcName": "Hans",
+      "Text": "I don't want to leave, I like it here.",
+      "Responses": [
+        {
+          "Text": "Will you let me go then?",
+          "NextDialogueId": 105,
+          "ResponseNiceness": 0
+        }
+      ]      
+    },
+    {
+      "DialogueId": 104,
+      "NpcName": "Hans",
+      "Text": "I like it here, can't we just stay here and be happy?",
+      "Responses": [
+        {
+          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "NextDialogueId": 106,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 105,
+      "NpcName": "Hans",
+      "Text": "If you wan't to leave I wont stop you."
+    },
+    {
+      "DialogueId": 106,
+      "NpcName": "Hans",
+      "Text": "Sis... I can't go with you, I don't want to. But I won't stop you from leaving..."
+    },
+
+
+    {
+      "DialogueId": 201,
+      "NpcName": "Hans",
+      "Text": "You're actually here.",
+      "Responses": [
+        {
+          "Text": "Yes, you wanted me to meet Daphne.",
+          "NextDialogueId": 202,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "I wanted to see if you'd reconsider coming home with me?",
+          "NextDialogueId": 203,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 202,
+      "NpcName": "Hans",
+      "Text": "I did. I like it here, I hoped you'd like it too. I want us to stay here.",
+      "Responses": [
+        {
+          "Text": "I know, but don't you remember how good it used to be? Look at this photo.",
+          "NextDialogueId": 204,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 203,
+      "NpcName": "Hans",
+      "Text": "I don't want to leave, I like it here.",
+      "Responses": [
+        {
+          "Text": "Will you let me go then?",
+          "NextDialogueId": 205,
+          "ResponseNiceness": 0
+        }
+      ]      
+    },
+    {
+      "DialogueId": 204,
+      "NpcName": "Hans",
+      "Text": "No, I don't, but I remember Father abandoning us here, I'm just making the best of the situation.",
+      "Responses": [
+        {
+          "Text": "Will you let me go then?",
+          "NextDialogueId": 205,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 205,
+      "NpcName": "Hans",
+      "Text": "If you wan't to leave I wont stop you."
+    },
+    
+    
+
+    {
+      "DialogueId": 301,
+      "NpcName": "Hans",
+      "Text": "Sis... You're here...",
+      "Responses": [
+        {
+          "Text": "Hans, I've come to take you home.",
+          "NextDialogueId": 302,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 302,
+      "NpcName": "Hans",
+      "Text": "No! Stop it! You're ruining everything!",
+      "Responses": [
+        {
+          "Text": "Don't you remember how good it used to be? Look at this photo!",
+          "NextDialogueId": 303,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Why can't you see what she's doing to you!?",
+          "NextDialogueId": 304,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 303,
+      "NpcName": "Hans",
+      "Text": "I don't want to go back to the way it was! Father doesn't want us, Daphne does!",
+      "Responses": [
+        {
+          "Text": "He does! I promise you that he does.",
+          "NextDialogueId": 305,
+          "ResponseNiceness": 0
+        },
+        {
+          "Text": "Suit yourself, I'm leaving!",
+          "NextDialogueId": 306,
+          "ResponseNiceness": 0
+        }
+      ]      
+    },
+    {
+      "DialogueId": 304,
+      "NpcName": "Hans",
+      "Text": "I HATE YOU! YOU'RE RUINING EVERYTHING! DAPHNE WARNED ME THAT YOU WOULD DO THIS!",
+      "Responses": [
+        {
+          "Text": "HANS STOP! YOU DON'T KNOW WHAT YOU'RE SAYING, JUST LET ME GO!",
+          "NextDialogueId": 306,
+          "ResponseNiceness": 0
+        }
+      ]
+    },
+    {
+      "DialogueId": 305,
+      "NpcName": "Hans",
+      "Text": "You can't leave, You can't leave me ever again!"
+    },
+    {
+      "DialogueId": 306,
+      "NpcName": "Hans",
+      "Text": "THERE'S ONLY ONE DOOR YOU'LL LEAVE THROUGH AND IT'S NOT THE FRONT DOOR!!!"
+    }
+  ]
+}
