@@ -511,7 +511,7 @@ public class GlobalStateManager : MonoBehaviour
         }
         else if (actionName == "IncrementKarma")
         {
-            KarmaLevel = KarmaLevel + 1;
+            KarmaLevel = KarmaLevel + 2; //#FIX_LATER
         }
         else if (actionName == "DecrementKarma")
         {

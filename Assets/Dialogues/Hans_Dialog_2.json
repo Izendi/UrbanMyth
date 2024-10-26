@@ -64,8 +64,8 @@
         {
           "Text": "(Continue))",
           "NextDialogueId": 10,
-          "ResponseNiceness": 0,
-          "Action": "DecrementKarma"
+          "ResponseNiceness": 0
+          
         }
       ]
     },
