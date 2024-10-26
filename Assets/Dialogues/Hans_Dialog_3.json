@@ -47,7 +47,7 @@
       "Text": "I like it here, can't we just stay here and be happy?",
       "Responses": [
         {
-          "Text": "I know, but don't you remember how good it used to be?",
+          "Text": "I know, but don't you remember how good it used to be? Look at this photo!",
           "NextDialogueId": 5,
           "ResponseNiceness": 0
         }
