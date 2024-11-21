@@ -8,6 +8,8 @@ public class Transition : MonoBehaviour
     public float displayDuration = 3.0f;   // Duration to show each image
     private int currentImageIndex = 0;     // Track the current image
     private bool canMoveToNextLevel = false;
+    private bool isTransitioning = false;  // Track if a transition is ongoing
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class Transition : MonoBehaviour
         {
             // Activate the current image
             transitionImages[currentImageIndex].SetActive(true);
+            isTransitioning = true;
 
             // Schedule the next image to be shown after the current one has been displayed
             Invoke(nameof(HideCurrentAndShowNext), displayDuration);
@@ -47,7 +50,7 @@ public class Transition : MonoBehaviour
 
         // Move to the next image
         currentImageIndex++;
-
+        isTransitioning = false;
         // Show the next image in sequence
         ShowNextImage();
     }
@@ -57,7 +60,23 @@ public class Transition : MonoBehaviour
     {
         canMoveToNextLevel = true;
     }
-}
+
+    void Update()
+    {
+        // Detect mouse click or screen tap
+        if (Input.GetMouseButtonDown(0) && !canMoveToNextLevel)  // Left mouse button or screen tap
+        {
+            // Cancel the automatic transition (Invoke)
+            if (isTransitioning)
+            {
+                CancelInvoke(nameof(HideCurrentAndShowNext));
+            }
+
+            // Move to the next image manually
+            HideCurrentAndShowNext();
+        }
+    }
+    }
 
     // Update is called once per frame
     //void Update()
